@@ -1,0 +1,59 @@
+<mat-card>
+  <br><h4>{{cliente?.nome}}</h4><br>
+  <mat-card-content class="center">
+    <h4 *ngIf="!edit">Cadastre-se:</h4>
+    <form [formGroup]="clienteForm">
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Login" maxlength="10" formControlName="usuarioLogin">
+        <mat-error *ngIf="clienteForm.get('usuarioLogin').hasError('required')">
+          O login é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Senha" type="password" maxlength="32" formControlName="usuarioPassword">
+        <mat-error *ngIf="clienteForm.get('usuarioPassword').hasError('required')">
+          A senha é <strong>obrigatória.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Emai" type="email" maxlength="100" formControlName="usuarioEmail">
+        <mat-error *ngIf="clienteForm.get('usuarioEmail').hasError('required')">
+          O Email é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Nome" maxlength="100" formControlName="clienteNome">
+        <mat-error *ngIf="clienteForm.get('clienteNome').hasError('required')">
+          O Nome é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Cpf" maxlength="100" formControlName="clienteCpf">
+        <mat-error *ngIf="clienteForm.get('clienteCpf').hasError('required')">
+          O Cpf é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="CEP" maxlength="8" formControlName="clienteCep">
+        <mat-error *ngIf="clienteForm.get('clienteCep').hasError('required')">
+          O CEP é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Endereço"  maxlength="200" formControlName="clienteEndereco">
+        <mat-error *ngIf="clienteForm.get('clienteEndereco').hasError('required')">
+          O endereço é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Bairro" maxlength="255" formControlName="clienteBairro">
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Complemento" maxlength="255" formControlName="clienteComplemento">
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/">Cancelar</button>
+    <button mat-raised-button color="primary" *ngIf="edit" (click)="updateUser()">Salvar alterações</button>
+    <button mat-raised-button color="primary" [disabled]="!clienteForm.valid" *ngIf="!edit" (click)="createUser()">Salvar</button>
+  </mat-card-content>
+</mat-card>
