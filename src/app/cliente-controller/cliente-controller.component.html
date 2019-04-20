@@ -53,7 +53,7 @@
       </mat-form-field>
     </form>
     <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/">Cancelar</button>
-    <button mat-raised-button color="primary" *ngIf="edit" (click)="updateUser()">Salvar alterações</button>
-    <button mat-raised-button color="primary" [disabled]="!clienteForm.valid" *ngIf="!edit" (click)="createUser()">Salvar</button>
+    <button mat-raised-button color="primary" *ngIf="edit" (click)="updateCliente()">Salvar alterações</button>
+    <button mat-raised-button color="primary" [disabled]="!clienteForm.valid" *ngIf="!edit" (click)="createCliente()">Salvar</button>
   </mat-card-content>
 </mat-card>

@@ -73,7 +73,7 @@ export class ClienteControllerComponent implements OnInit {
       next: resp => {
         this.resetForm();
         this.app.hideLoading();
-        this.snotifyService.success('Usuário criado com Sucesso', 'Sucesso!', this.app.getConfig());
+        this.snotifyService.success('Cadastro realizado com Sucesso', 'Sucesso!', this.app.getConfig());
         },
         error: erro => {
           console.log(erro);
@@ -104,7 +104,7 @@ export class ClienteControllerComponent implements OnInit {
         this.app.hideLoading();
         this.edit = false;
         this.localSaveService.clean();
-        this.snotifyService.success('Usuário alterado com Sucesso', 'Sucesso!', this.app.getConfig());
+        this.snotifyService.success('Perfil alterado com Sucesso', 'Sucesso!', this.app.getConfig());
         },
         error: erro => {
           console.log(erro);
@@ -115,8 +115,14 @@ export class ClienteControllerComponent implements OnInit {
   }
 
   resetForm() {
-    this.clienteForm.get('clienteLogin').reset();
-    this.clienteForm.get('clientePassword').reset();
-    this.clienteForm.get('clienteType').reset();
+    this.clienteForm.get('usuarioLogin').reset();
+    this.clienteForm.get('usuarioPassword').reset();
+    this.clienteForm.get('usuarioEmail').reset();
+    this.clienteForm.get('clienteNome').reset();
+    this.clienteForm.get('clienteCpf').reset();
+    this.clienteForm.get('clienteBairro').reset();
+    this.clienteForm.get('clienteCep').reset();
+    this.clienteForm.get('clienteEndereco').reset();
+    this.clienteForm.get('clienteComplemento').reset();
   }
 }

@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 // import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
-import { Cliente } from './models/cliente.model';
+import { Oficina } from './models/oficina.model';
 import { AppComponent } from '../app.component';
 
 
 
 @Injectable()
 
-export class ClienteService {
+export class OficinaService {
     urlApi: string;
     constructor(private readonly http: HttpClient, private readonly app: AppComponent) {
         this.urlApi = this.app.urlApi;
@@ -24,47 +24,47 @@ export class ClienteService {
         return Observable.throw((error.json().Message ? error.json().Message : error.json().error_description));
     }
 
-    getClientes(): Observable<Cliente[]> {
-        return this.http.get<Cliente[]>(this.urlApi + 'clientes')
+    getOficinas(): Observable<Oficina[]> {
+        return this.http.get<Oficina[]>(this.urlApi + 'oficinas')
         .pipe(
             map(response => {
-                return response as Cliente[];
+                return response as Oficina[];
             },
                 error => this.handleError(error))
         );
     }
 
-    getClienteByCpf(cpf: string): Observable<Cliente> {
-        return this.http.get<any>(this.urlApi + 'clientes/' + cpf)
+    getOficinaById(oficinaId: string): Observable<Oficina> {
+        return this.http.get<any>(this.urlApi + 'oficinas/' + oficinaId)
             .pipe(
                 map(response => {
-                    return response.data as Cliente;
+                    return response.data as Oficina;
                 },
                     error => this.handleError(error))
             );
     }
 
-    createCliente(cliente: Cliente): Observable<any> {
-        return this.http.post<Cliente>(this.urlApi + 'clientes', cliente)
+    createOficina(oficina: Oficina): Observable<any> {
+        return this.http.post<Oficina>(this.urlApi + 'oficinas', oficina)
         .pipe(
             map(response => {
-                return response as Cliente;
+                return response as Oficina;
             },
                 error => this.handleError(error))
         );
     }
-    updateCliente(cliente: Cliente): Observable<any> {
-        return this.http.put<Cliente>(encodeURI(this.urlApi + 'clientes/' + cliente.cpf), cliente)
+    updateOficina(oficina: Oficina): Observable<any> {
+        return this.http.put<Oficina>(encodeURI(this.urlApi + 'oficinas/' + oficina.idOficina), oficina)
         .pipe(
             map(response => {
-                return response as Cliente;
+                return response as Oficina;
             },
                 error => this.handleError(error))
         );
     }
 
-    deleteCliente(cpf: string) {
-        return this.http.delete<any>(encodeURI(this.urlApi + `clientes/${cpf}`), )
+    deleteOficina(idOficina: string) {
+        return this.http.delete<any>(encodeURI(this.urlApi + `oficinas/${idOficina}`), )
         .pipe(
             map(response => {
                 return response;
