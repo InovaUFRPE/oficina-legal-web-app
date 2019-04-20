@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from './models/cliente.model';
 import { Oficina } from './models/oficina.model';
+import { Gestor } from './models/gestor.model';
 
 
 @Injectable()
@@ -24,5 +25,11 @@ export class LocalSaveService {
     }
     getOficinaToEdit(): Oficina {
        return (JSON.parse(window.localStorage.getItem('oficinaToEdit')) as Oficina);
+    }
+    setGestorToEdit(gestor: Gestor): void {
+        window.localStorage.setItem('gestorToEdit', JSON.stringify(gestor));
+    }
+    getGestorToEdit(): Gestor {
+       return (JSON.parse(window.localStorage.getItem('gestorToEdit')) as Gestor);
     }
 }

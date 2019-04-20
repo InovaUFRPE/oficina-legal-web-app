@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: './home/home.module#HomeModule'},
   { path: 'cliente/controlador', loadChildren: './cliente-controller/cliente-controller.module#ClienteControllerModule'},
   { path: 'oficina/controlador', loadChildren: './oficina-controller/oficina-controller.module#OficinaControllerModule'},
+  { path: 'gestor/controlador', loadChildren: './gestor-controller/gestor-controller.module#GestorControllerModule'},
 ];
 
 @NgModule({
