@@ -1,0 +1,49 @@
+<mat-card>
+  <br><h4>{{gestor?.nome}}</h4><br>
+  <mat-card-content class="center">
+    <h4 *ngIf="!edit">Novo gestor:</h4>
+    <form [formGroup]="gestorForm">
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Login" maxlength="10" formControlName="usuarioLogin">
+        <mat-error *ngIf="gestorForm.get('usuarioLogin').hasError('required')">
+          O login é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Senha" type="password" maxlength="32" formControlName="usuarioPassword">
+        <mat-error *ngIf="gestorForm.get('usuarioPassword').hasError('required')">
+          A senha é <strong>obrigatória.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Emai" type="email" maxlength="100" formControlName="usuarioEmail">
+        <mat-error *ngIf="gestorForm.get('usuarioEmail').hasError('required')">
+          O Email é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Nome" maxlength="100" formControlName="gestorNome">
+        <mat-error *ngIf="gestorForm.get('gestorNome').hasError('required')">
+          O Nome é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Cpf" maxlength="100" formControlName="gestorCpf">
+        <mat-error *ngIf="gestorForm.get('gestorCpf').hasError('required')">
+          O Cpf é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <mat-select placeholder="Oficina" formControlName="gestorType">
+          <mat-option >--</mat-option>
+          <mat-option *ngFor="let oficina of oficinasList" [value]="oficina">
+            {{oficina.razaoSocial}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/">Cancelar</button>
+    <button mat-raised-button color="primary" *ngIf="edit" (click)="updateGestor()">Salvar alterações</button>
+    <button mat-raised-button color="primary" [disabled]="!gestorForm.valid" *ngIf="!edit" (click)="createGestor()">Salvar</button>
+  </mat-card-content>
+</mat-card>
