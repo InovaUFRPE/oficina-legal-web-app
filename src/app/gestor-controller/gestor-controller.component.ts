@@ -27,11 +27,11 @@ export class GestorControllerComponent implements OnInit {
     private app: AppComponent, private router: Router) { }
 
   ngOnInit() {
-    this.gestor = this.localSaveService.getGestorToEdit();
+    this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
     this.gestorForm = this.formBuilder.group({
       usuarioLogin: [ '', [Validators.required, Validators.maxLength(10)]],
       usuarioPassword: [ '', [Validators.required, Validators.maxLength(32)]],
-      usuarioEmail: [ '', [Validators.required, Validators.maxLength(100)]],
+      usuarioEmail: [ '', [Validators.required, Validators.email]],
       gestorNome: [ '', [Validators.required, Validators.maxLength(100)]],
       gestorCpf: [ '', [Validators.required, Validators.maxLength(100)]],
       oficina: [ '', [Validators.maxLength(100)]]
@@ -108,9 +108,8 @@ export class GestorControllerComponent implements OnInit {
     this.gestorService.updateGestor(gestor).subscribe({
       next: resp => {
         this.app.hideLoading();
-        this.edit = false;
-        this.localSaveService.clean();
-        this.router.navigate(['/']);
+        this.app.login(resp);
+        this.gestor = resp;
         this.snotifyService.success('Gestor alterado com Sucesso', 'Sucesso!', this.app.getConfig());
         },
         error: erro => {

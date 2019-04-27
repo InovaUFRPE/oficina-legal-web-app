@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SnotifyService, SnotifyPosition, SnotifyToastConfig } from 'ng-snotify';
 import { Router } from '@angular/router';
+import { LocalSaveService } from './shared/local-save.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   urlApi = 'http://localhost/api/';
   title = 'web-app';
   style = 'material';
@@ -24,28 +25,33 @@ export class AppComponent {
   pauseHover = true;
   titleMaxLength = 15;
   bodyMaxLength = 80;
+  user;
 
-  constructor(private _router: Router, private snotify: SnotifyService,  private spinner: NgxSpinnerService) {}
+  constructor(private _router: Router, private snotify: SnotifyService, private spinner: NgxSpinnerService,
+    private _localSaveService: LocalSaveService) { }
+  ngOnInit() {
+    this.user = this._localSaveService.getUsuarioLogado();
+  }
 
-    getConfig(): SnotifyToastConfig {
-      this.snotify.setDefaults({
-        global: {
-          newOnTop: this.newTop,
-          maxAtPosition: this.blockMax,
-          maxOnScreen: this.dockMax
-        }
-      });
-      return {
-        bodyMaxLength: this.bodyMaxLength,
-        titleMaxLength: this.titleMaxLength,
-        backdrop: this.backdrop,
-        position: this.position,
-        timeout: this.timeout,
-        showProgressBar: this.progressBar,
-        closeOnClick: this.closeClick,
-        pauseOnHover: this.pauseHover
-      };
-    }
+  getConfig(): SnotifyToastConfig {
+    this.snotify.setDefaults({
+      global: {
+        newOnTop: this.newTop,
+        maxAtPosition: this.blockMax,
+        maxOnScreen: this.dockMax
+      }
+    });
+    return {
+      bodyMaxLength: this.bodyMaxLength,
+      titleMaxLength: this.titleMaxLength,
+      backdrop: this.backdrop,
+      position: this.position,
+      timeout: this.timeout,
+      showProgressBar: this.progressBar,
+      closeOnClick: this.closeClick,
+      pauseOnHover: this.pauseHover
+    };
+  }
 
   showLoading(): void {
     this.spinner.show();
@@ -56,4 +62,14 @@ export class AppComponent {
     this.spinner.hide();
   }
 
+  login(user: any) {
+    this.user = user;
+    this._localSaveService.setUsuarioLogado(user);
+  }
+  logoff() {
+    this._localSaveService.logOut();
+    this.user = null;
+    // this._router.navigate(['.']);
+    this._router.navigate(['/']);
+  }
 }

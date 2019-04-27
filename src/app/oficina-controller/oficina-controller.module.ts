@@ -9,6 +9,8 @@ import { OficinaService } from 'src/app/shared/oficina.service';
 import { OficinaControllerRoutingModule } from './oficina-controller.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LocalSaveService } from '../shared/local-save.service';
+import { UserLoggedGuard } from '../guards/userLogged.guard';
+import { AdminGuard } from '../guards/admin.guard';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { LocalSaveService } from '../shared/local-save.service';
   providers: [
     OficinaService,
     AppComponent,
-    LocalSaveService
+    LocalSaveService,
+    UserLoggedGuard,
+    AdminGuard
   ]
 })
 export class OficinaControllerModule { }

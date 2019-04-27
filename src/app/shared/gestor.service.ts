@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 // import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { Gestor } from './models/gestor.model';
@@ -61,6 +61,8 @@ export class GestorService {
             },
                 error => this.handleError(error))
         );
+        // Para testes sem back:
+        // return of(gestor);
     }
 
     deleteGestor(cpf: string) {

@@ -1,0 +1,33 @@
+<mat-card class="card-layout center">
+  <h4 align="center">Entrar</h4>
+    <mat-card-content class="center">
+        <form class="form-login" [formGroup]="loginForm">
+            <mat-form-field class="form-full-width">
+              <input matInput type="login" placeholder="Entre com seu Login Ou Email" formControlName="login" >
+                <mat-error *ngIf="loginForm.get('login').hasError('required')">
+                  O e-mail ou login é <strong>obrigatório</strong>.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-full-width">
+              <input matInput type="password" (keyup.enter)="loginUser()" placeholder="Senha" formControlName="senha">
+              <mat-error *ngIf="loginForm.get('senha').hasError('required')">
+                A senha é <strong>obrigatória</strong>.
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('senha').hasError('minlength')">
+                A senha deve conter pelo menos <strong>6</strong> caracteres.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-full-width">
+              <mat-select placeholder="Tipo usuário" formControlName="tipoUsuario">
+                <mat-option >--</mat-option>
+                <mat-option *ngFor="let tipo of tiposList" [value]="tipo">
+                  {{tipo.nome}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="bt-1" color="primary" [disabled]="!loginForm.valid" (keyup.enter)="loginUser()" (click)="loginUser()">Entrar</button>
+    </mat-card-actions>
+  </mat-card>
