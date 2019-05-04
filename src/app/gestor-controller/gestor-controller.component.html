@@ -17,6 +17,9 @@
       </mat-form-field>
       <mat-form-field class="form-full-width">
         <input matInput placeholder="Emai" type="email" maxlength="100" formControlName="usuarioEmail">
+        <mat-error *ngIf="gestorForm.get('usuarioEmail').hasError('email')">
+            Por favor, digite um e-mail válido.
+          </mat-error>
         <mat-error *ngIf="gestorForm.get('usuarioEmail').hasError('required')">
           O Email é <strong>obrigatório.</strong>
         </mat-error>
@@ -34,7 +37,7 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field class="form-full-width">
-        <mat-select placeholder="Oficina" formControlName="gestorType">
+        <mat-select placeholder="Oficina" formControlName="oficina">
           <mat-option >--</mat-option>
           <mat-option *ngFor="let oficina of oficinasList" [value]="oficina">
             {{oficina.razaoSocial}}

@@ -9,16 +9,15 @@ export class LocalSaveService {
 
     constructor() {}
 
-    clean(): void {
+    logOut(): void {
         localStorage.clear();
         sessionStorage.clear();
     }
-
-    setClienteToEdit(cliente: Cliente): void {
-        window.localStorage.setItem('clienteToEdit', JSON.stringify(cliente));
+    setUsuarioLogado(tipo: any): void {
+        window.localStorage.setItem('usuarioLogado', JSON.stringify(tipo));
     }
-    getClienteToEdit(): Cliente {
-       return (JSON.parse(window.localStorage.getItem('clienteToEdit')) as Cliente);
+    getUsuarioLogado(): any {
+       return (JSON.parse(window.localStorage.getItem('usuarioLogado')) as any);
     }
     setOficinaToEdit(oficina: Oficina): void {
         window.localStorage.setItem('oficinaToEdit', JSON.stringify(oficina));
@@ -26,10 +25,17 @@ export class LocalSaveService {
     getOficinaToEdit(): Oficina {
        return (JSON.parse(window.localStorage.getItem('oficinaToEdit')) as Oficina);
     }
-    setGestorToEdit(gestor: Gestor): void {
-        window.localStorage.setItem('gestorToEdit', JSON.stringify(gestor));
-    }
-    getGestorToEdit(): Gestor {
-       return (JSON.parse(window.localStorage.getItem('gestorToEdit')) as Gestor);
-    }
+
+    // setClienteToEdit(cliente: Cliente): void {
+    //     window.localStorage.setItem('clienteToEdit', JSON.stringify(cliente));
+    // }
+    // getClienteToEdit(): Cliente {
+    //    return (JSON.parse(window.localStorage.getItem('clienteToEdit')) as Cliente);
+    // }
+    // setGestorToEdit(gestor: Gestor): void {
+    //     window.localStorage.setItem('gestorToEdit', JSON.stringify(gestor));
+    // }
+    // getGestorToEdit(): Gestor {
+    //    return (JSON.parse(window.localStorage.getItem('gestorToEdit')) as Gestor);
+    // }
 }

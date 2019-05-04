@@ -2,10 +2,17 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
       <button mat-button routerLink="">Home</button>
-      <button mat-button routerLink="/cliente/controlador">Cadastrar Cliente</button>
-      <button mat-button routerLink="/gestor/controlador">Cadastrar Gestor</button>
-      <button mat-button routerLink="/oficina/controlador">Cadastrar Oficina</button>
-      <button mat-button routerLink="/">Cadastrar Mecânico</button>
+      <button *ngIf="!user" mat-button routerLink="/cliente/controlador">Cadastre-se, Cliente</button>
+      <button *ngIf="!user" mat-button routerLink="/gestor/controlador">Cadastre-se, Gestor</button>
+      <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/oficina/controlador">Cadastrar Oficina</button>
+      <button *ngIf="!user" mat-button routerLink="/">Cadastre-se Mecânico</button>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <p class="navbar-text" *ngIf="user" >Bem-vindo, {{user.nome}}!</p>
+      <button *ngIf="user && user.usuario.tipo === '01'" mat-button routerLink="/cliente/controlador">Editar</button>
+      <button *ngIf="user && user.usuario.tipo === '03'" mat-button routerLink="/gestor/controlador">Editar</button>
+      <button *ngIf="!user" mat-button routerLink="/login">Entrar</button>
+      <button *ngIf="user" mat-button (click)="logoff()">Sair</button>
     </ul>
   </div>
 </nav>

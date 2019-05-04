@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 // import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { Oficina } from './models/oficina.model';
@@ -32,6 +32,12 @@ export class OficinaService {
             },
                 error => this.handleError(error))
         );
+        // Para testes sem back:
+        // return of([
+        //     new Oficina({razaoSocial: 'disney', endereco: 'disneysss'}),
+        //     new Oficina({razaoSocial: 'disney2', endereco: 'disneyss4s'}),
+        //     new Oficina({razaoSocial: 'disney3', endereco: 'disneysss4'})
+        // ]);
     }
 
     getOficinaById(oficinaId: string): Observable<Oficina> {

@@ -79,7 +79,7 @@ export class OficinaControllerComponent implements OnInit {
       next: resp => {
         this.app.hideLoading();
         this.edit = false;
-        this.localSaveService.clean();
+        this.localSaveService.setOficinaToEdit = resp;
         this.snotifyService.success('Oficina alterada com Sucesso', 'Sucesso!', this.app.getConfig());
         },
         error: erro => {

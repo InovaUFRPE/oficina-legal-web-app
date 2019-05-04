@@ -24,7 +24,7 @@ export class ClienteControllerComponent implements OnInit {
     private app: AppComponent, private router: Router) { }
 
   ngOnInit() {
-    this.cliente = this.localSaveService.getClienteToEdit();
+    this.cliente = this.localSaveService.getUsuarioLogado() as Cliente;
     this.clienteForm = this.formBuilder.group({
       usuarioLogin: [ '', [Validators.required, Validators.maxLength(10)]],
       usuarioPassword: [ '', [Validators.required, Validators.maxLength(32)]],
@@ -102,8 +102,8 @@ export class ClienteControllerComponent implements OnInit {
     this.clienteService.updateCliente(cliente).subscribe({
       next: resp => {
         this.app.hideLoading();
-        this.edit = false;
-        this.localSaveService.clean();
+        this.cliente = resp;
+        this.app.login(resp);
         this.snotifyService.success('Perfil alterado com Sucesso', 'Sucesso!', this.app.getConfig());
         },
         error: erro => {
