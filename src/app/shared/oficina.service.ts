@@ -25,19 +25,19 @@ export class OficinaService {
     }
 
     getOficinas(): Observable<Oficina[]> {
-        return this.http.get<Oficina[]>(this.urlApi + 'oficinas')
-        .pipe(
-            map(response => {
-                return response as Oficina[];
-            },
-                error => this.handleError(error))
-        );
+        // return this.http.get<Oficina[]>(this.urlApi + 'oficinas')
+        // .pipe(
+        //     map(response => {
+        //         return response as Oficina[];
+        //     },
+        //         error => this.handleError(error))
+        // );
         // Para testes sem back:
-        // return of([
-        //     new Oficina({razaoSocial: 'disney', endereco: 'disneysss'}),
-        //     new Oficina({razaoSocial: 'disney2', endereco: 'disneyss4s'}),
-        //     new Oficina({razaoSocial: 'disney3', endereco: 'disneysss4'})
-        // ]);
+        return of([
+            new Oficina({razaoSocial: 'disney', endereco: 'disneysss'}),
+            new Oficina({razaoSocial: 'disney2', endereco: 'disneyss4s'}),
+            new Oficina({razaoSocial: 'disney3', endereco: 'disneysss4'})
+        ]);
     }
 
     getOficinaById(oficinaId: string): Observable<Oficina> {

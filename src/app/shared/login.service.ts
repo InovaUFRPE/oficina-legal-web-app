@@ -48,6 +48,7 @@ export class LoginService {
         //         return of(new Mecanico ({
         //             nome: 'Nícolas',
         //             cpf: '654545',
+        //             curriculo: 'asashuashuashuashuashuashuashuashushua',
         //             usuario: user
         //         }));
         //         break;
