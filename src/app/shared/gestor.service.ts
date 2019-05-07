@@ -34,8 +34,8 @@ export class GestorService {
         );
     }
 
-    getGestorByCpf(cpf: string): Observable<Gestor> {
-        return this.http.get<any>(this.urlApi + 'gestores/' + cpf)
+    getGestorById(id: string): Observable<Gestor> {
+        return this.http.get<any>(this.urlApi + 'gestores/' + id)
             .pipe(
                 map(response => {
                     return response.data as Gestor;

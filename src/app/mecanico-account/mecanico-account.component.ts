@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SnotifyService } from 'ng-snotify';
-import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Mecanico } from 'src/app/shared/models/mecanico.model';
 import { LocalSaveService } from 'src/app/shared/local-save.service';
 import { MecanicoService } from 'src/app/shared/mecanico.service';
 import { AppComponent } from 'src/app/app.component';
-import { Usuario } from '../shared/models/usuario.model';
 
 @Component({
   selector: 'app-mecanico-account',
@@ -15,7 +13,6 @@ import { Usuario } from '../shared/models/usuario.model';
 })
 export class MecanicoAccountComponent implements OnInit {
   mecanico: Mecanico;
-  mecanicoForm: FormGroup;
   myProfile = false;
   id: string;
 

@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { SnotifyService } from 'ng-snotify';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Cliente } from 'src/app/shared/models/cliente.model';
+import { Gestor } from 'src/app/shared/models/gestor.model';
 import { LocalSaveService } from 'src/app/shared/local-save.service';
-import { ClienteService } from 'src/app/shared/cliente.service';
+import { GestorService } from 'src/app/shared/gestor.service';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
-  selector: 'app-cliente-account',
-  templateUrl: './cliente-account.component.html',
-  styleUrls: ['./cliente-account.component.scss']
+  selector: 'app-gestor-account',
+  templateUrl: './gestor-account.component.html',
+  styleUrls: ['./gestor-account.component.scss']
 })
-export class ClienteAccountComponent implements OnInit {
-  cliente: Cliente;
+export class GestorAccountComponent implements OnInit {
+  gestor: Gestor;
   myProfile = false;
   id: string;
 
   constructor(
-    private readonly clienteService: ClienteService,
+    private readonly gestorService: GestorService,
     private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
     private app: AppComponent, private router: Router,
     private readonly route: ActivatedRoute) { }
@@ -25,13 +25,14 @@ export class ClienteAccountComponent implements OnInit {
   ngOnInit() {
     console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
+
     if (this.localSaveService.getUsuarioLogado().id === this.id) {
-      this.cliente = this.localSaveService.getUsuarioLogado() as Cliente;
+      this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
       this.myProfile = true;
     } else {
-      this.clienteService.getClienteById(this.id).subscribe({
+      this.gestorService.getGestorById(this.id).subscribe({
         next: resp => {
-        this.cliente = resp;
+        this.gestor = resp;
         },
         error: erro => {
           console.log(erro);
@@ -39,7 +40,7 @@ export class ClienteAccountComponent implements OnInit {
         }
       });
       // Para testes
-      // this.cliente = new Cliente ({
+      // this.gestor = new Gestor ({
       //   nome: 'Nícolas',
       //   id: '02',
       //   cpf: '11515515',
@@ -48,16 +49,16 @@ export class ClienteAccountComponent implements OnInit {
     }
   }
   editarConta() {
-    this.router.navigate([`/cliente/${this.id}/controlador`]);
+    this.router.navigate([`/gestor/${this.id}/controlador`]);
   }
   deletarConta() {
     this.app.showLoading();
-    this.clienteService.deleteCliente(this.cliente.cpf).subscribe({
+    this.gestorService.deleteGestor(this.gestor.cpf).subscribe({
       next: resp => {
       this.app.user = null;
       this.snotifyService.success('Conta deletada com sucesso', 'Sucesso!', this.app.getConfig());
       this.localSaveService.logOut();
-      this.cliente = null;
+      this.gestor = null;
       this.myProfile = false;
       this.router.navigate(['/']);
       },

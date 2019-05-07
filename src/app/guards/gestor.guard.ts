@@ -10,13 +10,8 @@ export class GestorGuard implements CanActivate {
    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
       const user = this.authService.getUsuarioLogado();
 
-      // if (user.type === 'Gestor' && Number(user.id) === Number(route.params.id)) {
-      //    return true;
-      // } else {
-      //    this.router.navigate(['/login']);
-      //    return false;
-      // }
-      if (user.usuario.tipo === '03' || user.usuario.tipo === '04') {
+      if (user.usuario.tipo === '03' && Number(user.id) === Number(route.params.id) ||
+         user.usuario.tipo === '04') {
          return true;
       } else {
          this.router.navigate(['/login']);

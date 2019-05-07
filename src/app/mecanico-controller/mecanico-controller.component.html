@@ -51,7 +51,7 @@
         </mat-error>
       </mat-form-field>
     </form>
-    <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/">Cancelar</button>
+    <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/mecanico/{{mecanico.id}}">Cancelar</button>
     <button mat-raised-button color="primary" *ngIf="edit" (click)="updateMecanico()">Salvar alterações</button>
     <button mat-raised-button color="primary" [disabled]="!mecanicoForm.valid" *ngIf="!edit" (click)="createMecanico()">Salvar</button>
   </mat-card-content>
