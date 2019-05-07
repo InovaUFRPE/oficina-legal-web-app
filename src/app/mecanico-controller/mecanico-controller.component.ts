@@ -28,7 +28,7 @@ export class MecanicoControllerComponent implements OnInit {
 
   ngOnInit() {
     this.mecanico = this.localSaveService.getUsuarioLogado() as Mecanico;
-    if (!this.mecanico.oficina != null) {
+    if (this.mecanico && !this.mecanico.oficina != null) {
       this.mecanico = null;
     }
     this.mecanicoForm = this.formBuilder.group({

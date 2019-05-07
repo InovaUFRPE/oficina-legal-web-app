@@ -45,7 +45,7 @@
         </mat-select>
       </mat-form-field>
     </form>
-    <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/gestor/{{gestor.id}}">Cancelar</button>
+    <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/gestor/{{gestor?.id}}">Cancelar</button>
     <button mat-raised-button color="primary" *ngIf="edit" (click)="updateGestor()">Salvar alterações</button>
     <button mat-raised-button color="primary" [disabled]="!gestorForm.valid" *ngIf="!edit" (click)="createGestor()">Salvar</button>
   </mat-card-content>

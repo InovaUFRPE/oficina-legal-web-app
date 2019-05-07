@@ -54,15 +54,15 @@ export class MecanicoService {
         );
     }
     updateMecanico(mecanico: Mecanico): Observable<any> {
-        return this.http.put<Mecanico>(encodeURI(this.urlApi + 'mecanicos/' + mecanico.cpf), mecanico)
-        .pipe(
-            map(response => {
-                return response as Mecanico;
-            },
-                error => this.handleError(error))
-        );
+        // return this.http.put<Mecanico>(encodeURI(this.urlApi + 'mecanicos/' + mecanico.cpf), mecanico)
+        // .pipe(
+        //     map(response => {
+        //         return response as Mecanico;
+        //     },
+        //         error => this.handleError(error))
+        // );
         // Para testes sem back:
-        // return of(mecanico);
+        return of(mecanico);
     }
 
     deleteMecanico(cpf: string) {

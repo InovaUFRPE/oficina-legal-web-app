@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
       <button mat-button routerLink="">Home</button>
-      <button *ngIf="!user" mat-button routerLink="/cliente/controlador">Cadastre-se, Cliente</button>
-      <button *ngIf="!user" mat-button routerLink="/gestor/controlador">Cadastre-se, Gestor</button>
-      <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/oficina/controlador">Cadastrar Oficina</button>
-      <button *ngIf="!user" mat-button routerLink="/mecanico/controlador">Cadastre-se, Mecânico</button>
-      <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/mecanico/controlador">Cadastre um Mecânico</button>
+      <button *ngIf="!user" mat-button routerLink="/cliente/00/controlador">Cadastre-se, Cliente</button>
+      <button *ngIf="!user" mat-button routerLink="/gestor/00/controlador">Cadastre-se, Gestor</button>
+      <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/oficina/00/controlador">Cadastrar Oficina</button>
+      <button *ngIf="!user" mat-button routerLink="/mecanico/00/controlador">Cadastre-se, Mecânico</button>
+      <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/mecanico/00/controlador">Cadastre um Mecânico</button>
     </ul>
     <ul class="navbar-nav ml-auto">
       <p class="navbar-text" *ngIf="user" >Bem-vindo, {{user.nome}}!</p>

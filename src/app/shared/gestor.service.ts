@@ -54,15 +54,15 @@ export class GestorService {
         );
     }
     updateGestor(gestor: Gestor): Observable<any> {
-        return this.http.put<Gestor>(encodeURI(this.urlApi + 'gestores/' + gestor.cpf), gestor)
-        .pipe(
-            map(response => {
-                return response as Gestor;
-            },
-                error => this.handleError(error))
-        );
+        // return this.http.put<Gestor>(encodeURI(this.urlApi + 'gestores/' + gestor.cpf), gestor)
+        // .pipe(
+        //     map(response => {
+        //         return response as Gestor;
+        //     },
+        //         error => this.handleError(error))
+        // );
         // Para testes sem back:
-        // return of(gestor);
+        return of(gestor);
     }
 
     deleteGestor(cpf: string) {
