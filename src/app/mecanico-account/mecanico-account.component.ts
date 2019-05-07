@@ -2,24 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { SnotifyService } from 'ng-snotify';
 import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { Cliente } from 'src/app/shared/models/cliente.model';
+import { Mecanico } from 'src/app/shared/models/mecanico.model';
 import { LocalSaveService } from 'src/app/shared/local-save.service';
-import { ClienteService } from 'src/app/shared/cliente.service';
+import { MecanicoService } from 'src/app/shared/mecanico.service';
 import { AppComponent } from 'src/app/app.component';
 import { Usuario } from '../shared/models/usuario.model';
 
 @Component({
-  selector: 'app-cliente-account',
-  templateUrl: './cliente-account.component.html',
-  styleUrls: ['./cliente-account.component.scss']
+  selector: 'app-mecanico-account',
+  templateUrl: './mecanico-account.component.html',
+  styleUrls: ['./mecanico-account.component.scss']
 })
-export class ClienteAccountComponent implements OnInit {
-  cliente: Cliente;
+export class MecanicoAccountComponent implements OnInit {
+  mecanico: Mecanico;
+  mecanicoForm: FormGroup;
   myProfile = false;
   id: string;
 
   constructor(
-    private readonly clienteService: ClienteService,
+    private readonly mecanicoService: MecanicoService,
     private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
     private app: AppComponent, private router: Router,
     private readonly route: ActivatedRoute) { }
@@ -27,13 +28,14 @@ export class ClienteAccountComponent implements OnInit {
   ngOnInit() {
     console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
+
     if (this.localSaveService.getUsuarioLogado().id === this.id) {
-      this.cliente = this.localSaveService.getUsuarioLogado() as Cliente;
+      this.mecanico = this.localSaveService.getUsuarioLogado() as Mecanico;
       this.myProfile = true;
     } else {
-      this.clienteService.getClienteById(this.id).subscribe({
+      this.mecanicoService.getMecanicoById(this.id).subscribe({
         next: resp => {
-        this.cliente = resp;
+        this.mecanico = resp;
         },
         error: erro => {
           console.log(erro);
@@ -41,7 +43,7 @@ export class ClienteAccountComponent implements OnInit {
         }
       });
       // Para testes
-      // this.cliente = new Cliente ({
+      // this.mecanico = new Mecanico ({
       //   nome: 'Nícolas',
       //   id: '02',
       //   cpf: '11515515',
@@ -50,16 +52,16 @@ export class ClienteAccountComponent implements OnInit {
     }
   }
   editarConta() {
-    this.router.navigate([`/cliente/${this.id}/controlador`]);
+    this.router.navigate([`/mecanico/${this.id}/controlador`]);
   }
   deletarConta() {
     this.app.showLoading();
-    this.clienteService.deleteCliente(this.cliente.cpf).subscribe({
+    this.mecanicoService.deleteMecanico(this.mecanico.cpf).subscribe({
       next: resp => {
       this.app.user = null;
       this.snotifyService.success('Conta deletada com sucesso', 'Sucesso!', this.app.getConfig());
       this.localSaveService.logOut();
-      this.cliente = null;
+      this.mecanico = null;
       this.myProfile = false;
       this.router.navigate(['/']);
       },

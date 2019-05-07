@@ -3,6 +3,7 @@ import { Oficina } from './oficina.model';
 
 
 export class Mecanico {
+  id: string;
   curriculo: string;
   cpf: string;
   nome: string;

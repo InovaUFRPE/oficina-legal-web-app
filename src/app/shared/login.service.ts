@@ -48,6 +48,7 @@ export class LoginService {
             case '02':
                 return of(new Mecanico ({
                     nome: 'Nícolas',
+                    id: '02',
                     cpf: '654545',
                     curriculo: 'asashuashuashuashuashuashuashuashushua',
                     usuario: user
@@ -56,6 +57,7 @@ export class LoginService {
              case '03':
                 return of(new Gestor ({
                     nome: 'Nícolas',
+                    id: '02',
                     cpf: '5454',
                     usuario: user
                 }));

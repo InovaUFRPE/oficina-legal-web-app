@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'cliente/:id/controlador', loadChildren: './cliente-controller/cliente-controller.module#ClienteControllerModule'},
   { path: 'oficina/controlador', loadChildren: './oficina-controller/oficina-controller.module#OficinaControllerModule'},
   { path: 'gestor/controlador', loadChildren: './gestor-controller/gestor-controller.module#GestorControllerModule'},
-  { path: 'mecanico/controlador', loadChildren: './mecanico-controller/mecanico-controller.module#MecanicoControllerModule'},
+  { path: 'mecanico/:id', loadChildren: './mecanico-account/mecanico-account.module#MecanicoAccountModule'},
+  { path: 'mecanico/:id/controlador', loadChildren: './mecanico-controller/mecanico-controller.module#MecanicoControllerModule'},
 ];
 
 @NgModule({

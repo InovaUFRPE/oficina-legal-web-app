@@ -34,8 +34,8 @@ export class MecanicoService {
         );
     }
 
-    getMecanicoByCpf(cpf: string): Observable<Mecanico> {
-        return this.http.get<any>(this.urlApi + 'mecanicoes/' + cpf)
+    getMecanicoById(id: string): Observable<Mecanico> {
+        return this.http.get<any>(this.urlApi + 'mecanicos/' + id)
             .pipe(
                 map(response => {
                     return response.data as Mecanico;
@@ -45,7 +45,7 @@ export class MecanicoService {
     }
 
     createMecanico(mecanico: Mecanico): Observable<any> {
-        return this.http.post<Mecanico>(this.urlApi + 'mecanicoes', mecanico)
+        return this.http.post<Mecanico>(this.urlApi + 'mecanicos', mecanico)
         .pipe(
             map(response => {
                 return response as Mecanico;
@@ -54,7 +54,7 @@ export class MecanicoService {
         );
     }
     updateMecanico(mecanico: Mecanico): Observable<any> {
-        return this.http.put<Mecanico>(encodeURI(this.urlApi + 'mecanicoes/' + mecanico.cpf), mecanico)
+        return this.http.put<Mecanico>(encodeURI(this.urlApi + 'mecanicos/' + mecanico.cpf), mecanico)
         .pipe(
             map(response => {
                 return response as Mecanico;
@@ -66,7 +66,7 @@ export class MecanicoService {
     }
 
     deleteMecanico(cpf: string) {
-        return this.http.delete<any>(encodeURI(this.urlApi + `mecanicoes/${cpf}`), )
+        return this.http.delete<any>(encodeURI(this.urlApi + `mecanicos/${cpf}`), )
         .pipe(
             map(response => {
                 return response;

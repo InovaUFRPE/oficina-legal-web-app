@@ -1,6 +1,5 @@
 import { Usuario } from './usuario.model';
 
-
 export class Cliente {
   id: string;
   nome: string;
