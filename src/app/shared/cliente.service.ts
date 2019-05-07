@@ -34,8 +34,8 @@ export class ClienteService {
         );
     }
 
-    getClienteByCpf(cpf: string): Observable<Cliente> {
-        return this.http.get<any>(this.urlApi + 'clientes/' + cpf)
+    getClienteById(id: string): Observable<Cliente> {
+        return this.http.get<any>(this.urlApi + 'clientes/' + id)
             .pipe(
                 map(response => {
                     return response.data as Cliente;
@@ -54,16 +54,16 @@ export class ClienteService {
         );
     }
     updateCliente(cliente: Cliente): Observable<any> {
-        return this.http.put<Cliente>(encodeURI(this.urlApi + 'clientes/' + cliente.cpf), cliente)
-        .pipe(
-            map(response => {
-                return response as Cliente;
-            },
-                error => this.handleError(error))
-        );
+        // return this.http.put<Cliente>(encodeURI(this.urlApi + 'clientes/' + cliente.cpf), cliente)
+        // .pipe(
+        //     map(response => {
+        //         return response as Cliente;
+        //     },
+        //         error => this.handleError(error))
+        // );
         // Para testes sem back:
-        // console.log(cliente);
-        // return of(cliente);
+        console.log(cliente);
+        return of(cliente);
     }
 
     deleteCliente(cpf: string) {

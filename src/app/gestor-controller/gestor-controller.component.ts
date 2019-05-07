@@ -68,7 +68,8 @@ export class GestorControllerComponent implements OnInit {
     const usuario = new Usuario({
       login: this.gestorForm.get('usuarioLogin').value,
       senha: this.gestorForm.get('usuarioPassword').value,
-      email: this.gestorForm.get('usuarioEmail').value
+      email: this.gestorForm.get('usuarioEmail').value,
+      tipo: '03'
     });
     const gestor = new Gestor({
       usuario,
@@ -96,7 +97,8 @@ export class GestorControllerComponent implements OnInit {
     const usuario = new Usuario({
       login: this.gestorForm.get('usuarioLogin').value,
       senha: this.gestorForm.get('usuarioPassword').value,
-      email: this.gestorForm.get('usuarioEmail').value
+      email: this.gestorForm.get('usuarioEmail').value,
+      tipo: '03'
     });
     const gestor = new Gestor({
       usuario,

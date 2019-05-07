@@ -28,47 +28,48 @@ export class LoginService {
     }
 
     loginUsuario(user: Usuario): Observable<any> {
-        return this.http.post<any>(urlApi + 'login', user)
-            .pipe(
-                map(response => {
-                    return response as any;
-                },
-                    error => this.handleError(error))
-            );
+        // return this.http.post<any>(urlApi + 'login', user)
+        //     .pipe(
+        //         map(response => {
+        //             return response as any;
+        //         },
+        //             error => this.handleError(error))
+        //     );
         // Para testes sem back:
-        // switch (user.tipo) {
-        //     case '01':
-        //         return of(new Cliente ({
-        //             nome: 'Nícolas',
-        //             cpf: '11515515',
-        //             usuario: user
-        //         }));
-        //         break;
-        //     case '02':
-        //         return of(new Mecanico ({
-        //             nome: 'Nícolas',
-        //             cpf: '654545',
-        //             curriculo: 'asashuashuashuashuashuashuashuashushua',
-        //             usuario: user
-        //         }));
-        //         break;
-        //      case '03':
-        //         return of(new Gestor ({
-        //             nome: 'Nícolas',
-        //             cpf: '5454',
-        //             usuario: user
-        //         }));
-        //         break;
-        //     case '04':
-        //         return of(new Administrador ({
-        //             nome: 'Nícolas',
-        //             cpf: '45544',
-        //             usuario: user
-        //         }));
-        //         break;
-        //     default:
-        //         break;
-        // }
+        switch (user.tipo) {
+            case '01':
+                return of(new Cliente ({
+                    nome: 'Nícolas',
+                    id: '02',
+                    cpf: '11515515',
+                    usuario: user
+                }));
+                break;
+            case '02':
+                return of(new Mecanico ({
+                    nome: 'Nícolas',
+                    cpf: '654545',
+                    curriculo: 'asashuashuashuashuashuashuashuashushua',
+                    usuario: user
+                }));
+                break;
+             case '03':
+                return of(new Gestor ({
+                    nome: 'Nícolas',
+                    cpf: '5454',
+                    usuario: user
+                }));
+                break;
+            case '04':
+                return of(new Administrador ({
+                    nome: 'Nícolas',
+                    cpf: '45544',
+                    usuario: user
+                }));
+                break;
+            default:
+                break;
+        }
     }
 
 }

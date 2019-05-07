@@ -73,7 +73,8 @@ export class MecanicoControllerComponent implements OnInit {
     const usuario = new Usuario({
       login: this.mecanicoForm.get('usuarioLogin').value,
       senha: this.mecanicoForm.get('usuarioPassword').value,
-      email: this.mecanicoForm.get('usuarioEmail').value
+      email: this.mecanicoForm.get('usuarioEmail').value,
+      tipo: '02'
     });
     const mecanico = new Mecanico({
       usuario,
@@ -102,7 +103,8 @@ export class MecanicoControllerComponent implements OnInit {
     const usuario = new Usuario({
       login: this.mecanicoForm.get('usuarioLogin').value,
       senha: this.mecanicoForm.get('usuarioPassword').value,
-      email: this.mecanicoForm.get('usuarioEmail').value
+      email: this.mecanicoForm.get('usuarioEmail').value,
+      tipo: '02'
     });
     const mecanico = new Mecanico({
       usuario,
