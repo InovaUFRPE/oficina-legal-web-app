@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {TableBasicExample} from './gestor-oficina/gestor-oficina.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'gestor/:id/controlador', loadChildren: './gestor-controller/gestor-controller.module#GestorControllerModule'},
   { path: 'mecanico/:id', loadChildren: './mecanico-account/mecanico-account.module#MecanicoAccountModule'},
   { path: 'mecanico/:id/controlador', loadChildren: './mecanico-controller/mecanico-controller.module#MecanicoControllerModule'},
+  //{ path: 'oficinas', component:}
 ];
 
 @NgModule({
