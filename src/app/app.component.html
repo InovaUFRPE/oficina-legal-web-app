@@ -7,10 +7,9 @@
       <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/oficina/00/controlador">Cadastrar Oficina</button>
       <button *ngIf="!user" mat-button routerLink="/mecanico/00/controlador">Cadastre-se, Mecânico</button>
       <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/mecanico/00/controlador">Cadastre um Mecânico</button>
-      <button onclick="">Listar Oficinas</button>
+      <button onclick="" mat-button >Listar Oficinas</button>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <p class="navbar-text" *ngIf="user" >Bem-vindo, {{user.nome}}!</p>
       <button *ngIf="user && user.usuario.tipo === '01'" mat-button routerLink="/cliente/{{user.id}}">Minha Conta</button>
       <button *ngIf="user && user.usuario.tipo === '02'" mat-button routerLink="/mecanico/02">Minha Conta</button>
       <button *ngIf="user && user.usuario.tipo === '03'" mat-button routerLink="/gestor/02">Minha Conta</button>
