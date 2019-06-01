@@ -21,11 +21,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
  * @title Basic use of `<table mat-table>`
  */
 @Component({
-  selector: 'table-basic-example',
-  styleUrls: ['table-basic-example.css'],
-  templateUrl: 'table-basic-example.html',
+  selector: 'app-gestor-oficina-controller',
+  styleUrls: ['./gestor-oficina.component.html'],
+  templateUrl: './gestor-oficina.component.scss',
 })
 export class TableBasicExample {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'total'];
   dataSource = ELEMENT_DATA;
 }
