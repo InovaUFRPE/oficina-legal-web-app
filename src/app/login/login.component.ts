@@ -31,8 +31,7 @@ export class LoginComponent implements OnInit {
         senha: ['', [Validators.required, Validators.minLength(6)]],
         tipoUsuario: ['', [Validators.required, Validators.minLength(100)]]
     });
-    this.tiposList.push({valor: '01', nome: 'Cliente'}, {valor: '02', nome: 'Mecânico'},
-       {valor: '03', nome: 'Gestor'}, {valor: '04', nome: 'Admin'});
+    this.tiposList.push({valor: '03', nome: 'Gestor'}, {valor: '04', nome: 'Admin'});
 }
   loginUser() {
     const those = this;

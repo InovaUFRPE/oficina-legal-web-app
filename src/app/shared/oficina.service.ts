@@ -5,6 +5,9 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Oficina } from './models/oficina.model';
 import { AppComponent } from '../app.component';
+import { Agendamento } from './models/agendamento.model';
+import { Veiculo } from './models/veiculo.model';
+import { Cliente } from './models/cliente.model';
 
 
 
@@ -34,20 +37,50 @@ export class OficinaService {
         // );
         // Para testes sem back:
         return of([
-            new Oficina({razaoSocial: 'disney', endereco: 'disneysss'}),
-            new Oficina({razaoSocial: 'disney2', endereco: 'disneyss4s'}),
-            new Oficina({razaoSocial: 'disney3', endereco: 'disneysss4'})
+            new Oficina({idOficina: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'}),
+            new Oficina({idOficina: '04', razaoSocial: 'Oficina2', endereco: 'Rua y', bairro: 'madalena'}),
+            new Oficina({idOficina: '05', razaoSocial: 'Oficina3', endereco: 'Rua z', bairro: 'madalena'})
         ]);
     }
 
     getOficinaById(oficinaId: string): Observable<Oficina> {
-        return this.http.get<any>(this.urlApi + 'oficinas/' + oficinaId)
-            .pipe(
-                map(response => {
-                    return response.data as Oficina;
-                },
-                    error => this.handleError(error))
-            );
+        // return this.http.get<any>(this.urlApi + 'oficinas/' + oficinaId)
+        //     .pipe(
+        //         map(response => {
+        //             return response.data as Oficina;
+        //         },
+        //             error => this.handleError(error))
+        //     );
+        return of(
+            new Oficina({idOficina: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
+        );
+    }
+
+    getAgendamentosById(oficinaId: string): Observable<Agendamento[]> {
+        // return this.http.get<any>(this.urlApi + 'agendamentos/' + oficinaId)
+        //     .pipe(
+        //         map(response => {
+        //             return response.data as Agendamento[];
+        //         },
+        //             error => this.handleError(error))
+        //     );
+        return of([
+            new Agendamento({idAgendamento: '03', data_hora: new Date(),
+             veiculo: new Veiculo({placa: 'HBO-9690', modelo: 'Fusca', cliente: new Cliente({
+                nome: 'Nícolas',
+                id: '04',
+                cpf: '11515515' })})}),
+            new Agendamento({idAgendamento: '03', data_hora: new Date(),
+             veiculo: new Veiculo({placa: 'XOX-8765', modelo: 'Civic', cliente: new Cliente({
+                nome: 'Lucas',
+                id: '05',
+                cpf: '11515515' })})}),
+            new Agendamento({idAgendamento: '03', data_hora: new Date(),
+             veiculo: new Veiculo({placa: 'UHQ-9054', modelo: 'Gol', cliente: new Cliente({
+                nome: 'Bruno',
+                id: '06',
+                cpf: '11515515' })})}),
+        ]);
     }
 
     createOficina(oficina: Oficina): Observable<any> {

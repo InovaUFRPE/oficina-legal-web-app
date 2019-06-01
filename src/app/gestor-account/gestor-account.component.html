@@ -6,6 +6,6 @@
     <p>{{gestor.usuario.email}}</p>
     <p>Oficina: {{gestor.oficina?.razaoSocial}}</p>
     <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
-    <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deleteCliente()">Deletar Conta</button>
+    <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deletarConta()">Deletar Conta</button>
   </mat-card-content>
 </mat-card>

@@ -10,6 +10,7 @@ import { Cliente } from './models/cliente.model';
 import { Mecanico } from './models/mecanico.model';
 import { Gestor } from './models/gestor.model';
 import { Administrador } from './models/administrador.model';
+import { Oficina } from './models/oficina.model';
 
 const urlApi = 'http://localhost:5000/api/';
 
@@ -59,7 +60,8 @@ export class LoginService {
                     nome: 'Nícolas',
                     id: '02',
                     cpf: '5454',
-                    usuario: user
+                    usuario: user,
+                    oficina: new Oficina({idOficina: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
                 }));
                 break;
             case '04':
