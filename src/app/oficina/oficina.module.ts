@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule, MatListModule, MatCardModule, MatButtonModule, MatInputModule,
-  MatTooltipModule, MatSelectModule } from '@angular/material';
+  MatTooltipModule, MatSelectModule, MatGridListModule} from '@angular/material';
 import { OficinaComponent } from './oficina.component';
 import { AppComponent } from 'src/app/app.component';
 import { OficinaService } from 'src/app/shared/oficina.service';
@@ -21,6 +21,8 @@ import { OficinaGuard } from '../guards/oficina.guard';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
+    MatGridListModule,
+    MatSelectModule,
   ],
   declarations: [
     OficinaComponent,

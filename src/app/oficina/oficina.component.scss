@@ -4,3 +4,74 @@
 .form-full-width {
     width: 100%;
   }
+.nome-oficina{
+    font-family: Lato;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    color: #47525E;
+}
+.botao-relatorios{
+    left: 3%;
+    bottom: 3%;
+}
+.botao-relatorios .mat-icon{
+    // vertical-align: text-bottom;
+    color: #47525E;
+}
+.titulo-agendamento {
+    color: #003EA5;
+    font-family: Lato;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    width: 799px;
+    text-align: center;
+}
+
+.titulo-filtro {
+    color: #47525E;
+    font-family: Lato;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 33px;
+    text-align: left;
+}
+
+.endereco {
+    color: #47525E;
+    font-family: Lato;
+}
+
+.filtro-agenda {
+    width: 265px;
+    margin-left: 3%;
+}
+
+.item-agendamento {
+    margin-top: 2%;
+    width: 800px;
+    height: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #8492A6;
+    border-radius: 5px;
+}
+.botao-visualizar-agendamento {
+    text-align: center;
+    width: 25%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-left: 30%;
+}
+.agendamento{
+    color: #767676;
+    font-family: Lato;
+    font-weight: 700;
+}
+.agendamento-resposta{
+    color: #003EA5;;
+    font-family: Lato;
+    font-weight: 700;
+    margin-left: 1%;
+}
