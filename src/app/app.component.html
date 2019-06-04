@@ -3,7 +3,7 @@
     <ul class="navbar-nav">
       <button mat-button routerLink="">Home</button>
       <button *ngIf="!user" mat-button routerLink="/cliente/controlador">Cadastre-se, Cliente</button>
-      <button *ngIf="!user" mat-button routerLink="/gestor/controlador">Cadastre-se, Gestor</button>
+      <button *ngIf="!user" mat-button routerLink="/gestor/controlador">Relatório de serviços</button>
       <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/oficina/controlador">Cadastrar Oficina</button>
       <button *ngIf="!user" mat-button routerLink="/">Cadastre-se Mecânico</button>
     </ul>

@@ -1,7 +1,9 @@
 import { Usuario } from './usuario.model';
 
 
+
 export class Cliente {
+  id: string;
   nome: string;
   cpf: string;
   bairro: string;
@@ -12,4 +14,5 @@ export class Cliente {
   constructor(client: Partial<Cliente>) {
     Object.assign(this, client);
   }
+
 }
