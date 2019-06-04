@@ -10,7 +10,7 @@ import { LocalSaveService } from './shared/local-save.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  urlApi = 'http://localhost/api/';
+  urlApi = 'http://localhost:5000/api/';
   title = 'web-app';
   style = 'material';
   timeout = 4000;
@@ -26,11 +26,13 @@ export class AppComponent implements OnInit {
   titleMaxLength = 15;
   bodyMaxLength = 80;
   user;
+  token: string;
 
   constructor(private _router: Router, private snotify: SnotifyService, private spinner: NgxSpinnerService,
     private _localSaveService: LocalSaveService) { }
   ngOnInit() {
     this.user = this._localSaveService.getUsuarioLogado();
+    this.token = 'this._localSaveService.getToken()';
   }
 
   getConfig(): SnotifyToastConfig {

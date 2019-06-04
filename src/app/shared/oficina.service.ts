@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 // import 'rxjs/add/operator/catch';
@@ -15,8 +15,12 @@ import { Cliente } from './models/cliente.model';
 
 export class OficinaService {
     urlApi: string;
+    token: string;
+    headers: HttpHeaders = new HttpHeaders();
     constructor(private readonly http: HttpClient, private readonly app: AppComponent) {
         this.urlApi = this.app.urlApi;
+        this.token = this.app.token;
+        this.headers = this.headers.append('x-access-token', this.token);
     }
 
     private handleError(error: any): Observable<any> {
@@ -28,8 +32,10 @@ export class OficinaService {
     }
 
     getOficinas(): Observable<Oficina[]> {
-        // return this.http.get<Oficina[]>(this.urlApi + 'oficinas')
-        // .pipe(
+
+        // return this.http.get<Oficina[]>(this.urlApi + 'oficinas', {
+        //     headers: this.headers
+        // }).pipe(
         //     map(response => {
         //         return response as Oficina[];
         //     },
@@ -44,8 +50,9 @@ export class OficinaService {
     }
 
     getOficinaById(oficinaId: string): Observable<Oficina> {
-        // return this.http.get<any>(this.urlApi + 'oficinas/' + oficinaId)
-        //     .pipe(
+        // return this.http.get<any>(this.urlApi + 'oficinas/' + oficinaId, {
+        //     headers: this.headers
+        // }).pipe(
         //         map(response => {
         //             return response.data as Oficina;
         //         },
@@ -57,8 +64,9 @@ export class OficinaService {
     }
 
     getAgendamentosById(oficinaId: string): Observable<Agendamento[]> {
-        // return this.http.get<any>(this.urlApi + 'agendamentos/' + oficinaId)
-        //     .pipe(
+        // return this.http.get<any>(this.urlApi + 'agendamentos/' + oficinaId, {
+        //     headers: this.headers
+        // }).pipe(
         //         map(response => {
         //             return response.data as Agendamento[];
         //         },
@@ -84,8 +92,9 @@ export class OficinaService {
     }
 
     createOficina(oficina: Oficina): Observable<any> {
-        return this.http.post<Oficina>(this.urlApi + 'oficinas', oficina)
-        .pipe(
+        return this.http.post<Oficina>(this.urlApi + 'oficinas', oficina, {
+            headers: this.headers
+        }).pipe(
             map(response => {
                 return response as Oficina;
             },
@@ -93,8 +102,9 @@ export class OficinaService {
         );
     }
     updateOficina(oficina: Oficina): Observable<any> {
-        return this.http.put<Oficina>(encodeURI(this.urlApi + 'oficinas/' + oficina.idOficina), oficina)
-        .pipe(
+        return this.http.put<Oficina>(encodeURI(this.urlApi + 'oficinas/' + oficina.idOficina), oficina, {
+            headers: this.headers
+        }).pipe(
             map(response => {
                 return response as Oficina;
             },
@@ -103,7 +113,9 @@ export class OficinaService {
     }
 
     deleteOficina(idOficina: string) {
-        return this.http.delete<any>(encodeURI(this.urlApi + `oficinas/${idOficina}`), )
+        return this.http.delete<any>(encodeURI(this.urlApi + `oficinas/${idOficina}`), {
+            headers: this.headers
+        })
         .pipe(
             map(response => {
                 return response;
