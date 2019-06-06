@@ -106,6 +106,27 @@
         </button>
       </mat-list-item>
     </mat-list>
+    <mat-grid-list
+      cols=12
+      rowHeight=75
+      *ngIf="oficina"
+    >
+      <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+      <mat-grid-tile
+        colspan=4
+        rowspan=1
+      >
+        <button
+          mat-flat-button
+          color=primary
+          class='botao-voltar'
+          routerLink=""
+        >
+          Voltar
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+    </mat-grid-list>
   <!-- </mat-grid-tile>
 </mat-grid-list> -->
 <!-- <mat-card *ngIf="oficina">
