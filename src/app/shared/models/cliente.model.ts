@@ -12,4 +12,5 @@ export class Cliente {
   constructor(client: Partial<Cliente>) {
     Object.assign(this, client);
   }
+
 }

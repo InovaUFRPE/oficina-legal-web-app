@@ -1,52 +1,47 @@
-<mat-card>
-  <br><h4>{{gestor?.nome}}</h4><br>
-  <mat-card-content class="center">
-    <h4 *ngIf="!edit">Novo gestor:</h4>
-    <form [formGroup]="gestorForm">
-      <mat-form-field class="form-full-width">
-        <input matInput placeholder="Login" maxlength="10" formControlName="usuarioLogin">
-        <mat-error *ngIf="gestorForm.get('usuarioLogin').hasError('required')">
-          O login é <strong>obrigatório.</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="form-full-width">
-        <input matInput placeholder="Senha" type="password" maxlength="32" formControlName="usuarioPassword">
-        <mat-error *ngIf="gestorForm.get('usuarioPassword').hasError('required')">
-          A senha é <strong>obrigatória.</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="form-full-width">
-        <input matInput placeholder="Email" type="email" maxlength="100" formControlName="usuarioEmail">
-        <mat-error *ngIf="gestorForm.get('usuarioEmail').hasError('email')">
-            Por favor, digite um e-mail válido.
-          </mat-error>
-        <mat-error *ngIf="gestorForm.get('usuarioEmail').hasError('required')">
-          O Email é <strong>obrigatório.</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="form-full-width">
-        <input matInput placeholder="Nome" maxlength="100" formControlName="gestorNome">
-        <mat-error *ngIf="gestorForm.get('gestorNome').hasError('required')">
-          O Nome é <strong>obrigatório.</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="form-full-width">
-        <input matInput placeholder="Cpf" maxlength="100" formControlName="gestorCpf">
-        <mat-error *ngIf="gestorForm.get('gestorCpf').hasError('required')">
-          O Cpf é <strong>obrigatório.</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="form-full-width">
-        <mat-select placeholder="Oficina" formControlName="oficina">
-          <mat-option >--</mat-option>
-          <mat-option *ngFor="let oficina of oficinasList" [value]="oficina">
-            {{oficina.razaoSocial}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<div class="container">
+  <div class="row" style="margin-bottom: 25px; margin-top: 10px;">
+    <div class="col-md-4"></div>
+    <div class="col-lg-2">
+      <form [formGroup]="relatorioForm">
+      <mat-select placeholder="Mês" formControlName="tipoUsuario">
+        <mat-option >--</mat-option>
+                  <mat-option *ngFor="let mes of getProducts" [value]="mes">
+                    {{mes}}
+        </mat-option>
+      </mat-select>
+
     </form>
-    <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/gestor/{{gestor?.id}}">Cancelar</button>
-    <button mat-raised-button color="primary" *ngIf="edit" (click)="updateGestor()">Salvar alterações</button>
-    <button mat-raised-button color="primary" [disabled]="!gestorForm.valid" *ngIf="!edit" (click)="createGestor()">Salvar</button>
-  </mat-card-content>
-</mat-card>
+    
+      </div>
+
+
+    <div class="col-lg-2">
+        <button type="button" (click)="printar()" class="btn btn-info">Buscar</button>
+    </div>
+</div>
+</div>
+
+  <div class="col-lg-12">
+      <table class="table table-striped table-bordered">
+          <thead class="thead-info">
+            <tr>
+              <th scope="col" class="table-primary">Cliente</th>
+              <th scope="col" class="table-primary">Descrição do Serviço</th>
+              <th scope="col" class="table-primary">Modelo</th>
+              <th scope="col" class="table-primary">Placa</th>
+              <th scope="col" class="table-primary">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let relatorio of relatorios" >
+              <th scope="row">{{relatorio.veiculo.cliente.nome}}</th>
+              <td>{{relatorio.descricaoServico}}</td>
+              <td>{{relatorio.veiculo.modelo}}</td>
+              <td>{{relatorio.veiculo.placa}}</td>
+              <td><strong>R$</strong> {{relatorio.valor}}</td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+
+
