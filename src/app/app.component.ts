@@ -29,10 +29,11 @@ export class AppComponent implements OnInit {
   token: string;
 
   constructor(private _router: Router, private snotify: SnotifyService, private spinner: NgxSpinnerService,
-    private _localSaveService: LocalSaveService) { }
+    private _localSaveService: LocalSaveService) {
+      this.token = this._localSaveService.getToken();
+    }
   ngOnInit() {
     this.user = this._localSaveService.getUsuarioLogado();
-    this.token = 'this._localSaveService.getToken()';
   }
 
   getConfig(): SnotifyToastConfig {

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 // import 'rxjs/add/operator/catch';
@@ -12,8 +12,12 @@ import { AppComponent } from '../app.component';
 
 export class GestorService {
     urlApi: string;
+    token: string;
+    headers: HttpHeaders;
     constructor(private readonly http: HttpClient, private readonly app: AppComponent) {
         this.urlApi = this.app.urlApi;
+        this.token = this.app.token;
+        this.headers = this.headers.append('x-access-token', this.token);
     }
 
     private handleError(error: any): Observable<any> {
@@ -25,8 +29,9 @@ export class GestorService {
     }
 
     getGestores(): Observable<Gestor[]> {
-        return this.http.get<Gestor[]>(this.urlApi + 'gestores')
-        .pipe(
+        return this.http.get<Gestor[]>(this.urlApi + 'gestores', {
+            headers: this.headers
+        }).pipe(
             map(response => {
                 return response as Gestor[];
             },
@@ -35,8 +40,9 @@ export class GestorService {
     }
 
     getGestorById(id: string): Observable<Gestor> {
-        return this.http.get<any>(this.urlApi + 'gestores/' + id)
-            .pipe(
+        return this.http.get<any>(this.urlApi + 'gestores/' + id, {
+            headers: this.headers
+        }).pipe(
                 map(response => {
                     return response.data as Gestor;
                 },
@@ -45,8 +51,9 @@ export class GestorService {
     }
 
     createGestor(gestor: Gestor): Observable<any> {
-        return this.http.post<Gestor>(this.urlApi + 'gestores', gestor)
-        .pipe(
+        return this.http.post<Gestor>(this.urlApi + 'gestores', gestor, {
+            headers: this.headers
+        }).pipe(
             map(response => {
                 return response as Gestor;
             },
@@ -54,8 +61,9 @@ export class GestorService {
         );
     }
     updateGestor(gestor: Gestor): Observable<any> {
-        // return this.http.put<Gestor>(encodeURI(this.urlApi + 'gestores/' + gestor.cpf), gestor)
-        // .pipe(
+        // return this.http.put<Gestor>(encodeURI(this.urlApi + 'gestores/' + gestor.cpf), gestor, {
+        //     headers: this.headers
+        // }).pipe(
         //     map(response => {
         //         return response as Gestor;
         //     },
@@ -66,8 +74,9 @@ export class GestorService {
     }
 
     deleteGestor(cpf: string) {
-        return this.http.delete<any>(encodeURI(this.urlApi + `gestores/${cpf}`), )
-        .pipe(
+        return this.http.delete<any>(encodeURI(this.urlApi + `gestores/${cpf}`), {
+            headers: this.headers
+        }).pipe(
             map(response => {
                 return response;
             },

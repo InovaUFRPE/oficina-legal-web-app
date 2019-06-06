@@ -50,17 +50,18 @@ export class OficinaService {
     }
 
     getOficinaById(oficinaId: string): Observable<Oficina> {
-        // return this.http.get<any>(this.urlApi + 'oficinas/' + oficinaId, {
-        //     headers: this.headers
-        // }).pipe(
-        //         map(response => {
-        //             return response.data as Oficina;
-        //         },
-        //             error => this.handleError(error))
-        //     );
-        return of(
-            new Oficina({idOficina: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
-        );
+        console.log(this.headers);
+        return this.http.get<any>(this.urlApi + 'oficinas/' + oficinaId, {
+            headers: this.headers
+        }).pipe(
+                map(response => {
+                    return response.data as Oficina;
+                },
+                    error => this.handleError(error))
+            );
+        // return of(
+        //     new Oficina({idOficina: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
+        // );
     }
 
     getAgendamentosById(oficinaId: string): Observable<Agendamento[]> {
