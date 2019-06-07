@@ -56,18 +56,18 @@ export class LoginService {
         //             error => this.handleError(error))
         //     );
 
-        // return of(new Gestor ({
-        //     nome: 'Nícolas',
-        //     id: '02',
-        //     cpf: '5454',
-        //     usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
-        //     oficina: new Oficina({idOficina: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
-        // }));
-
-        return of(new Administrador ({
+        return of(new Gestor ({
             nome: 'Nícolas',
-            cpf: '45544',
-            usuario: new Usuario({id: 2, tipo: '04', login: 'nicolas', email: 'nicolas@gmail.com'})
+            id: '02',
+            cpf: '5454',
+            usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
+            oficina: new Oficina({idOficina: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
         }));
+
+        // return of(new Administrador ({
+        //     nome: 'Nícolas',
+        //     cpf: '45544',
+        //     usuario: new Usuario({id: 2, tipo: '04', login: 'nicolas', email: 'nicolas@gmail.com'})
+        // }));
     }
 }

@@ -4,11 +4,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Oficina } from 'src/app/shared/models/oficina.model';
 import { LocalSaveService } from 'src/app/shared/local-save.service';
 import { OficinaService } from 'src/app/shared/oficina.service';
-import { AppComponent } from 'src/app/app.component';
+import { AppComponent, GenericQueryParams } from 'src/app/app.component';
 import { Gestor } from '../shared/models/gestor.model';
 import { Administrador } from '../shared/models/administrador.model';
 import { Agendamento } from '../shared/models/agendamento.model';
+import { FormControl } from '@angular/forms';
 
+export interface Tipos {
+  valor: string;
+  nome: string;
+}
 @Component({
   selector: 'app-oficina',
   templateUrl: './oficina.component.html',
@@ -20,6 +25,9 @@ export class OficinaComponent implements OnInit {
   admin: Administrador;
   agendamentos: Agendamento[];
   id: string;
+  tiposList: Tipos[] = [];
+  control = new FormControl('');
+
 
   constructor(
     private readonly oficinaService: OficinaService,
@@ -30,6 +38,7 @@ export class OficinaComponent implements OnInit {
   ngOnInit() {
     console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
+    this.tiposList.push({valor: 'data', nome: 'Data'}, {valor: 'cliente', nome: 'Cliente'}, {valor: 'modelo', nome: 'Modelo'});
 
     if (this.localSaveService.getUsuarioLogado().tipo === '03') {
       this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
@@ -54,6 +63,18 @@ export class OficinaComponent implements OnInit {
         console.log(erro);
         this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
       }
+    });
+    this.control.valueChanges
+    .subscribe(value => {
+      this.oficinaService.getAgendamentosById(this.id, {q: value.valor} as GenericQueryParams).subscribe({
+        next: resp => {
+          this.agendamentos = resp;
+        },
+        error: erro => {
+          console.log(erro);
+          this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
+        }
+      });
     });
   }
 

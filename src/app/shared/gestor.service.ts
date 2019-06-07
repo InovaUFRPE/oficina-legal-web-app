@@ -16,7 +16,7 @@ import { AppComponent } from '../app.component';
 export class GestorService {
     urlApi: string;
     token: string;
-    headers: HttpHeaders;
+    headers: HttpHeaders = new HttpHeaders();
     constructor(private readonly http: HttpClient, private readonly app: AppComponent) {
         this.urlApi = this.app.urlApi;
         this.token = this.app.token;
@@ -65,12 +65,12 @@ export class GestorService {
     }
 
 
-    getRelatorioFinanceiro(oficinaId: string,mes : string): Observable<Relatorio[]> {
+    getRelatorioFinanceiro(oficinaId: string, mes: string): Observable<Relatorio[]> {
         let url = this.urlApi + 'Relatorios/' + oficinaId  + '/' ;
 
             url = url + mes + '/' ;
             console.log(url);
-        
+
         // return this.http.get<any>(url)
         //     .pipe(
         //         map(response => {

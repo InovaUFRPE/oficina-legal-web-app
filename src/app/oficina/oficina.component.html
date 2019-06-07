@@ -46,7 +46,7 @@
     rowspan=1
   >
     <h4 class="titulo-filtro">Ordernar por:</h4>
-    <mat-form-field class="filtro-agenda">
+    <!-- <mat-form-field class="filtro-agenda">
         <mat-label>Escolha uma opção</mat-label>
         <mat-select class="filtro-agenda">
           <mat-option>Nenhum</mat-option>
@@ -55,6 +55,14 @@
           </mat-option>
           <mat-option value="nome-cliente">
             Nome do Cliente
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <mat-form-field class="filtro-agenda">
+        <mat-select placeholder="Tipo de ordenação" [formControl]="control">
+          <mat-option >--</mat-option>
+          <mat-option *ngFor="let tipo of tiposList" [value]="tipo">
+            {{tipo.nome}}
           </mat-option>
         </mat-select>
       </mat-form-field>

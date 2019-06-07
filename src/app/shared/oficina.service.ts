@@ -1,10 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 // import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { Oficina } from './models/oficina.model';
-import { AppComponent } from '../app.component';
+import { AppComponent, GenericQueryParams } from '../app.component';
 import { Agendamento } from './models/agendamento.model';
 import { Veiculo } from './models/veiculo.model';
 import { Cliente } from './models/cliente.model';
@@ -64,9 +64,10 @@ export class OficinaService {
         // );
     }
 
-    getAgendamentosById(oficinaId: string): Observable<Agendamento[]> {
+    getAgendamentosById(oficinaId: string, _parms?: GenericQueryParams): Observable<Agendamento[]> {
         // return this.http.get<any>(this.urlApi + 'agendamentos/' + oficinaId, {
-        //     headers: this.headers
+        //     headers: this.headers,
+        //     params: _parms.q ? new HttpParams().set('orderby', _parms.q) : null
         // }).pipe(
         //         map(response => {
         //             return response.data as Agendamento[];
