@@ -8,6 +8,7 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MatButtonModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { LocalSaveService } from './shared/local-save.service';
+import {TableBasicExample} from './gestor-oficina/gestor-oficina.component';
 
 @NgModule({
   declarations: [

@@ -3,6 +3,7 @@ import { Oficina } from './oficina.model';
 
 
 export class Gestor {
+  id: string;
   nome: string;
   cpf: string;
   usuario: Usuario;

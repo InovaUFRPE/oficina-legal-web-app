@@ -17,22 +17,30 @@ import { Usuario } from '../shared/models/usuario.model';
   styleUrls: ['./gestor-controller.component.scss']
 })
 export class GestorControllerComponent implements OnInit {
+
+
+  constructor(private readonly oficinaService: OficinaService,
+    private readonly gestorService: GestorService, private formBuilder: FormBuilder,
+    private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
+    private app: AppComponent, private router: Router) { }
   oficinasList: Oficina[];
-  mes1: null
-  getProducts = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  mes1: null;
+  getProducts = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
   gestor: Gestor;
   relatorioForm: FormGroup;
   edit = false;
-  printar = function(){
-    
-    let mes = this.relatorioForm.get('tipoUsuario').value
+  relatorios: Relatorio[];
+  printar = function() {
 
-    if (mes == "" ){
-      mes = "null"
+    let mes = this.relatorioForm.get('tipoUsuario').value;
+
+    if (mes === '' ) {
+      mes = 'null';
     }
 
 
-    this.gestorService.getRelatorioFinanceiro('2',mes).subscribe({
+    this.gestorService.getRelatorioFinanceiro('2', mes).subscribe({
       next: resp => {
         this.relatorios = resp;
       },
@@ -43,14 +51,7 @@ export class GestorControllerComponent implements OnInit {
     });
 
 
-  }
-  relatorios: Relatorio[];
-  
-
-  constructor(private readonly oficinaService: OficinaService,
-    private readonly gestorService: GestorService, private formBuilder: FormBuilder,
-    private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
-    private app: AppComponent, private router: Router) { }
+  };
 
   ngOnInit() {
     this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
@@ -58,8 +59,8 @@ export class GestorControllerComponent implements OnInit {
         tipoUsuario: ['', [Validators.required, Validators.minLength(100)]]
 
 
-    })
-    this.gestorService.getRelatorioFinanceiro('2',"null").subscribe({
+    });
+    this.gestorService.getRelatorioFinanceiro('2', 'null').subscribe({
       next: resp => {
         this.relatorios = resp;
       },
@@ -69,7 +70,7 @@ export class GestorControllerComponent implements OnInit {
       }
     });
 
-    
+
 
     this.oficinaService.getOficinas()
       .subscribe({

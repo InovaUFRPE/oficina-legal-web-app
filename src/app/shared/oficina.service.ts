@@ -1,10 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 // import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { Oficina } from './models/oficina.model';
 import { AppComponent } from '../app.component';
+import { Agendamento } from './models/agendamento.model';
+import { Veiculo } from './models/veiculo.model';
+import { Cliente } from './models/cliente.model';
 
 
 
@@ -12,8 +15,12 @@ import { AppComponent } from '../app.component';
 
 export class OficinaService {
     urlApi: string;
+    token: string;
+    headers: HttpHeaders = new HttpHeaders();
     constructor(private readonly http: HttpClient, private readonly app: AppComponent) {
         this.urlApi = this.app.urlApi;
+        this.token = this.app.token;
+        this.headers = this.headers.append('x-access-token', this.token);
     }
 
     private handleError(error: any): Observable<any> {
@@ -25,34 +32,70 @@ export class OficinaService {
     }
 
     getOficinas(): Observable<Oficina[]> {
-        return this.http.get<Oficina[]>(this.urlApi + 'oficinas')
-        .pipe(
-            map(response => {
-                return response as Oficina[];
-            },
-                error => this.handleError(error))
-        );
+
+        // return this.http.get<Oficina[]>(this.urlApi + 'oficinas', {
+        //     headers: this.headers
+        // }).pipe(
+        //     map(response => {
+        //         return response as Oficina[];
+        //     },
+        //         error => this.handleError(error))
+        // );
         // Para testes sem back:
-        // return of([
-        //     new Oficina({razaoSocial: 'disney', endereco: 'disneysss'}),
-        //     new Oficina({razaoSocial: 'disney2', endereco: 'disneyss4s'}),
-        //     new Oficina({razaoSocial: 'disney3', endereco: 'disneysss4'})
-        // ]);
+        return of([
+            new Oficina({idOficina: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'}),
+            new Oficina({idOficina: '04', razaoSocial: 'Oficina2', endereco: 'Rua y', bairro: 'madalena'}),
+            new Oficina({idOficina: '05', razaoSocial: 'Oficina3', endereco: 'Rua z', bairro: 'madalena'})
+        ]);
     }
 
     getOficinaById(oficinaId: string): Observable<Oficina> {
-        return this.http.get<any>(this.urlApi + 'oficinas/' + oficinaId)
-            .pipe(
-                map(response => {
-                    return response.data as Oficina;
-                },
-                    error => this.handleError(error))
-            );
+        console.log(this.headers);
+        // return this.http.get<any>(this.urlApi + 'oficinas/' + oficinaId, {
+        //     headers: this.headers
+        // }).pipe(
+        //         map(response => {
+        //             return response.data as Oficina;
+        //         },
+        //             error => this.handleError(error))
+        //     );
+        return of(
+            new Oficina({idOficina: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'}));
+        // );
+    }
+
+    getAgendamentosById(oficinaId: string): Observable<Agendamento[]> {
+        // return this.http.get<any>(this.urlApi + 'agendamentos/' + oficinaId, {
+        //     headers: this.headers
+        // }).pipe(
+        //         map(response => {
+        //             return response.data as Agendamento[];
+        //         },
+        //             error => this.handleError(error))
+        //     );
+        return of([
+            new Agendamento({idAgendamento: '03', data_hora: new Date(),
+             veiculo: new Veiculo({placa: 'HBO-9690', modelo: 'Fusca', cliente: new Cliente({
+                nome: 'Nícolas',
+                id: '04',
+                cpf: '11515515' })})}),
+            new Agendamento({idAgendamento: '03', data_hora: new Date(),
+             veiculo: new Veiculo({placa: 'XOX-8765', modelo: 'Civic', cliente: new Cliente({
+                nome: 'Lucas',
+                id: '05',
+                cpf: '11515515' })})}),
+            new Agendamento({idAgendamento: '03', data_hora: new Date(),
+             veiculo: new Veiculo({placa: 'UHQ-9054', modelo: 'Gol', cliente: new Cliente({
+                nome: 'Bruno',
+                id: '06',
+                cpf: '11515515' })})}),
+        ]);
     }
 
     createOficina(oficina: Oficina): Observable<any> {
-        return this.http.post<Oficina>(this.urlApi + 'oficinas', oficina)
-        .pipe(
+        return this.http.post<Oficina>(this.urlApi + 'oficinas', oficina, {
+            headers: this.headers
+        }).pipe(
             map(response => {
                 return response as Oficina;
             },
@@ -60,8 +103,9 @@ export class OficinaService {
         );
     }
     updateOficina(oficina: Oficina): Observable<any> {
-        return this.http.put<Oficina>(encodeURI(this.urlApi + 'oficinas/' + oficina.idOficina), oficina)
-        .pipe(
+        return this.http.put<Oficina>(encodeURI(this.urlApi + 'oficinas/' + oficina.idOficina), oficina, {
+            headers: this.headers
+        }).pipe(
             map(response => {
                 return response as Oficina;
             },
@@ -70,7 +114,9 @@ export class OficinaService {
     }
 
     deleteOficina(idOficina: string) {
-        return this.http.delete<any>(encodeURI(this.urlApi + `oficinas/${idOficina}`), )
+        return this.http.delete<any>(encodeURI(this.urlApi + `oficinas/${idOficina}`), {
+            headers: this.headers
+        })
         .pipe(
             map(response => {
                 return response;

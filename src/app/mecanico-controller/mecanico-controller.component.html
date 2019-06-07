@@ -1,0 +1,58 @@
+<mat-card>
+  <br><h4>{{mecanico?.nome}}</h4><br>
+  <mat-card-content class="center">
+    <h4 *ngIf="!edit">Novo mecanico:</h4>
+    <form [formGroup]="mecanicoForm">
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Login" maxlength="10" formControlName="usuarioLogin">
+        <mat-error *ngIf="mecanicoForm.get('usuarioLogin').hasError('required')">
+          O login é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Senha" type="password" maxlength="32" formControlName="usuarioPassword">
+        <mat-error *ngIf="mecanicoForm.get('usuarioPassword').hasError('required')">
+          A senha é <strong>obrigatória.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Email" type="email" maxlength="100" formControlName="usuarioEmail">
+        <mat-error *ngIf="mecanicoForm.get('usuarioEmail').hasError('email')">
+            Por favor, digite um e-mail válido.
+          </mat-error>
+        <mat-error *ngIf="mecanicoForm.get('usuarioEmail').hasError('required')">
+          O Email é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Nome" maxlength="100" formControlName="mecanicoNome">
+        <mat-error *ngIf="mecanicoForm.get('mecanicoNome').hasError('required')">
+          O Nome é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Cpf" maxlength="100" formControlName="mecanicoCpf">
+        <mat-error *ngIf="mecanicoForm.get('mecanicoCpf').hasError('required')">
+          O Cpf é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <mat-select placeholder="Oficina" formControlName="oficina">
+          <mat-option >--</mat-option>
+          <mat-option *ngFor="let oficina of oficinasList" [value]="oficina">
+            {{oficina.razaoSocial}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <textarea matInput placeholder="Descreva seu currículo" formControlName="mecanicoCurriculo"></textarea>
+        <mat-error *ngIf="mecanicoForm.get('mecanicoCurriculo').hasError('required')">
+          Uma descrição do seu currículo é <strong>obrigatória.</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/mecanico/{{mecanico?.id}}">Cancelar</button>
+    <button mat-raised-button color="primary" *ngIf="edit" (click)="updateMecanico()">Salvar alterações</button>
+    <button mat-raised-button color="primary" [disabled]="!mecanicoForm.valid" *ngIf="!edit" (click)="createMecanico()">Salvar</button>
+  </mat-card-content>
+</mat-card>

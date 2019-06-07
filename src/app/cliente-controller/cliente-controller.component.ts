@@ -59,6 +59,7 @@ export class ClienteControllerComponent implements OnInit {
       login: this.clienteForm.get('usuarioLogin').value,
       senha: this.clienteForm.get('usuarioPassword').value,
       email: this.clienteForm.get('usuarioEmail').value,
+      tipo: '01'
     });
     const cliente = new Cliente({
       usuario: usuario,
@@ -89,6 +90,7 @@ export class ClienteControllerComponent implements OnInit {
       login: this.clienteForm.get('usuarioLogin').value,
       senha: this.clienteForm.get('usuarioPassword').value,
       email: this.clienteForm.get('usuarioEmail').value,
+      tipo: '01'
     });
     const cliente = new Cliente({
       usuario: usuario,
@@ -97,7 +99,8 @@ export class ClienteControllerComponent implements OnInit {
       bairro: this.clienteForm.get('clienteBairro').value ? this.clienteForm.get('clienteBairro').value : null,
       cep: this.clienteForm.get('clienteCep').value,
       endereco: this.clienteForm.get('clienteEndereco').value,
-      complemento: this.clienteForm.get('clienteComplemento').value ? this.clienteForm.get('clienteComplemento').value : null
+      complemento: this.clienteForm.get('clienteComplemento').value ? this.clienteForm.get('clienteComplemento').value : null,
+      id: this.cliente.id
     });
     this.clienteService.updateCliente(cliente).subscribe({
       next: resp => {

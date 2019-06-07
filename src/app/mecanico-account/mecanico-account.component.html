@@ -1,0 +1,11 @@
+<mat-card>
+  <br><h4>Minha conta</h4><br>
+  <mat-card-content *ngIf="mecanico" class="center">
+    <h4>{{mecanico.nome}}</h4>
+    <p>CPF: {{mecanico.cpf}}</p>
+    <p>{{mecanico.usuario.email}}</p>
+    <p>Oficina: {{mecanico.oficina?.razaoSocial}}</p>
+    <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
+    <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deleteCliente()">Deletar Conta</button>
+  </mat-card-content>
+</mat-card>
