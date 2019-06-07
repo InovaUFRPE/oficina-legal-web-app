@@ -1,0 +1,32 @@
+<mat-card *ngIf="oficina">
+  <br><h4>Oficina</h4><br>
+  <mat-card-header>
+    <mat-card-title>{{oficina.razaoSocial}}</mat-card-title>
+    <mat-card-subtitle>{{oficina.endereco}}</mat-card-subtitle>
+    <mat-card-subtitle>{{oficina.bairro}}</mat-card-subtitle>
+    <button mat-icon-button matTooltip="Relatórios">
+      <mat-icon mat-list-icon>assessment</mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content *ngIf="oficina" class="center">
+    <h5 mat-subheader>Agendamentos realizados para essa oficina:</h5>
+    <mat-list mat-subheader *ngIf="agendamentos">
+      <mat-list-item *ngFor="let agendamento of agendamentos; let lastItem = last;">
+        <mat-icon mat-list-icon>drive_eta</mat-icon>
+        <h4 mat-line>Placa: {{agendamento.veiculo.placa }}</h4>
+        <p mat-line> {{agendamento.veiculo.modelo}}</p>
+        <p mat-line>Cliente: {{agendamento.veiculo.cliente.nome }} </p>
+        <p mat-list-item mat-line>Horário: {{agendamento.data_hora | date:'hh:mm a, MM/dd/yyyy'}}</p> -->
+
+        <!-- <button mat-icon-button matTooltip="Detalhes">
+          <mat-icon  mat-list-icon>info</mat-icon>
+        </button> -->
+        <!-- <button mat-raised-button matTooltip="Dica" (click)="metodo(agendamento)">
+          Algo
+        </button> -->
+
+        <!-- <mat-divider *ngIf="!lastItem"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
