@@ -41,7 +41,7 @@ export class MecanicoControllerComponent implements OnInit {
       oficina: [ '', [Validators.maxLength(100)]]
     });
 
-    this.oficinaService.getOficinas()
+    this.oficinaService.getListaOficina()
       .subscribe({
       next: resp => {
         this.oficinasList = resp;

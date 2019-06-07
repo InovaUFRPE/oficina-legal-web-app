@@ -1,37 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatIconModule, MatListModule, MatCardModule, MatButtonModule, MatInputModule,
-  MatTooltipModule, MatSelectModule, MatGridListModule} from '@angular/material';
-import { OficinaComponent } from './lista-oficina.component';
+import { MatIconModule, MatListModule, MatCardModule, MatButtonModule,
+  MatTooltipModule, MatSelectModule} from '@angular/material';
+import { ListaOficinaComponent } from './lista-oficina.component';
 import { AppComponent } from 'src/app/app.component';
 import { OficinaService } from 'src/app/shared/oficina.service';
-import { OficinaRoutingModule } from './lista-oficina.routing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ListaOficinaRoutingModule } from './lista-oficina.routing';
 import { LocalSaveService } from '../shared/local-save.service';
-import { OficinaGuard } from '../guards/oficina.guard';
+import { ListaOficinaGuard } from '../guards/lista-oficina.guard';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    OficinaRoutingModule,
+    ListaOficinaRoutingModule,
     MatCardModule,
     MatListModule,
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-    MatGridListModule,
     MatSelectModule,
   ],
   declarations: [
-    OficinaComponent,
+    ListaOficinaComponent,
   ],
   providers: [
     OficinaService,
     AppComponent,
     LocalSaveService,
-    OficinaGuard
+    ListaOficinaGuard
   ]
 })
-export class OficinaModule { }
+export class ListaOficinaModule { }

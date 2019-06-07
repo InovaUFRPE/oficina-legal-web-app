@@ -1,32 +1,17 @@
-<mat-card *ngIf="oficina">
-  <br><h4>Oficina</h4><br>
+<mat-card *ngIf="listaOficina">
   <mat-card-header>
-    <mat-card-title>{{oficina.razaoSocial}}</mat-card-title>
-    <mat-card-subtitle>{{oficina.endereco}}</mat-card-subtitle>
-    <mat-card-subtitle>{{oficina.bairro}}</mat-card-subtitle>
-    <button mat-icon-button matTooltip="Relatórios">
-      <mat-icon mat-list-icon>assessment</mat-icon>
-    </button>
+    <mat-card-title>Oficinas</mat-card-title>
   </mat-card-header>
-  <mat-card-content *ngIf="oficina" class="center">
-    <h5 mat-subheader>Agendamentos realizados para essa oficina:</h5>
-    <mat-list mat-subheader *ngIf="agendamentos">
-      <mat-list-item *ngFor="let agendamento of agendamentos; let lastItem = last;">
-        <mat-icon mat-list-icon>drive_eta</mat-icon>
-        <h4 mat-line>Placa: {{agendamento.veiculo.placa }}</h4>
-        <p mat-line> {{agendamento.veiculo.modelo}}</p>
-        <p mat-line>Cliente: {{agendamento.veiculo.cliente.nome }} </p>
-        <p mat-list-item mat-line>Horário: {{agendamento.data_hora | date:'hh:mm a, MM/dd/yyyy'}}</p> -->
-
-        <!-- <button mat-icon-button matTooltip="Detalhes">
-          <mat-icon  mat-list-icon>info</mat-icon>
-        </button> -->
-        <!-- <button mat-raised-button matTooltip="Dica" (click)="metodo(agendamento)">
-          Algo
-        </button> -->
-
-        <!-- <mat-divider *ngIf="!lastItem"></mat-divider>
+  <mat-card-content class="center">
+    <h5 mat-subheader>Lista de oficinas do sistema:</h5>
+    <mat-action-list mat-subheader>
+      <mat-list-item *ngFor="let oficina of listaOficina; let lastItem = last;" (click)="verOficina(oficina)">
+        <mat-icon mat-list-icon>local_car_wash</mat-icon>
+        <h4 mat-line>{{oficina.razaoSocial}}</h4>
+        <p mat-line>{{oficina.bairro}}</p>
+        <p mat-list-item mat-line>{{oficina.complemento}}</p>
+        <mat-divider *ngIf="!lastItem"></mat-divider>
       </mat-list-item>
-    </mat-list>
+    </mat-action-list>
   </mat-card-content>
 </mat-card>

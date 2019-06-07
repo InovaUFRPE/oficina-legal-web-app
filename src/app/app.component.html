@@ -7,7 +7,7 @@
       <!-- <button *ngIf="user && user.usuario.tipo === '04'" mat-button routerLink="/oficina/00/controlador">Cadastrar Oficina</button> -->
       <!-- <button *ngIf="!user" mat-button routerLink="/mecanico/00/controlador">Cadastre-se, Mecânico</button> -->
       <!-- <button *ngIf="user && user.usuario.tipo === '04'" mat-button routerLink="/mecanico/00/controlador">Cadastre um Mecânico</button> -->
-      <button class="navbar-items" *ngIf="user && user.usuario.tipo === '04'"  mat-button >Listar Oficinas</button>
+      <button class="navbar-items" *ngIf="user && user.usuario.tipo === '04'"  routerLink="/lista-oficina" mat-button >Listar Oficinas</button>
       <button class="navbar-items" *ngIf="user && user.usuario.tipo === '03'" mat-button routerLink="/oficina/01">Oficina</button>
       <button class="navbar-items relatorio" *ngIf="!user" mat-button routerLink="/gestor/controlador">Relatório de serviços</button>
       <!-- <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/oficina/controlador">Cadastrar Oficina</button> -->

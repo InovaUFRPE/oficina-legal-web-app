@@ -31,7 +31,7 @@ export class OficinaService {
         return Observable.throw((error.json().Message ? error.json().Message : error.json().error_description));
     }
 
-    getOficinas(): Observable<Oficina[]> {
+    getListaOficina(): Observable<Oficina[]> {
 
         // return this.http.get<Oficina[]>(this.urlApi + 'oficinas', {
         //     headers: this.headers

@@ -72,7 +72,7 @@ export class GestorControllerComponent implements OnInit {
 
 
 
-    this.oficinaService.getOficinas()
+    this.oficinaService.getListaOficina()
       .subscribe({
       next: resp => {
         this.oficinasList = resp;

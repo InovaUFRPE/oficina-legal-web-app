@@ -50,11 +50,21 @@ export class LoginComponent implements OnInit {
 
     this.loginService.loginUsuario(user).subscribe({
       next: resp => {
-      those.authenticationService.setUsuarioLogado(resp);
-      this.app.user = resp;
-      console.log(resp);
-      those.snotifyService.success('Login efetuado com sucesso', 'Sucesso!', this.app.getConfig());
-      those.router.navigate([`/home`]);
+      those.authenticationService.setToken(resp.token);
+      those.loginService.getUsuarioCompleto(resp.user.id).subscribe({
+          next: respo => {
+          those.authenticationService.setUsuarioLogado(respo);
+          this.app.user = respo;
+          console.log(respo);
+          those.snotifyService.success('Login efetuado com sucesso', 'Sucesso!', this.app.getConfig());
+          those.router.navigate([`/home`]);
+          },
+          error: erro => {
+            console.log(erro);
+            this.app.hideLoading();
+            those.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+          }
+      });
       },
       error: erro => {
         console.log(erro);
