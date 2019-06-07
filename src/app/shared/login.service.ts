@@ -36,6 +36,11 @@ export class LoginService {
         // return this.http.post<any>(urlApi + 'login', user)
         //     .pipe(
         //         map(response => {
+        //             if (response.oficina) {
+
+        //                 response.usuario.tipo =  '03';
+        //             }
+        //             response.usuario.tipo =  '04';
         //             return response as RetornoLogin;
         //         },
         //             error => this.handleError(error))
