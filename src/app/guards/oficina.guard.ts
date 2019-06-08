@@ -32,8 +32,5 @@ export class OficinaGuard implements CanActivate {
       // console.log(user.usuario.tipo === '03' && Number(user.Oficina.id) === Number(route.params.id));
       // console.log(user.usuario.tipo === '03');
       // console.log(user.usuario.tipo === '04');
-
-
-      return true;
    }
 }
