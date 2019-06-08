@@ -13,13 +13,11 @@
   >
     <h4 class="titulo-filtro">Ordernar por:</h4>
       <mat-form-field class="filtro-lista-oficina">
-        <mat-select placeholder="Tipo de ordenação"><!-- [formControl]="control"> -->
+        <mat-select placeholder="Tipo de ordenação" [formControl]="control">
           <mat-option >--</mat-option>
-          <mat-option >Oficina</mat-option>
-          <mat-option >Endereço</mat-option>
-          <!-- <mat-option *ngFor="let tipo of tiposList" [value]="tipo">
+          <mat-option *ngFor="let tipo of tiposList" [value]="tipo">
             {{tipo.nome}}
-          </mat-option> -->
+          </mat-option>
         </mat-select>
       </mat-form-field>
   </mat-grid-tile>

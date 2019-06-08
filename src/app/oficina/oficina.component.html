@@ -85,7 +85,7 @@
         <mat-icon mat-list-icon style="margin-right: 2%">drive_eta</mat-icon>
         <div class='col-md-4' style="padding-right: 0.5%">
           <p class="agendamento">
-            Nome do Cliente: <span class="agendamento-resposta">{{agendamento.veiculo.cliente.nome }}</span>
+            Nome do Cliente: <span class="agendamento-resposta">{{agendamento.Veiculo.Cliente.nome }}</span>
           </p>
           <p class="agendamento">
             Data: <span class="agendamento-resposta">{{agendamento.data_hora | date:'MM/dd/yyyy, hh:mm a'}}</span>
@@ -93,10 +93,10 @@
         </div>
         <div class='col-md-4' style="padding-left: 0.5%">
           <p class="agendamento">
-            Placa do veículo: <span class="agendamento-resposta">{{agendamento.veiculo.placa }}</span>
+            Placa do veículo: <span class="agendamento-resposta">{{agendamento.Veiculo.placa }}</span>
           </p>
           <p class="agendamento">
-            Modelo: <span class="agendamento-resposta">{{agendamento.veiculo.modelo}}</span>
+            Modelo: <span class="agendamento-resposta">{{agendamento.Veiculo.modelo}}</span>
           </p>
         </div>
         <button  
@@ -144,9 +144,9 @@
     <mat-list mat-subheader *ngIf="agendamentos">
       <mat-list-item *ngFor="let agendamento of agendamentos; let lastItem = last;">
         <mat-icon mat-list-icon>drive_eta</mat-icon>
-        <h4 mat-line>Placa: {{agendamento.veiculo.placa }}</h4>
-        <p mat-line> {{agendamento.veiculo.modelo}}</p>
-        <p mat-line>Cliente: {{agendamento.veiculo.cliente.nome }} </p>
+        <h4 mat-line>Placa: {{agendamento.Veiculo.placa }}</h4>
+        <p mat-line> {{agendamento.Veiculo.modelo}}</p>
+        <p mat-line>Cliente: {{agendamento.Veiculo.Cliente.nome }} </p>
         <p mat-list-item mat-line>Horário: {{agendamento.data_hora | date:'hh:mm a, MM/dd/yyyy'}}</p> -->
 
         <!-- <button mat-icon-button matTooltip="Detalhes">

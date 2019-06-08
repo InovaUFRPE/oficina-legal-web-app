@@ -4,10 +4,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Oficina } from 'src/app/shared/models/oficina.model';
 import { LocalSaveService } from 'src/app/shared/local-save.service';
 import { OficinaService } from 'src/app/shared/oficina.service';
-import { AppComponent } from 'src/app/app.component';
+import { AppComponent, GenericQueryParams } from 'src/app/app.component';
 import { Gestor } from '../shared/models/gestor.model';
 import { Administrador } from '../shared/models/administrador.model';
 import { Agendamento } from '../shared/models/agendamento.model';
+import { Tipos } from '../login/login.component';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-oficina',
@@ -17,6 +19,8 @@ import { Agendamento } from '../shared/models/agendamento.model';
 export class ListaOficinaComponent implements OnInit {
   listaOficina: Oficina[];
   admin: Administrador;
+  tiposList: Tipos[] = [];
+  control = new FormControl('');
 
   constructor(
     private readonly oficinaService: OficinaService,
@@ -26,6 +30,7 @@ export class ListaOficinaComponent implements OnInit {
 
   ngOnInit() {
     this.admin = this.localSaveService.getUsuarioLogado() as Administrador;
+    this.tiposList.push({valor: 'endereco', nome: 'Endereço'}, {valor: 'razao', nome: 'Nome da Oficina'});
     this.oficinaService.getListaOficina().subscribe({
       next: resp => {
         this.listaOficina = resp;
@@ -34,6 +39,18 @@ export class ListaOficinaComponent implements OnInit {
         console.log(erro);
         this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
+    });
+    this.control.valueChanges
+      .subscribe(value => {
+        this.oficinaService.getListaOficina({q: value.valor} as GenericQueryParams).subscribe({
+          next: resp => {
+            this.listaOficina = resp;
+          },
+          error: erro => {
+            console.log(erro);
+            this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
+          }
+        });
     });
   }
   verOficina(oficina: Oficina) {

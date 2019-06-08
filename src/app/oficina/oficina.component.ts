@@ -57,6 +57,7 @@ export class OficinaComponent implements OnInit {
     }
     this.oficinaService.getAgendamentosById(this.id).subscribe({
       next: resp => {
+        console.log(resp);
         this.agendamentos = resp;
       },
       error: erro => {
