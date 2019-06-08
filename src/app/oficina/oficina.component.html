@@ -2,7 +2,6 @@
   rowHeight=75
   *ngIf="oficina"
 >
-  <mat-divider></mat-divider>
   <mat-grid-tile
     colspan=3
     rowspan=1
@@ -20,14 +19,24 @@
     colspan=3
     rowspan=1
   >
-    <p class="endereco" style="margin: 0;">
-      Bairro: <br>
-      Endereço: 
-    </p>
-    <p class="endereco" style="margin: 0; margin-left: 1%">
-        {{oficina.bairro}}<br>
-        {{oficina.endereco}}
-    </p>
+    <mat-grid-list cols=6 rowHeight=25 style="width: 100%">
+      <mat-grid-tile
+        colspan=6
+        rowspan=1
+      >
+        <p class="endereco" style="margin: 0;">
+          Bairro: {{oficina.bairro}}
+        </p>
+      </mat-grid-tile>
+      <mat-grid-tile
+        colspan=6
+        rowspan=1
+      >
+        <p class='endereco' style="margin: 0;">
+            Endereço: {{oficina.endereco}}
+        </p>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-grid-tile>
 </mat-grid-list>
 <mat-divider></mat-divider>
@@ -46,18 +55,6 @@
     rowspan=1
   >
     <h4 class="titulo-filtro">Ordernar por:</h4>
-    <!-- <mat-form-field class="filtro-agenda">
-        <mat-label>Escolha uma opção</mat-label>
-        <mat-select class="filtro-agenda">
-          <mat-option>Nenhum</mat-option>
-          <mat-option value="data">
-            Data
-          </mat-option>
-          <mat-option value="nome-cliente">
-            Nome do Cliente
-          </mat-option>
-        </mat-select>
-      </mat-form-field> -->
       <mat-form-field class="filtro-agenda">
         <mat-select placeholder="Tipo de ordenação" [formControl]="control">
           <mat-option >--</mat-option>
@@ -74,13 +71,6 @@
   </mat-grid-tile>
   
 </mat-grid-list>
-<!-- <mat-grid-list
-  cols=12
->
-  <mat-grid-tile
-    colspan=12
-    rowspan=10
-  > -->
     <mat-list
     role="list"
     *ngIf="oficina"
@@ -93,18 +83,22 @@
         style="height:100%; width: 70%;"
       >
         <mat-icon mat-list-icon style="margin-right: 2%">drive_eta</mat-icon>
-        <p class="agendamento">
-          Nome do Cliente:<br>
-          Placa do veículo:<br>
-          Modelo:<br>
-          Data:
-        </p>
-        <p class="agendamento-resposta">
-          {{agendamento.veiculo.cliente.nome }}<br>
-          {{agendamento.veiculo.placa }}<br>
-          {{agendamento.veiculo.modelo}}<br>
-          {{agendamento.data_hora | date:'MM/dd/yyyy, hh:mm a'}}
-        </p>
+        <div class='col-md-4' style="padding-right: 0.5%">
+          <p class="agendamento">
+            Nome do Cliente: <span class="agendamento-resposta">{{agendamento.veiculo.cliente.nome }}</span>
+          </p>
+          <p class="agendamento">
+            Data: <span class="agendamento-resposta">{{agendamento.data_hora | date:'MM/dd/yyyy, hh:mm a'}}</span>
+          </p>
+        </div>
+        <div class='col-md-4' style="padding-left: 0.5%">
+          <p class="agendamento">
+            Placa do veículo: <span class="agendamento-resposta">{{agendamento.veiculo.placa }}</span>
+          </p>
+          <p class="agendamento">
+            Modelo: <span class="agendamento-resposta">{{agendamento.veiculo.modelo}}</span>
+          </p>
+        </div>
         <button  
           mat-flat-button 
           color=primary
@@ -135,8 +129,6 @@
       </mat-grid-tile>
       <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
     </mat-grid-list>
-  <!-- </mat-grid-tile>
-</mat-grid-list> -->
 <!-- <mat-card *ngIf="oficina">
   <br><h4>Oficina</h4><br>
   <mat-card-header>

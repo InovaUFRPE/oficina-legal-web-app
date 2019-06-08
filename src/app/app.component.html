@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm">
   <div class="container-fluid">
-    <img class='oficina-legal-png' src='../assets/images/Oficina' alt='logo' draggable="false" routerLink="">
+    <img class='oficina-legal-png' src='../assets/images/Oficina' onmousedown="return false" alt='logo' routerLink="">
     <ul class="navbar-nav ml-auto" style="height: 60px;">
       <button class="navbar-items" mat-button routerLink="">Home</button>
       <!-- <button *ngIf="!user" mat-button routerLink="/gestor/00/controlador">Cadastre-se, Gestor</button> -->
@@ -19,6 +19,7 @@
     </ul>
   </div>
 </nav>
+<mat-divider></mat-divider>
 <div class="bg-vs">
   <router-outlet></router-outlet>
 </div>

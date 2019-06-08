@@ -1,17 +1,69 @@
-<mat-card *ngIf="listaOficina">
-  <mat-card-header>
-    <mat-card-title>Oficinas</mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="center">
-    <h5 mat-subheader>Lista de oficinas do sistema:</h5>
-    <mat-action-list mat-subheader>
-      <mat-list-item *ngFor="let oficina of listaOficina; let lastItem = last;" (click)="verOficina(oficina)">
-        <mat-icon mat-list-icon>local_car_wash</mat-icon>
-        <h4 mat-line>{{oficina.razaoSocial}}</h4>
-        <p mat-line>{{oficina.bairro}}</p>
-        <p mat-list-item mat-line>{{oficina.complemento}}</p>
-        <mat-divider *ngIf="!lastItem"></mat-divider>
-      </mat-list-item>
-    </mat-action-list>
-  </mat-card-content>
-</mat-card>
+<mat-grid-list
+  cols=12
+>
+  <mat-grid-tile
+    colspan=12
+    rowspan=1
+  >
+    <h3 class='titulo-lista-oficina'>Oficinas cadastradas</h3>
+  </mat-grid-tile>
+  <mat-grid-tile
+    colspan=8
+    rowspan=1
+  >
+    <h4 class="titulo-filtro">Ordernar por:</h4>
+      <mat-form-field class="filtro-lista-oficina">
+        <mat-select placeholder="Tipo de ordenação"><!-- [formControl]="control"> -->
+          <mat-option >--</mat-option>
+          <mat-option >Oficina</mat-option>
+          <mat-option >Endereço</mat-option>
+          <!-- <mat-option *ngFor="let tipo of tiposList" [value]="tipo">
+            {{tipo.nome}}
+          </mat-option> -->
+        </mat-select>
+      </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+</mat-grid-list>
+ 
+<mat-action-list mat-subheader
+    role="list"
+    *ngIf="listaOficina"
+    style="margin-left:20%"
+>
+  <mat-list-item 
+    *ngFor="let oficina of listaOficina; let lastItem = last;" 
+    (click)="verOficina(oficina)"
+    role="listitem"
+    class="item-lista"
+    style="height: 100%; width: 70%; padding: 2%"
+  >
+    <mat-icon mat-list-icon style="margin-left: -4%">location_city</mat-icon>
+    <p mat-line class="listagem">Oficina: <span class="listagem-resposta">{{oficina.razaoSocial}}</span></p>
+    <p mat-line class="listagem">Endereço: <span class="listagem-resposta">{{oficina.endereco}}, {{oficina.bairro}}.</span></p>
+    <p mat-list-item mat-line class="listagem-resposta">{{oficina.complemento}}</p>
+  </mat-list-item>
+
+</mat-action-list>
+
+<mat-grid-list
+  cols=12
+  rowHeight=75
+  *ngIf="listaOficina"
+>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+  <mat-grid-tile
+    colspan=4
+    rowspan=1
+  >
+    <button
+      mat-flat-button
+      color=primary
+      class='botao-voltar'
+      routerLink=""
+    >
+      Voltar
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+</mat-grid-list>

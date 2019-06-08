@@ -50,24 +50,24 @@
 }
 
 .item-agendamento {
-    margin-bottom: 2%;
-    width: 800px;
-    height: 300px;
+    margin-bottom: 1%;
     background-color: #FFFFFF;
     border: 1px solid #8492A6;
     border-radius: 5px;
+    min-width: 80vh;
 }
 .botao-visualizar-agendamento {
     text-align: center;
     width: 25%;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    margin-left: 30%;
+    min-width: 25%;
 }
 .agendamento{
     color: #767676;
     font-family: Lato;
     font-weight: 700;
+    margin-bottom: 2%;
 }
 .agendamento-resposta{
     color: #003EA5;;
