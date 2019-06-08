@@ -4,7 +4,7 @@
     <h4>{{gestor.nome}}</h4>
     <p>CPF: {{gestor.cpf}}</p>
     <p>{{gestor.usuario.email}}</p>
-    <p>Oficina: {{gestor.oficina?.razaoSocial}}</p>
+    <p>Oficina: {{gestor.Oficina?.razaoSocial}}</p>
     <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
     <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deletarConta()">Deletar Conta</button>
   </mat-card-content>

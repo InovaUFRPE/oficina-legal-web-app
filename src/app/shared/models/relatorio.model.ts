@@ -7,8 +7,8 @@ export class Relatorio {
   valor: number;
   veiculo: Veiculo;
   dataInicio: string;
-  dataFim:string;
-  mes:string;
+  dataFim: string;
+  mes: string;
 
   constructor(client: Partial<Relatorio>) {
     Object.assign(this, client);

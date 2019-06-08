@@ -46,12 +46,12 @@ export class MecanicoControllerComponent implements OnInit {
       next: resp => {
         this.oficinasList = resp;
         const toSelect = this.oficinasList
-          .find(c => this.mecanico && this.mecanico.oficina ? c.idOficina === this.mecanico.oficina.idOficina : null);
+          .find(c => this.mecanico && this.mecanico.oficina ? c.id === this.mecanico.oficina.id : null);
         this.mecanicoForm.get('oficina').setValue(toSelect);
       },
       error: erro => {
         console.log(erro);
-        this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
 
@@ -93,7 +93,7 @@ export class MecanicoControllerComponent implements OnInit {
         error: erro => {
           console.log(erro);
           this.app.hideLoading();
-          this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
     });
   }
@@ -124,7 +124,7 @@ export class MecanicoControllerComponent implements OnInit {
         error: erro => {
           console.log(erro);
           this.app.hideLoading();
-          this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
     });
   }

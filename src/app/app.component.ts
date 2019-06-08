@@ -13,7 +13,7 @@ export interface GenericQueryParams {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  urlApi = 'http://localhost:5000/api/';
+  urlApi = 'http://localhost:6001/api/';
   title = 'web-app';
   style = 'material';
   timeout = 4000;

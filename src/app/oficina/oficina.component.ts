@@ -42,7 +42,7 @@ export class OficinaComponent implements OnInit {
 
     if (this.localSaveService.getUsuarioLogado().tipo === '03') {
       this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
-      this.oficina = this.gestor.oficina;
+      this.oficina = this.gestor.Oficina;
     } else {
       this.admin = this.localSaveService.getUsuarioLogado() as Administrador;
       this.oficinaService.getOficinaById(this.id).subscribe({
@@ -51,7 +51,7 @@ export class OficinaComponent implements OnInit {
         },
         error: erro => {
           console.log(erro);
-          this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
       });
     }
@@ -61,7 +61,7 @@ export class OficinaComponent implements OnInit {
       },
       error: erro => {
         console.log(erro);
-        this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
     this.control.valueChanges
@@ -72,7 +72,7 @@ export class OficinaComponent implements OnInit {
         },
         error: erro => {
           console.log(erro);
-          this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
       });
     });
@@ -80,7 +80,7 @@ export class OficinaComponent implements OnInit {
 
   deletarOficina() {
     this.app.showLoading();
-    this.oficinaService.deleteOficina(this.oficina.idOficina).subscribe({
+    this.oficinaService.deleteOficina(this.oficina.id).subscribe({
       next: resp => {
       this.app.user.oficina = null;
       this.snotifyService.success('Oficina deletada com sucesso', 'Sucesso!', this.app.getConfig());
@@ -89,7 +89,7 @@ export class OficinaComponent implements OnInit {
       error: erro => {
         console.log(erro);
         this.app.hideLoading();
-        this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
   }

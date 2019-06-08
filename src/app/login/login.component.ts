@@ -53,23 +53,28 @@ export class LoginComponent implements OnInit {
       those.authenticationService.setToken(resp.token);
       those.loginService.getUsuarioCompleto(resp.user.id).subscribe({
           next: respo => {
-          those.authenticationService.setUsuarioLogado(respo);
-          this.app.user = respo;
-          console.log(respo);
-          those.snotifyService.success('Login efetuado com sucesso', 'Sucesso!', this.app.getConfig());
-          those.router.navigate([`/home`]);
+            if (respo.Oficina) {
+              respo.usuario.tipo =  '03';
+            } else {
+              respo.usuario.tipo =  '04';
+            }
+            those.authenticationService.setUsuarioLogado(respo);
+            this.app.user = respo;
+            console.log(respo);
+            those.snotifyService.success('Login efetuado com sucesso', 'Sucesso!', this.app.getConfig());
+            those.router.navigate([`/home`]);
           },
           error: erro => {
             console.log(erro);
             this.app.hideLoading();
-            those.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+            those.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
           }
       });
       },
       error: erro => {
         console.log(erro);
         this.app.hideLoading();
-        those.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+        those.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
 

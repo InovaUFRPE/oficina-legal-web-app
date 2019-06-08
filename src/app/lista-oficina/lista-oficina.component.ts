@@ -32,11 +32,11 @@ export class ListaOficinaComponent implements OnInit {
       },
       error: erro => {
         console.log(erro);
-        this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
   }
   verOficina(oficina: Oficina) {
-    this.router.navigate([`/oficina/${oficina.idOficina}`]);
+    this.router.navigate([`/oficina/${oficina.id}`]);
   }
 }

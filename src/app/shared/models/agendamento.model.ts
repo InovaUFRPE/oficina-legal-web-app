@@ -3,10 +3,10 @@ import { Veiculo } from './veiculo.model';
 
 
 export class Agendamento {
-  idAgendamento: string;
+  id: string;
   data_hora: Date;
   veiculo: Veiculo;
-  oficina: Oficina;
+  // oficina: Oficina;
   constructor(client: Partial<Agendamento>) {
     Object.assign(this, client);
   }

@@ -6,8 +6,8 @@ export class Gestor {
   id: string;
   nome: string;
   cpf: string;
-  usuario: Usuario;
-  oficina: Oficina;
+  Usuario: Usuario;
+  Oficina: Oficina;
   constructor(client: Partial<Gestor>) {
     Object.assign(this, client);
   }
