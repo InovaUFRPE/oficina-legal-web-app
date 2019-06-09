@@ -40,6 +40,7 @@
   </mat-grid-tile>
 </mat-grid-list>
 <mat-divider></mat-divider>
+
 <mat-grid-list 
   cols=12
   rowHeight=100
@@ -55,80 +56,81 @@
     rowspan=1
   >
     <h4 class="titulo-filtro">Ordernar por:</h4>
-      <mat-form-field class="filtro-agenda">
-        <mat-select placeholder="Tipo de ordenação" [formControl]="control">
-          <mat-option >--</mat-option>
-          <mat-option *ngFor="let tipo of tiposList" [value]="tipo">
-            {{tipo.nome}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field class="filtro-agenda">
+      <mat-select placeholder="Tipo de ordenação" [formControl]="control">
+        <mat-option >--</mat-option>
+        <mat-option *ngFor="let tipo of tiposList" [value]="tipo">
+          {{tipo.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile
     colspan=4
     rowspan=1
   >
   </mat-grid-tile>
-  
 </mat-grid-list>
-    <mat-list
-    role="list"
-    *ngIf="oficina"
-    style="margin-left:20%"
+
+<mat-list
+  role="list"
+  *ngIf="oficina"
+  style="margin-left:20%"
+>
+  <mat-list-item
+    *ngFor="let agendamento of agendamentos; let lastItem = last;"
+    class="item-agendamento"
+    role="listitem"
+    style="height:100%; width: 70%;"
+  >
+    <mat-icon mat-list-icon style="margin-right: 2%">drive_eta</mat-icon>
+    <div class='col-md-4' style="padding-right: 0.5%; padding-top: 2%; padding-bottom: 2%;">
+      <p class="agendamento">
+        Nome do Cliente: <span class="agendamento-resposta">{{agendamento.Veiculo.Cliente.nome }}</span>
+      </p>
+      <p class="agendamento">
+        Data: <span class="agendamento-resposta">{{agendamento.data_hora | date:'MM/dd/yyyy, hh:mm a'}}</span>
+      </p>
+    </div>
+    <div class='col-md-4' style="padding-left: 0.5%;padding-top: 2%; padding-bottom: 2%;">
+      <p class="agendamento">
+        Placa do veículo: <span class="agendamento-resposta">{{agendamento.Veiculo.placa }}</span>
+      </p>
+      <p class="agendamento">
+        Modelo: <span class="agendamento-resposta">{{agendamento.Veiculo.modelo}}</span>
+      </p>
+    </div>
+    <!-- <button  
+      mat-flat-button 
+      color=primary
+      class='botao-visualizar-agendamento'
     >
-      <mat-list-item
-        *ngFor="let agendamento of agendamentos; let lastItem = last;"
-        class="item-agendamento"
-        role="listitem"
-        style="height:100%; width: 70%;"
-      >
-        <mat-icon mat-list-icon style="margin-right: 2%">drive_eta</mat-icon>
-        <div class='col-md-4' style="padding-right: 0.5%">
-          <p class="agendamento">
-            Nome do Cliente: <span class="agendamento-resposta">{{agendamento.Veiculo.Cliente.nome }}</span>
-          </p>
-          <p class="agendamento">
-            Data: <span class="agendamento-resposta">{{agendamento.data_hora | date:'MM/dd/yyyy, hh:mm a'}}</span>
-          </p>
-        </div>
-        <div class='col-md-4' style="padding-left: 0.5%">
-          <p class="agendamento">
-            Placa do veículo: <span class="agendamento-resposta">{{agendamento.Veiculo.placa }}</span>
-          </p>
-          <p class="agendamento">
-            Modelo: <span class="agendamento-resposta">{{agendamento.Veiculo.modelo}}</span>
-          </p>
-        </div>
-        <button  
-          mat-flat-button 
-          color=primary
-          class='botao-visualizar-agendamento'
-        >
-          Visualizar dados
-        </button>
-      </mat-list-item>
-    </mat-list>
-    <mat-grid-list
-      cols=12
-      rowHeight=75
-      *ngIf="oficina"
+      Visualizar dados
+    </button> -->
+  </mat-list-item>
+</mat-list>
+
+<mat-grid-list
+  cols=12
+  rowHeight=75
+  *ngIf="oficina"
+>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+  <mat-grid-tile
+    colspan=4
+    rowspan=1
+  >
+    <button
+      mat-flat-button
+      color=primary
+      class='botao-voltar'
+      routerLink=""
     >
-      <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
-      <mat-grid-tile
-        colspan=4
-        rowspan=1
-      >
-        <button
-          mat-flat-button
-          color=primary
-          class='botao-voltar'
-          routerLink=""
-        >
-          Voltar
-        </button>
-      </mat-grid-tile>
-      <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
-    </mat-grid-list>
+      Voltar
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+</mat-grid-list>
 <!-- <mat-card *ngIf="oficina">
   <br><h4>Oficina</h4><br>
   <mat-card-header>

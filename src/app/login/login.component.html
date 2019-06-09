@@ -1,25 +1,77 @@
-<mat-card class="card-layout center" style="margin-top: 0">
-  <h4 align="center">Entrar</h4>
-    <mat-card-content class="center">
-        <form class="form-login" [formGroup]="loginForm">
-            <mat-form-field class="form-full-width">
-              <input matInput type="login" placeholder="Entre com seu Login Ou Email" formControlName="login" >
-                <mat-error *ngIf="loginForm.get('login').hasError('required')">
-                  O e-mail ou login é <strong>obrigatório</strong>.
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-full-width">
-              <input matInput type="password" (keyup.enter)="loginUser()" placeholder="Senha" formControlName="senha">
-              <mat-error *ngIf="loginForm.get('senha').hasError('required')">
-                A senha é <strong>obrigatória</strong>.
-              </mat-error>
-              <mat-error *ngIf="loginForm.get('senha').hasError('minlength')">
-                A senha deve conter pelo menos <strong>6</strong> caracteres.
-              </mat-error>
-            </mat-form-field>
-          </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button class="bt-1" color="primary" [disabled]="!loginForm.valid" (keyup.enter)="loginUser()" (click)="loginUser()">Entrar</button>
-    </mat-card-actions>
-  </mat-card>
+<mat-grid-list cols=12
+  rowHeight=75
+>
+  <mat-grid-tile
+    colspan=3
+    rowspan=1
+  >
+    <h4 class="nome-login">Entrar</h4>
+  </mat-grid-tile>
+  <mat-grid-tile
+    colspan=9
+    rowspan=1
+  ></mat-grid-tile>
+</mat-grid-list>
+<mat-divider></mat-divider>
+
+<mat-grid-list 
+  cols=12
+  rowHeight=50
+>
+  <mat-grid-tile
+    colspan=12
+    rowspan=2
+  >
+    <h3 class="titulo-login">Entrar</h3>
+  </mat-grid-tile>
+  <mat-grid-tile
+    colspan=12
+    rowspan=1
+    style="margin-top: 0;"
+  >
+    <h4 class='subtitulo-login'>Acesse seu perfil para ter acesso à mais funcionalidades</h4>
+  </mat-grid-tile>
+  <mat-grid-tile
+    colspan=12
+    rowspan=4
+    style="margin-top: 3%"
+  >
+    <form class="form-login" [formGroup]="loginForm">
+
+      <mat-form-field class="form-full-width" appearance="outline" style="padding: 1%">
+
+        <mat-label>Nome de usuário / Email</mat-label>
+        <input matInput type="login" formControlName="login" required autofocus>
+        <mat-icon matSuffix>account_circle</mat-icon>
+
+        <mat-error *ngIf="loginForm.get('login').hasError('required')">
+          O e-mail ou login é <strong>obrigatório</strong>.
+        </mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field class="form-full-width" appearance="outline" style="padding: 1%">
+
+        <mat-label>Senha</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" (keyup.enter)="loginUser()" formControlName="senha" required>
+        <button mat-icon-button matSuffix style="height: 100%; left: 20%;" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.get('senha').hasError('required')">
+          A senha é <strong>obrigatória</strong>.
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('senha').hasError('minlength')">
+          A senha deve conter pelo menos <strong>6</strong> caracteres.
+        </mat-error>
+
+      </mat-form-field>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile
+    colspan=12
+    rowspan=2
+    style="margin-top: 3%"
+  >
+    <button mat-raised-button class='botao-logar' color="primary" [disabled]="!loginForm.valid" (keyup.enter)="loginUser()" (click)="loginUser()">Entrar</button>
+  </mat-grid-tile>
+</mat-grid-list>

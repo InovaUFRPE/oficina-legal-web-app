@@ -1,5 +1,6 @@
 <mat-grid-list
   cols=12
+  rowHeight=100
 >
   <mat-grid-tile
     colspan=12
@@ -27,7 +28,7 @@
 <mat-action-list mat-subheader
     role="list"
     *ngIf="listaOficina"
-    style="margin-left:20%"
+    style="margin-left:20%; padding-bottom: 8px;"
 >
   <mat-list-item 
     *ngFor="let oficina of listaOficina; let lastItem = last;" 
@@ -46,7 +47,7 @@
 
 <mat-grid-list
   cols=12
-  rowHeight=75
+  rowHeight=66
   *ngIf="listaOficina"
 >
   <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>

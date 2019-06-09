@@ -5,7 +5,8 @@ import { LoginService } from '../shared/login.service';
 import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatButtonModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatInputModule, MatSelectModule, MatGridListModule,
+  MatDividerModule, MatIconModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginGuard } from '../guards/login.guard';
@@ -26,7 +27,10 @@ import { LocalSaveService } from '../shared/local-save.service';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule,
+    MatDividerModule,
+    MatIconModule
   ],
   providers: [
     LoginService,

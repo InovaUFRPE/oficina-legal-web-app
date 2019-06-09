@@ -57,19 +57,19 @@ export class LoginService {
         //     );
 
         // Para simular gestor:
-        // return of(new Gestor ({
-        //     nome: 'Nícolas',
-        //     id: '02',
-        //     cpf: '5454',
-        //     usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
-        //     Oficina: new Oficina({id: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
-        // }));
+        return of(new Gestor ({
+            nome: 'Nícolas',
+            id: '02',
+            cpf: '5454',
+            usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
+            Oficina: new Oficina({id: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
+        }));
 
         // Para simular adm:
-        return of(new Administrador ({
-            nome: 'Nícolas',
-            cpf: '45544',
-            usuario: new Usuario({id: 2, tipo: '04', login: 'nicolas', email: 'nicolas@gmail.com'})
-        }));
+        // return of(new Administrador ({
+        //     nome: 'Nícolas',
+        //     cpf: '45544',
+        //     usuario: new Usuario({id: 2, tipo: '04', login: 'nicolas', email: 'nicolas@gmail.com'})
+        // }));
     }
 }

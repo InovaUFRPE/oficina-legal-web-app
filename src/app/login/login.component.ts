@@ -20,6 +20,7 @@ export interface Tipos {
 
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  hide: Boolean;
 
   constructor(private readonly loginService: LoginService, private formBuilder: FormBuilder, private snotifyService: SnotifyService,
     private app: AppComponent, private router: Router, private readonly authenticationService: LocalSaveService) { }
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
         login: ['', [Validators.required, Validators.minLength(6)]],
         senha: ['', [Validators.required, Validators.minLength(6)]]
       });
+    this.hide = true;
 }
   loginUser() {
     const those = this;
