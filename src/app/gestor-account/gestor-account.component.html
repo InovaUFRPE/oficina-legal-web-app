@@ -1,6 +1,12 @@
 <mat-card>
   <br><h4>Minha conta</h4><br>
+  <div>
+      <button mat-icon-button color='black' type="file">
+          <mat-icon font-size= 30px aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
+      </button>
+  </div>
   <mat-card-content *ngIf="gestor" class="center">
+    <!-----<button type="button" (click)="onUpload">escolha a foto</button> -->
     <h4>{{gestor.nome}}</h4>
     <p>CPF: {{gestor.cpf}}</p>
     <p>{{gestor.usuario.email}}</p>
