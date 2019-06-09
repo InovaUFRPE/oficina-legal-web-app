@@ -19,8 +19,8 @@ export interface Tipos {
 })
 
 export class LoginComponent implements OnInit {
-  tiposList: Tipos[] = [];
   loginForm: FormGroup;
+  hide: Boolean;
 
   constructor(private readonly loginService: LoginService, private formBuilder: FormBuilder, private snotifyService: SnotifyService,
     private app: AppComponent, private router: Router, private readonly authenticationService: LocalSaveService) { }
@@ -28,17 +28,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
         login: ['', [Validators.required, Validators.minLength(6)]],
-        senha: ['', [Validators.required, Validators.minLength(6)]],
-        tipoUsuario: ['', [Validators.required, Validators.minLength(100)]]
-    });
-    this.tiposList.push({valor: '03', nome: 'Gestor'}, {valor: '04', nome: 'Admin'});
+        senha: ['', [Validators.required, Validators.minLength(6)]]
+      });
+    this.hide = true;
 }
   loginUser() {
     const those = this;
     this.app.showLoading();
     const user: Usuario = new Usuario({
-      senha : this.loginForm.get('senha').value,
-      tipo: this.loginForm.get('tipoUsuario').value.valor
+      senha : this.loginForm.get('senha').value
     });
 
     const login: string = this.loginForm.get('login').value;
@@ -50,16 +48,31 @@ export class LoginComponent implements OnInit {
 
     this.loginService.loginUsuario(user).subscribe({
       next: resp => {
-      those.authenticationService.setUsuarioLogado(resp);
-      this.app.user = resp;
-      console.log(resp);
-      those.snotifyService.success('Login efetuado com sucesso', 'Sucesso!', this.app.getConfig());
-      those.router.navigate([`/home`]);
+      those.authenticationService.setToken(resp.token);
+      those.loginService.getUsuarioCompleto(resp.user.id).subscribe({
+          next: respo => {
+            if (respo.Oficina) {
+              respo.usuario.tipo =  '03';
+            } else {
+              respo.usuario.tipo =  '04';
+            }
+            those.authenticationService.setUsuarioLogado(respo);
+            this.app.user = respo;
+            console.log(respo);
+            those.snotifyService.success('Login efetuado com sucesso', 'Sucesso!', this.app.getConfig());
+            those.router.navigate([`/home`]);
+          },
+          error: erro => {
+            console.log(erro);
+            this.app.hideLoading();
+            those.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
+          }
+      });
       },
       error: erro => {
         console.log(erro);
         this.app.hideLoading();
-        those.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+        those.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
 

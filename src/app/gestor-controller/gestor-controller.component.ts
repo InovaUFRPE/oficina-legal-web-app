@@ -46,7 +46,7 @@ export class GestorControllerComponent implements OnInit {
       },
       error: erro => {
         console.log(erro);
-        this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
 
@@ -66,23 +66,23 @@ export class GestorControllerComponent implements OnInit {
       },
       error: erro => {
         console.log(erro);
-        this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
 
 
 
-    this.oficinaService.getOficinas()
+    this.oficinaService.getListaOficina()
       .subscribe({
       next: resp => {
         this.oficinasList = resp;
         const toSelect = this.oficinasList
-          .find(c => this.gestor && this.gestor.oficina ? c.idOficina === this.gestor.oficina.idOficina : null);
+          .find(c => this.gestor && this.gestor.Oficina ? c.id === this.gestor.Oficina.id : null);
         this.relatorioForm.get('oficina').setValue(toSelect);
       },
       error: erro => {
         console.log(erro);
-        this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
 

@@ -3,14 +3,17 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { SnotifyService, SnotifyPosition, SnotifyToastConfig } from 'ng-snotify';
 import { Router } from '@angular/router';
 import { LocalSaveService } from './shared/local-save.service';
+export interface GenericQueryParams {
 
+  q?: string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  urlApi = 'http://localhost:5000/api/';
+  urlApi = 'http://localhost:6001/api/';
   title = 'web-app';
   style = 'material';
   timeout = 4000;

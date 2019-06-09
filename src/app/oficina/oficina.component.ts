@@ -4,11 +4,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Oficina } from 'src/app/shared/models/oficina.model';
 import { LocalSaveService } from 'src/app/shared/local-save.service';
 import { OficinaService } from 'src/app/shared/oficina.service';
-import { AppComponent } from 'src/app/app.component';
+import { AppComponent, GenericQueryParams } from 'src/app/app.component';
 import { Gestor } from '../shared/models/gestor.model';
 import { Administrador } from '../shared/models/administrador.model';
 import { Agendamento } from '../shared/models/agendamento.model';
+import { FormControl } from '@angular/forms';
 
+export interface Tipos {
+  valor: string;
+  nome: string;
+}
 @Component({
   selector: 'app-oficina',
   templateUrl: './oficina.component.html',
@@ -20,6 +25,9 @@ export class OficinaComponent implements OnInit {
   admin: Administrador;
   agendamentos: Agendamento[];
   id: string;
+  tiposList: Tipos[] = [];
+  control = new FormControl('');
+
 
   constructor(
     private readonly oficinaService: OficinaService,
@@ -30,10 +38,11 @@ export class OficinaComponent implements OnInit {
   ngOnInit() {
     console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
+    this.tiposList.push({valor: 'data', nome: 'Data'}, {valor: 'cliente', nome: 'Cliente'}, {valor: 'modelo', nome: 'Modelo'});
 
     if (this.localSaveService.getUsuarioLogado().tipo === '03') {
       this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
-      this.oficina = this.gestor.oficina;
+      this.oficina = this.gestor.Oficina;
     } else {
       this.admin = this.localSaveService.getUsuarioLogado() as Administrador;
       this.oficinaService.getOficinaById(this.id).subscribe({
@@ -42,24 +51,37 @@ export class OficinaComponent implements OnInit {
         },
         error: erro => {
           console.log(erro);
-          this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
       });
     }
     this.oficinaService.getAgendamentosById(this.id).subscribe({
       next: resp => {
+        console.log(resp);
         this.agendamentos = resp;
       },
       error: erro => {
         console.log(erro);
-        this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
+    });
+    this.control.valueChanges
+    .subscribe(value => {
+      this.oficinaService.getAgendamentosById(this.id, {q: value.valor} as GenericQueryParams).subscribe({
+        next: resp => {
+          this.agendamentos = resp;
+        },
+        error: erro => {
+          console.log(erro);
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
+        }
+      });
     });
   }
 
   deletarOficina() {
     this.app.showLoading();
-    this.oficinaService.deleteOficina(this.oficina.idOficina).subscribe({
+    this.oficinaService.deleteOficina(this.oficina.id).subscribe({
       next: resp => {
       this.app.user.oficina = null;
       this.snotifyService.success('Oficina deletada com sucesso', 'Sucesso!', this.app.getConfig());
@@ -68,7 +90,7 @@ export class OficinaComponent implements OnInit {
       error: erro => {
         console.log(erro);
         this.app.hideLoading();
-        this.snotifyService.error(erro.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
   }

@@ -7,7 +7,7 @@ export class Veiculo {
   ano: string;
   renavam: string;
   placa: string;
-  cliente: Cliente;
+  Cliente: Cliente;
   constructor(client: Partial<Veiculo>) {
     Object.assign(this, client);
   }

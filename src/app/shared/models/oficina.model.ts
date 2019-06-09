@@ -2,7 +2,7 @@ import { Usuario } from './usuario.model';
 
 
 export class Oficina {
-  idOficina: string;
+  id: string;
   razaoSocial: string;
   endereco: string;
   bairro: string;

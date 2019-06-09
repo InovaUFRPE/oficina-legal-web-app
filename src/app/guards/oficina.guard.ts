@@ -9,7 +9,7 @@ export class OficinaGuard implements CanActivate {
 
    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
       const user = this.authService.getUsuarioLogado();
-
+      console.log(user);
       // if (user.usuario.tipo === '03' && Number(user.id) === Number(route.params.id) ||
       //    user.usuario.tipo === '04') {
       //    return true;
@@ -17,15 +17,20 @@ export class OficinaGuard implements CanActivate {
       //    this.router.navigate(['/login']);
       //    return false;
       // }
-      if (user.usuario.tipo === '03' && Number(user.oficina.idOficina) === Number(route.params.id)) {
+      if (user.usuario.tipo === '03' && Number(user.Oficina.id) === Number(route.params.id)) {
          return true;
       } else if (user.usuario.tipo === '03') {
-         this.router.navigate([`/oficina/${user.oficina.idOficina}`]);
+         this.router.navigate([`/oficina/${user.Oficina.id}`]);
       } else if (user.usuario.tipo === '04') {
          return true;
       } else {
          this.router.navigate(['/login']);
          return false;
       }
+      // console.log(Number(user));
+      // console.log(Number(route.params.id));
+      // console.log(user.usuario.tipo === '03' && Number(user.Oficina.id) === Number(route.params.id));
+      // console.log(user.usuario.tipo === '03');
+      // console.log(user.usuario.tipo === '04');
    }
 }

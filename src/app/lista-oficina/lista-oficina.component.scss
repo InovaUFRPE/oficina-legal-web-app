@@ -4,23 +4,8 @@
 .form-full-width {
     width: 100%;
   }
-.nome-oficina{
-    font-family: Lato;
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 39px;
-    text-align: left;
-    color: #47525E;
-}
-.botao-relatorios{
-    left: 3%;
-    bottom: 3%;
-}
-.botao-relatorios .mat-icon{
-    // vertical-align: text-bottom;
-    color: #47525E;
-}
-.titulo-agendamento {
+
+.titulo-lista-oficina {
     color: #003EA5;
     font-family: Lato;
     font-size: 40px;
@@ -39,37 +24,25 @@
     text-align: left;
 }
 
-.endereco {
-    color: #47525E;
-    font-family: Lato;
-}
-
-.filtro-agenda {
+.filtro-lista-oficina {
     width: 265px;
     margin-left: 3%;
 }
 
-.item-agendamento {
+.item-lista {
     margin-bottom: 1%;
     background-color: #FFFFFF;
     border: 1px solid #8492A6;
     border-radius: 5px;
-    min-width: 80vh;
+    min-width: 80vh
 }
-.botao-visualizar-agendamento {
-    text-align: center;
-    width: 25%;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    min-width: 25%;
-}
-.agendamento{
+.listagem{
     color: #767676;
     font-family: Lato;
     font-weight: 700;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 }
-.agendamento-resposta{
+.listagem-resposta{
     color: #003EA5;;
     font-family: Lato;
     font-weight: 700;
@@ -81,5 +54,4 @@
     width: 50%;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    // margin-left: 30%;   
 }

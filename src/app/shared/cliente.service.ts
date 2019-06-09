@@ -12,7 +12,7 @@ import { AppComponent } from '../app.component';
 
 export class ClienteService {
     urlApi: string;
-    headers: HttpHeaders;
+    headers: HttpHeaders = new HttpHeaders();
     token: string;
     constructor(private readonly http: HttpClient, private readonly app: AppComponent) {
         this.urlApi = this.app.urlApi;

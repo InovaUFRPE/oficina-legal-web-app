@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatDividerModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { LocalSaveService } from './shared/local-save.service';
 import {TableBasicExample} from './gestor-oficina/gestor-oficina.component';
@@ -20,7 +20,8 @@ import {TableBasicExample} from './gestor-oficina/gestor-oficina.component';
     SnotifyModule,
     HttpClientModule,
     NgxSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

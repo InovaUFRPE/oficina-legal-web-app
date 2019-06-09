@@ -1,24 +1,25 @@
 <nav class="navbar navbar-expand-sm">
   <div class="container-fluid">
-    <img class='oficina-legal-png' src='../assets/images/Oficina' alt='logo' draggable="false" routerLink="">
+    <img class='oficina-legal-png' src='../assets/images/Oficina' onmousedown="return false" alt='logo' routerLink="">
     <ul class="navbar-nav ml-auto" style="height: 60px;">
       <button class="navbar-items" mat-button routerLink="">Home</button>
       <!-- <button *ngIf="!user" mat-button routerLink="/gestor/00/controlador">Cadastre-se, Gestor</button> -->
       <!-- <button *ngIf="user && user.usuario.tipo === '04'" mat-button routerLink="/oficina/00/controlador">Cadastrar Oficina</button> -->
       <!-- <button *ngIf="!user" mat-button routerLink="/mecanico/00/controlador">Cadastre-se, Mecânico</button> -->
       <!-- <button *ngIf="user && user.usuario.tipo === '04'" mat-button routerLink="/mecanico/00/controlador">Cadastre um Mecânico</button> -->
-      <button class="navbar-items" *ngIf="user && user.usuario.tipo === '04'"  mat-button >Listar Oficinas</button>
+      <button class="navbar-items" *ngIf="user && user.usuario.tipo === '04'"  routerLink="/lista-oficina" mat-button >Listar Oficinas</button>
       <button class="navbar-items" *ngIf="user && user.usuario.tipo === '03'" mat-button routerLink="/oficina/01">Oficina</button>
-      <button class="navbar-items" *ngIf="!user" mat-button routerLink="/gestor/controlador">Relatório de serviços</button>
+      <button class="navbar-items relatorio" *ngIf="user" mat-button routerLink="/gestor/02/controlador">Relatório de serviços</button>
       <!-- <button *ngIf="user && user.usuario.tipo === '03' || user && user.usuario.tipo === '04'" mat-button routerLink="/oficina/controlador">Cadastrar Oficina</button> -->
     </ul>
     <ul class="navbar-nav"> <!--ml-auto-->
-      <button class="navbar-items" *ngIf="user && user.usuario.tipo === '03'" mat-button routerLink="/gestor/01">Minha Conta</button>
+      <button class="navbar-items" *ngIf="user && user.usuario.tipo === '03'" mat-button routerLink="/gestor/02">Minha Conta</button>
       <button class="navbar-items" *ngIf="!user" mat-button routerLink="/login">Entrar</button>
       <button class="navbar-items" *ngIf="user" mat-button (click)="logoff()">Sair</button>
     </ul>
   </div>
 </nav>
+<mat-divider></mat-divider>
 <div class="bg-vs">
   <router-outlet></router-outlet>
 </div>

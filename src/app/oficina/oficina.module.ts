@@ -23,6 +23,7 @@ import { OficinaGuard } from '../guards/oficina.guard';
     MatTooltipModule,
     MatGridListModule,
     MatSelectModule,
+    ReactiveFormsModule
   ],
   declarations: [
     OficinaComponent,

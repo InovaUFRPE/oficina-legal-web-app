@@ -36,7 +36,7 @@ export class GestorAccountComponent implements OnInit {
         },
         error: erro => {
           console.log(erro);
-          this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
       });
       // Para testes
@@ -65,7 +65,7 @@ export class GestorAccountComponent implements OnInit {
       error: erro => {
         console.log(erro);
         this.app.hideLoading();
-        this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
   }

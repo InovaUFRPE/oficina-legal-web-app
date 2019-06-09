@@ -20,3 +20,36 @@
   margin-right: 20px;
   }
 
+  .nome-login{
+    font-family: Lato;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    color: #47525E;
+}
+.titulo-login {
+  color: #003EA5;
+  font-family: Lato;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 50px;
+  width: 799px;
+  text-align: center;
+}
+.subtitulo-login {
+  color: #47525E;
+  font-family: Lato;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 33px;
+  text-align: left;
+}
+
+.botao-logar{
+  text-align: center;
+  width: 12%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  // margin-left: 30%;   
+}

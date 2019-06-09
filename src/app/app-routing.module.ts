@@ -13,6 +13,8 @@ const routes: Routes = [
   { path: 'mecanico/:id', loadChildren: './mecanico-account/mecanico-account.module#MecanicoAccountModule'},
   { path: 'mecanico/:id/controlador', loadChildren: './mecanico-controller/mecanico-controller.module#MecanicoControllerModule'},
   { path: 'oficina/:id', loadChildren: './oficina/oficina.module#OficinaModule'},
+  { path: 'lista-oficina', loadChildren: './lista-oficina/lista-oficina.module#ListaOficinaModule'},
+
 ];
 
 @NgModule({

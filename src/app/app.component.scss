@@ -13,7 +13,6 @@
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
-  pointer-events: none;
 }
 
 .navbar-items {
@@ -25,4 +24,7 @@
   width: 121px;
   text-align: center;
   padding: 0;
+}
+.navbar-items.relatorio{
+  min-width: 200px;
 }

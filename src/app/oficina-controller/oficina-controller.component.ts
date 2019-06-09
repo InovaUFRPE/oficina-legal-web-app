@@ -61,7 +61,7 @@ export class OficinaControllerComponent implements OnInit {
         error: erro => {
           console.log(erro);
           this.app.hideLoading();
-          this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
     });
   }
@@ -85,7 +85,7 @@ export class OficinaControllerComponent implements OnInit {
         error: erro => {
           console.log(erro);
           this.app.hideLoading();
-          this.snotifyService.error(erro.error.message, 'Atenção!', this.app.getConfig());
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
     });
   }
