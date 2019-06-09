@@ -3,22 +3,22 @@
   <div>
       <button mat-icon-button color='black' type="file">
           <mat-icon font-size= 30px aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
-        
         </button>
   </div>
-  <mat-card-content *ngIf="gestor" class="center">
-    <!-----<button type="button" (click)="onUpload">escolha a foto</button> -->
-    <h4>{{gestor.nome}}</h4>
-    <p>CPF: {{gestor.cpf}}</p>
-    <p>{{gestor.usuario.email}}</p>
-    <p>Oficina: {{gestor.Oficina?.razaoSocial}}</p>
+  <!----<mat-card-content *ngIf="gestor" class="center">
+    <button type="button" (click)="onUpload">escolha a foto</button> 
+   
     <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
     <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deletarConta()">Deletar Conta</button>
-  </mat-card-content>
+  </mat-card-content>-->
 </mat-card>
 <div>
 <mat-card class="dados">
     <br><h4>Dados Cadastrais</h4><br>
+    <h4>{{gestor.nome}}</h4>
+    <p>CPF: {{gestor.cpf}}</p>
+    <p>{{gestor.usuario.email}}</p>
+    <p>Oficina: {{gestor.Oficina?.razaoSocial}}</p>
 </mat-card>
 
 <mat-card class="dados">
