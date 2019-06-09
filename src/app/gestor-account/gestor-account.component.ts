@@ -13,14 +13,14 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./gestor-account.component.scss']
 })
 export class GestorAccountComponent implements OnInit {
-  selectedFile: File = null;
+  //selectedFile: File = null;
   gestor: Gestor;
   myProfile = false;
   id: string;
 
   constructor(
     private readonly gestorService: GestorService,
-    private http: HttpClient,
+    //private http: HttpClient,
     private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
     private app: AppComponent, private router: Router,
     private readonly route: ActivatedRoute) { }
