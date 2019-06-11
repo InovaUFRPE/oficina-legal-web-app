@@ -60,7 +60,7 @@ export class LoginService {
         return of(new Gestor ({
             nome: 'Nícolas',
             id: '02',
-            cpf: '5454',
+            cpf: '123.456.789-00',
             usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
             Oficina: new Oficina({id: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
         }));
@@ -68,7 +68,7 @@ export class LoginService {
         // Para simular adm:
         // return of(new Administrador ({
         //     nome: 'Nícolas',
-        //     cpf: '45544',
+        //     cpf: '123.456.789-00',
         //     usuario: new Usuario({id: 2, tipo: '04', login: 'nicolas', email: 'nicolas@gmail.com'})
         // }));
     }

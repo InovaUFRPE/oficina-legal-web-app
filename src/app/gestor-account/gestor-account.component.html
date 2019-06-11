@@ -1,27 +1,55 @@
-<mat-card>
-  <br><h4>Minha conta</h4><br>
-  <div>
-      <button mat-icon-button color='black' type="file">
-          <mat-icon font-size= 30px aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
-        </button>
-  </div>
-  <!----<mat-card-content *ngIf="gestor" class="center">
-    <button type="button" (click)="onUpload">escolha a foto</button> 
-   
-    <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
-    <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deletarConta()">Deletar Conta</button>
-  </mat-card-content>-->
-</mat-card>
-<div>
-<mat-card class="dados">
-    <br><h4>Dados Cadastrais</h4><br>
-    <h4>{{gestor.nome}}</h4>
-    <p>CPF: {{gestor.cpf}}</p>
-    <p>{{gestor.usuario.email}}</p>
-    <p>Oficina: {{gestor.Oficina?.razaoSocial}}</p>
-</mat-card>
-
-<mat-card class="dados">
-    <br><h4>Avaliações</h4><br>
-</mat-card>
-</div>
+<mat-grid-list
+  cols=12
+  rowHeight=100
+  style="height: 100%"
+  *ngIf="gestor"
+>
+  <mat-grid-tile
+    colspan=12
+    rowspan=2
+    class='gestor-header'
+  >
+  <img class='user-img' src="../../assets/images/user-default" >
+  </mat-grid-tile>
+  <mat-grid-tile
+    colspan=12
+    rowspan=2
+  >
+    <h3 class='titulos'>{{gestor.nome}}</h3>
+  </mat-grid-tile>
+  <mat-grid-tile
+    colspan=12
+    rowspan=1
+  >
+    <h3 class='titulos'>
+      Dados Cadastrais
+    </h3>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=3 rowspan=1></mat-grid-tile>
+  <mat-grid-tile
+    colspan=2
+    rowspan=1
+    style="text-align: center"
+  >
+    <p class="account">CPF: <span class="account-resposta">{{gestor.cpf}}</span></p>
+  </mat-grid-tile>
+  <mat-grid-tile
+    colspan=2
+    rowspan=1
+    style="text-align: center"
+  >
+    <p class="account">E-mail: <span class="account-resposta">{{gestor.usuario.email}}</span></p>
+  </mat-grid-tile>
+  <mat-grid-tile
+    colspan=2
+    rowspan=1
+    style="text-align: center"
+  >
+    <p class="account">Oficina: <span class="account-resposta">{{gestor.Oficina?.razaoSocial}}</span></p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=3 rowspan=1></mat-grid-tile>
+  <!-- <button type="button" (click)="onUpload">escolha a foto</button> 
+  
+  <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
+  <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deletarConta()">Deletar Conta</button> -->
+</mat-grid-list>
