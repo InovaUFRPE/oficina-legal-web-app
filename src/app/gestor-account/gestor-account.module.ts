@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule, MatListModule, MatCardModule, MatButtonModule, MatInputModule,
-  MatTooltipModule, MatSelectModule } from '@angular/material';
+  MatTooltipModule, MatGridListModule } from '@angular/material';
 import { GestorAccountComponent } from './gestor-account.component';
 import { AppComponent } from 'src/app/app.component';
 import { GestorService } from 'src/app/shared/gestor.service';
@@ -22,6 +22,7 @@ import { GestorGuard } from '../guards/gestor.guard';
     MatButtonModule,
     MatTooltipModule,
     HttpClientModule,
+    MatGridListModule,
   ],
   declarations: [
     GestorAccountComponent,
