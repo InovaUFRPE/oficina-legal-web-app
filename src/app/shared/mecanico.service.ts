@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Mecanico } from './models/mecanico.model';
 import { AppComponent } from '../app.component';
+import { Usuario } from './models/usuario.model';
 
 
 
@@ -40,14 +41,16 @@ export class MecanicoService {
     }
 
     getMecanicoById(id: string): Observable<Mecanico> {
-        return this.http.get<any>(this.urlApi + 'mecanicos/' + id, {
-            headers: this.headers
-        }).pipe(
-                map(response => {
-                    return response.data as Mecanico;
-                },
-                    error => this.handleError(error))
-            );
+        // return this.http.get<any>(this.urlApi + 'mecanicos/' + id, {
+        //     headers: this.headers
+        // }).pipe(
+        //         map(response => {
+        //             return response.data as Mecanico;
+        //         },
+        //             error => this.handleError(error))
+        //     );
+        return of(new Mecanico({cpf: '151.456.448-70', id: '02', nome: 'Jonathan',
+        usuario: new Usuario({id: 2, tipo: '03', login: 'jonathan', email: 'jonathan@gmail.com'}), }));
     }
 
     createMecanico(mecanico: Mecanico): Observable<any> {
