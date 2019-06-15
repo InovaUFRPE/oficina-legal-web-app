@@ -33,37 +33,37 @@ export class LoginService {
     }
 
     loginUsuario(user: Usuario): Observable<RetornoLogin> {
-        return this.http.post<any>(urlApi + 'usuario/login', user)
-            .pipe(
-                map(response => {
-                    return response as RetornoLogin;
-                },
-                    error => this.handleError(error))
-        );
+        // return this.http.post<any>(urlApi + 'usuario/login', user)
+        //     .pipe(
+        //         map(response => {
+        //             return response as RetornoLogin;
+        //         },
+        //             error => this.handleError(error))
+        // );
         // Para testes sem back:
-        // return of({
-        //     token: 'string',
-        //     user: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'})
-        // } as RetornoLogin);
+        return of({
+            token: 'string',
+            user: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'})
+        } as RetornoLogin);
     }
 
     getUsuarioCompleto(idUser: number): Observable<any> {
-        return this.http.get<any>(urlApi + 'usuario/admin/' + idUser)
-            .pipe(
-                map(response => {
-                    return response as any;
-                },
-                    error => this.handleError(error))
-            );
+        // return this.http.get<any>(urlApi + 'usuario/admin/' + idUser)
+        //     .pipe(
+        //         map(response => {
+        //             return response as any;
+        //         },
+        //             error => this.handleError(error))
+        //     );
 
         // Para simular gestor:
-        // return of(new Gestor ({
-        //     nome: 'Nícolas',
-        //     id: '02',
-        //     cpf: '5454',
-        //     usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
-        //     Oficina: new Oficina({id: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
-        // }));
+        return of(new Gestor ({
+            nome: 'Nícolas',
+            id: '02',
+            cpf: '5454',
+            usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
+            Oficina: new Oficina({id: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
+        }));
 
         // Para simular adm:
         // return of(new Administrador ({
