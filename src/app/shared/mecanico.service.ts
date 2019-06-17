@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Mecanico } from './models/mecanico.model';
 import { AppComponent } from '../app.component';
 import { Usuario } from './models/usuario.model';
+import { Oficina } from './models/oficina.model';
 
 
 
@@ -49,7 +50,46 @@ export class MecanicoService {
     //   },
     //     error => this.handleError(error))
     // );
-    return of([]);
+    return of([new Mecanico({
+      id: '1',
+      curriculo: 'string',
+      cpf: '99999999',
+      nome: 'Hugo',
+      usuario: new Usuario({
+        id: 1,
+        login: 'hugo',
+        senha: '123456',
+        email: 'hugosteixeira@hotmail.com ',
+        tipo: '04',
+      }),
+      oficina: new Oficina({
+        id: '1',
+        razaoSocial: 'jsahd',
+        endereco: 'askdjhgsa',
+        bairro: 'lksjhd',
+        complemento: 'kjshdf'
+      })
+    }),
+    new Mecanico({
+      id: '2',
+      curriculo: 'string',
+      cpf: '99999999',
+      nome: 'Hugo',
+      usuario: new Usuario({
+        id: 2,
+        login: 'hugo',
+        senha: '123456',
+        email: 'hugosteixeira@hotmail.com ',
+        tipo: '04',
+      }),
+      oficina: new Oficina({
+        id: '2',
+        razaoSocial: 'jsahd',
+        endereco: 'askdjhgsa',
+        bairro: 'lksjhd',
+        complemento: 'kjshdf'
+      })
+    })]);
   }
 
     getMecanicoById(id: string): Observable<Mecanico> {

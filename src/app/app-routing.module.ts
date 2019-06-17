@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'mecanico/:id/controlador', loadChildren: './mecanico-controller/mecanico-controller.module#MecanicoControllerModule' },
   { path: 'oficina/:id', loadChildren: './oficina/oficina.module#OficinaModule' },
   { path: 'lista-oficina', loadChildren: './lista-oficina/lista-oficina.module#ListaOficinaModule' },
-  { path: 'oficina/:id/funcionario', loadChildren: './lista-funcionario/lista-funcionario.module#ListaFuncionarioModule' },
+  { path: 'oficina/:id/funcionarios', loadChildren: './lista-funcionario/lista-funcionario.module#ListaFuncionarioModule' },
 
 
 ];

@@ -23,46 +23,7 @@ export class ListaFuncionarioComponent implements OnInit {
   admin: Administrador;
   tiposList: Tipos[] = [];
   control = new FormControl('');
-  mecanicos = [new Mecanico({
-    id: '1',
-    curriculo: 'string',
-    cpf: '99999999',
-    nome: 'Hugo',
-    usuario: new Usuario({
-      id: 1,
-      login: 'hugo',
-      senha: '123456',
-      email: 'hugosteixeira@hotmail.com ',
-      tipo: "04",
-    }),
-    oficina: new Oficina({
-      id: '1',
-      razaoSocial: 'jsahd',
-      endereco: 'askdjhgsa',
-      bairro: 'lksjhd',
-      complemento: 'kjshdf'
-    })
-  }),
-  new Mecanico({
-    id: '2',
-    curriculo: 'string',
-    cpf: '99999999',
-    nome: 'Hugo',
-    usuario: new Usuario({
-      id: 2,
-      login: 'hugo',
-      senha: '123456',
-      email: 'hugosteixeira@hotmail.com ',
-      tipo: "04",
-    }),
-    oficina: new Oficina({
-      id: '2',
-      razaoSocial: 'jsahd',
-      endereco: 'askdjhgsa',
-      bairro: 'lksjhd',
-      complemento: 'kjshdf'
-    })
-  })]
+  mecanicos: Mecanico[];
 
   constructor(
     private readonly mecanicoService: MecanicoService,
@@ -75,7 +36,7 @@ export class ListaFuncionarioComponent implements OnInit {
     this.tiposList.push({ valor: 'endereco', nome: 'Endereço' }, { valor: 'razao', nome: 'Nome da Oficina' });
     this.mecanicoService.getMecanicosByOficina(this.route.snapshot.params.id).subscribe({
       next: resp => {
-        this.listaFuncionarios = this.mecanicos;
+        this.listaFuncionarios = resp;
       },
       error: erro => {
         console.log(erro);
@@ -83,7 +44,7 @@ export class ListaFuncionarioComponent implements OnInit {
       }
     });
   }
-  verOficina(oficina: Oficina) {
-    this.router.navigate([`/oficina/${oficina.id}`]);
+  verFuncionario(funcionario: Mecanico) {
+    this.router.navigate([`/mecanico/${funcionario.id}`]);
   }
 }
