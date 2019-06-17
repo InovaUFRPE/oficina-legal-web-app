@@ -1,0 +1,28 @@
+<mat-grid-list cols=12 rowHeight=100>
+  <mat-grid-tile colspan=12 rowspan=1>
+    <h3 class='titulo-lista-oficina'>Funcionarios cadastradas</h3>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=8 rowspan=1>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+</mat-grid-list>
+
+<mat-action-list mat-subheader role="list" *ngIf="listaFuncionarios" style="margin-left:20%; padding-bottom: 8px;">
+  <mat-list-item *ngFor="let funcionario of listaFuncionarios; let lastItem = last;" role="listitem" class="item-lista"
+    style="height: 100%; width: 70%; padding: 2%">
+    <mat-icon mat-list-icon style="margin-left: -4%">location_city</mat-icon>
+    <p mat-line class="listagem">Nome: <span class="listagem-resposta">{{funcionario.nome}}</span></p>
+    <p mat-line class="listagem">CPF: <span class="listagem-resposta">{{funcionario.cpf}}</span></p>
+  </mat-list-item>
+
+</mat-action-list>
+
+<mat-grid-list cols=12 rowHeight=66 *ngIf="listaFuncionarios">
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1>
+    <button mat-flat-button color=primary class='botao-voltar' routerLink="">
+      Voltar
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+</mat-grid-list>

@@ -15,61 +15,61 @@ import { Oficina } from './models/oficina.model';
 const urlApi = 'http://localhost:6001/api/';
 
 export interface RetornoLogin {
-    token: string;
-    user: Usuario;
+  token: string;
+  user: Usuario;
 }
 @Injectable()
 
 export class LoginService {
 
-    constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
-    private handleError(error: any): Observable<any> {
-        if (error.status === 0) {
-            return Observable.throw('Erro de conexão.');
-        }
-
-        return Observable.throw((error.json().Message ? error.json().Message : error.json().error_description));
+  private handleError(error: any): Observable<any> {
+    if (error.status === 0) {
+      return Observable.throw('Erro de conexão.');
     }
 
-    loginUsuario(user: Usuario): Observable<RetornoLogin> {
-        // return this.http.post<any>(urlApi + 'usuario/login', user)
-        //     .pipe(
-        //         map(response => {
-        //             return response as RetornoLogin;
-        //         },
-        //             error => this.handleError(error))
-        // );
-        // Para testes sem back:
-        return of({
-            token: 'string',
-            user: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'})
-        } as RetornoLogin);
-    }
+    return Observable.throw((error.json().Message ? error.json().Message : error.json().error_description));
+  }
 
-    getUsuarioCompleto(idUser: number): Observable<any> {
-        // return this.http.get<any>(urlApi + 'usuario/admin/' + idUser)
-        //     .pipe(
-        //         map(response => {
-        //             return response as any;
-        //         },
-        //             error => this.handleError(error))
-        //     );
+  loginUsuario(user: Usuario): Observable<RetornoLogin> {
+    // return this.http.post<any>(urlApi + 'usuario/login', user)
+    //     .pipe(
+    //         map(response => {
+    //             return response as RetornoLogin;
+    //         },
+    //             error => this.handleError(error))
+    // );
+    // Para testes sem back:
+    return of({
+      token: 'string',
+      user: new Usuario({ id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com' })
+    } as RetornoLogin);
+  }
 
-        // Para simular gestor:
-        return of(new Gestor ({
-            nome: 'Nícolas',
-            id: '02',
-            cpf: '5454',
-            usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
-            Oficina: new Oficina({id: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
-        }));
+  getUsuarioCompleto(idUser: number): Observable<any> {
+    // return this.http.get<any>(urlApi + 'usuario/admin/' + idUser)
+    //     .pipe(
+    //         map(response => {
+    //             return response as any;
+    //         },
+    //             error => this.handleError(error))
+    //     );
 
-        // Para simular adm:
-        // return of(new Administrador ({
-        //     nome: 'Nícolas',
-        //     cpf: '45544',
-        //     usuario: new Usuario({id: 2, tipo: '04', login: 'nicolas', email: 'nicolas@gmail.com'})
-        // }));
-    }
+    // Para simular gestor:
+    // return of(new Gestor ({
+    //     nome: 'Nícolas',
+    //     id: '02',
+    //     cpf: '5454',
+    //     usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
+    //     Oficina: new Oficina({id: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
+    // }));
+
+    // Para simular adm:
+    return of(new Administrador({
+      nome: 'Nícolas',
+      cpf: '45544',
+      usuario: new Usuario({ id: 2, tipo: '04', login: 'nicolas', email: 'nicolas@gmail.com' })
+    }));
+  }
 }
