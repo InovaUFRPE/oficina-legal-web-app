@@ -39,13 +39,6 @@ export class MecanicoAccountComponent implements OnInit {
           this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
       });
-      // Para testes
-      // this.mecanico = new Mecanico ({
-      //   nome: 'Nícolas',
-      //   id: '02',
-      //   cpf: '11515515',
-      //   usuario: this.localSaveService.getUsuarioLogado().usuario
-      // });
     }
   }
   editarConta() {
