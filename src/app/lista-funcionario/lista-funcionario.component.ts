@@ -64,4 +64,7 @@ export class ListaFuncionarioComponent implements OnInit {
   verFuncionario(funcionario: Mecanico) {
     this.router.navigate([`/mecanico/${funcionario.id}`]);
   }
+  voltar(funcionario: Mecanico) {
+    this.router.navigate([`/oficina/${this.oficina.id}`]);
+  }
 }
