@@ -67,13 +67,14 @@ export class OficinaComponent implements OnInit {
     });
     this.control.valueChanges
     .subscribe(value => {
-      this.oficinaService.getAgendamentosById(this.id, {q: value.valor} as GenericQueryParams).subscribe({
+      this.oficinaService.getAgendamentosById(this.id, value ? {q: value.valor} as GenericQueryParams : null).subscribe({
         next: resp => {
           this.agendamentos = resp;
         },
         error: erro => {
           console.log(erro);
-          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
+          this.agendamentos = [];
+          this.snotifyService.error(erro.alert, 'Atenção!', this.app.getConfig());
         }
       });
     });
