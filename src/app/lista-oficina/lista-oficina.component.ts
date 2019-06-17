@@ -30,7 +30,7 @@ export class ListaOficinaComponent implements OnInit {
 
   ngOnInit() {
     this.admin = this.localSaveService.getUsuarioLogado() as Administrador;
-    this.tiposList.push({valor: 'endereco', nome: 'Endereço'}, {valor: 'razao', nome: 'Nome da Oficina'});
+    this.tiposList.push({valor: 'bairro', nome: 'Bairro'}, {valor: 'razao', nome: 'Nome da Oficina'});
     this.oficinaService.getListaOficina().subscribe({
       next: resp => {
         this.listaOficina = resp;
@@ -42,12 +42,13 @@ export class ListaOficinaComponent implements OnInit {
     });
     this.control.valueChanges
       .subscribe(value => {
-        this.oficinaService.getListaOficina({q: value.valor} as GenericQueryParams).subscribe({
+        this.oficinaService.getListaOficina(value ? {q: value.valor} as GenericQueryParams : null).subscribe({
           next: resp => {
             this.listaOficina = resp;
           },
           error: erro => {
             console.log(erro);
+            this.listaOficina = [];
             this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
           }
         });

@@ -1,6 +1,55 @@
 .mat-card {
     margin: 20px 20px 0px 20px;
+    background-color: cornflowerblue;
+    
 }
 .form-full-width {
     width: 100%;
   }
+.mat-icon{
+  margin: -30px 0px 0px 500px;
+  font-size: 150px;
+  //align-self: center;
+  align-content: center;
+}
+
+.dados{
+  width: 50%;
+  background-color: white;
+}
+
+.avaliacoes{
+  width: 50%;
+  background-color: white;
+}
+
+.gestor-header{
+  background-color: #08468B;
+  overflow: visible;
+}
+.user-img{
+  position: relative;
+  height: 80%;
+  top: 35%;
+}
+.titulos {
+  color: #003EA5;
+  font-family: Lato;
+  font-size: 250%;
+  font-weight: 700;
+  text-align: center;
+}
+.account{
+  color: #767676;
+  font-family: Lato;
+  font-weight: 700;
+  margin-bottom: 1%;
+  width: 100%;
+}
+.account-resposta{
+  color: #003EA5;;
+  font-family: Lato;
+  font-weight: 700;
+  margin-left: 1%;
+  width: 100%;
+}

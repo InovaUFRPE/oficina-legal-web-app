@@ -35,7 +35,7 @@ export class OficinaService {
 
         // return this.http.get<Oficina[]>(this.urlApi + 'oficina/findAll', {
         //     headers: this.headers,
-        //     params: _parms && _parms.q ? new HttpParams().set('orderby', _parms.q) : null
+        //     params: _parms && _parms.q ? new HttpParams().set('orderBy', _parms.q) : null
         // }).pipe(
         //     map(response => {
         //         return response as Oficina[];
@@ -67,7 +67,7 @@ export class OficinaService {
     getAgendamentosById(oficinaId: string, _parms?: GenericQueryParams): Observable<Agendamento[]> {
         // return this.http.get<any>(this.urlApi + 'agendamento/oficina/' + oficinaId, {
         //     headers: this.headers,
-        //     params: _parms && _parms.q ? new HttpParams().set('orderby', _parms.q) : null
+        //     params: _parms && _parms.q ? new HttpParams().set('orderBy', _parms.q) : null
         // }).pipe(
         //         map(response => {
         //             return response as Agendamento[];

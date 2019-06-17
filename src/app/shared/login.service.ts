@@ -12,7 +12,7 @@ import { Gestor } from './models/gestor.model';
 import { Administrador } from './models/administrador.model';
 import { Oficina } from './models/oficina.model';
 
-const urlApi = 'http://localhost:6001/api/';
+const urlApi = 'http://localhost:4000/api/';
 
 export interface RetornoLogin {
     token: string;
@@ -68,7 +68,7 @@ export class LoginService {
         // Para simular adm:
         // return of(new Administrador ({
         //     nome: 'Nícolas',
-        //     cpf: '45544',
+        //     cpf: '123.456.789-00',
         //     usuario: new Usuario({id: 2, tipo: '04', login: 'nicolas', email: 'nicolas@gmail.com'})
         // }));
     }
