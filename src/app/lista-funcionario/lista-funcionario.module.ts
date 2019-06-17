@@ -11,6 +11,7 @@ import { ListaFuncionarioRoutingModule } from './lista-funcionario.routing';
 import { LocalSaveService } from '../shared/local-save.service';
 import { ListaFuncionarioGuard } from '../guards/lista-funcionario.guard';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OficinaService } from '../shared/oficina.service';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     MecanicoService,
+    OficinaService,
     AppComponent,
     LocalSaveService,
     ListaFuncionarioGuard
