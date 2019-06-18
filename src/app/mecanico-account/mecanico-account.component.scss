@@ -31,9 +31,19 @@
     width: 100%;
   }
   .account-resposta{
-    color: #003EA5;;
+    color: #003EA5;
     font-family: Lato;
     font-weight: 700;
     margin-left: 1%;
     width: 100%;
+  }
+
+  .back-button{
+    color: #003EA5;
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    width: 10%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }

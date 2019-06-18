@@ -57,4 +57,8 @@ export class MecanicoAccountComponent implements OnInit {
       }
     });
   }
+  voltar(){
+    console.log(this.mecanico.oficina.id)
+    this.router.navigate([`oficina/${this.mecanico.oficina.id}/funcionarios/`]);
+  }
 }
