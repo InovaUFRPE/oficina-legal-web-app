@@ -13,14 +13,14 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./gestor-account.component.scss']
 })
 export class GestorAccountComponent implements OnInit {
-  //selectedFile: File = null;
+  // selectedFile: File = null;
   gestor: Gestor;
   myProfile = false;
   id: string;
 
   constructor(
     private readonly gestorService: GestorService,
-    //private http: HttpClient,
+    // private http: HttpClient,
     private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
     private app: AppComponent, private router: Router,
     private readonly route: ActivatedRoute) { }
@@ -54,15 +54,15 @@ export class GestorAccountComponent implements OnInit {
   editarConta() {
     this.router.navigate([`/gestor/${this.id}/controlador`]);
   }
-  //onFileSelected(event){
-    //this.selectedFile = <File>event.target.files[0];
-    //console.log(event);
-  //}
-  //onUpload(){
-    //const fd =new FormData();
-    //fd.append('image', this.selectedFile, this.selectedFile.name);
-    //this.http.post('',fd).subscribe(res => console.log(res));
-  //}
+  // onFileSelected(event){
+    // this.selectedFile = <File>event.target.files[0];
+    // console.log(event);
+  // }
+  // onUpload(){
+    // const fd =new FormData();
+    // fd.append('image', this.selectedFile, this.selectedFile.name);
+    // this.http.post('',fd).subscribe(res => console.log(res));
+  // }
 
   deletarConta() {
     this.app.showLoading();

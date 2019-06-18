@@ -23,7 +23,6 @@ export class ClienteAccountComponent implements OnInit {
     private readonly route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
     if (this.localSaveService.getUsuarioLogado().id === this.id) {
       this.cliente = this.localSaveService.getUsuarioLogado() as Cliente;

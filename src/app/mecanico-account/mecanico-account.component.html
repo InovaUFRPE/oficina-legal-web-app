@@ -1,36 +1,31 @@
-<!-- <mat-card>
-  <br><h4>Mecânico</h4><br>
-  <mat-card-content *ngIf="mecanico" class="center">
-    <h4>{{mecanico.nome}}</h4>
-    <p>CPF: {{mecanico.cpf}}</p>
-    <p>{{mecanico.usuario.email}}</p>
-    <p>Oficina: {{mecanico.oficina?.razaoSocial}}</p>
-    <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
-    <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deleteCliente()">Deletar Conta</button>
-  </mat-card-content>
-</mat-card> -->
 <mat-grid-list
   cols=12
-  rowHeight=100
+  rowHeight=25
   style="height: 100%"
   *ngIf="mecanico"
 >
   <mat-grid-tile
     colspan=12
-    rowspan=2
+    rowspan=8
     class='gestor-header'
   >
-  <img class='user-img' src="../../assets/images/user-default" >
+    <button mat-raised-button 
+      class='back-button'
+      (click)="voltar()"
+    >
+      Voltar
+    </button>
+    <img class='user-img' src="../../assets/images/user-default" >
   </mat-grid-tile>
   <mat-grid-tile
     colspan=12
-    rowspan=2
+    rowspan=5
   >
-  <h3 class='titulos'>{{mecanico.nome}}<span style="font-size: 40%; margin-left: 2%;">(Mecânico)</span></h3>
+  <h3 class='titulos' style="align-self: end">{{mecanico.nome}}<span style="font-size: 40%; margin-left: 2%;">(Mecânico)</span></h3>
   </mat-grid-tile>
   <mat-grid-tile
     colspan=12
-    rowspan=1
+    rowspan=5
   >
     <h3 class='titulos'>
       Dados Cadastrais
@@ -39,24 +34,24 @@
   <mat-grid-tile colspan=3 rowspan=1></mat-grid-tile>
   <mat-grid-tile
     colspan=2
-    rowspan=1
+    rowspan=3
     style="text-align: center"
   >
     <p class="account">CPF: <span class="account-resposta">{{mecanico.cpf}}</span></p>
   </mat-grid-tile>
   <mat-grid-tile
     colspan=2
-    rowspan=1
+    rowspan=3
     style="text-align: center"
   >
     <p class="account">E-mail: <span class="account-resposta">{{mecanico.usuario.email}}</span></p>
   </mat-grid-tile>
   <mat-grid-tile
     colspan=2
-    rowspan=1
+    rowspan=3
     style="text-align: center"
   >
-    <p class="account">Oficina: <span class="account-resposta">{{mecanico.Oficina?.razaoSocial}}</span></p>
+    <p class="account">Oficina: <span class="account-resposta">{{mecanico.oficina?.razaoSocial}}</span></p>
   </mat-grid-tile>
   <mat-grid-tile colspan=3 rowspan=1></mat-grid-tile>
   <!-- <button type="button" (click)="onUpload">escolha a foto</button>  -->

@@ -8,7 +8,6 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MatButtonModule, MatDividerModule, MatGridListModule, MatGridTile, MatGridList } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { LocalSaveService } from './shared/local-save.service';
-import {TableBasicExample} from './gestor-oficina/gestor-oficina.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,7 @@ import {TableBasicExample} from './gestor-oficina/gestor-oficina.component';
     MatGridListModule,
   ],
   providers: [
-    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     SnotifyService,
     LocalSaveService
   ],
