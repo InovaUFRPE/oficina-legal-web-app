@@ -1,14 +1,15 @@
-import { Usuario } from './usuario.model';
+import { Cliente } from './cliente.model';
 import { Veiculo } from './veiculo.model';
+import { Laudo } from './laudo.model';
 
 
 export class Relatorio {
-  descricaoServico: string;
-  valor: number;
-  veiculo: Veiculo;
-  dataInicio: string;
-  dataFim: string;
-  mes: string;
+  observacao: string;
+  situacao: string;
+  horaFim: Date;
+  horaInicio: Date;
+  Veiculo: Veiculo;
+  Laudo: Laudo;
 
   constructor(client: Partial<Relatorio>) {
     Object.assign(this, client);

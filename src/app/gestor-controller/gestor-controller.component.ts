@@ -30,7 +30,7 @@ export class GestorControllerComponent implements OnInit {
   gestor: Gestor;
   relatorioForm: FormGroup;
   edit = false;
-  relatorios: Relatorio[];
+  relatorios: any[];
   printar = function() {
 
     let mes = this.relatorioForm.get('tipoUsuario').value;
@@ -40,28 +40,22 @@ export class GestorControllerComponent implements OnInit {
     }
 
 
-    this.gestorService.getRelatorioFinanceiro('2', mes).subscribe({
-      next: resp => {
-        this.relatorios = resp;
-      },
-      error: erro => {
-        console.log(erro);
-        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
-      }
-    });
+
 
 
   };
 
   ngOnInit() {
     this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
+    console.log(this.localSaveService.getUsuarioLogado());
     this.relatorioForm = this.formBuilder.group({
         tipoUsuario: ['', [Validators.required, Validators.minLength(100)]]
 
 
     });
-    this.gestorService.getRelatorioFinanceiro('2', 'null').subscribe({
+    this.gestorService.getRelatorioFinanceiro().subscribe({
       next: resp => {
+        console.log(resp);
         this.relatorios = resp;
       },
       error: erro => {
@@ -72,19 +66,7 @@ export class GestorControllerComponent implements OnInit {
 
 
 
-    this.oficinaService.getListaOficina()
-      .subscribe({
-      next: resp => {
-        this.oficinasList = resp;
-        const toSelect = this.oficinasList
-          .find(c => this.gestor && this.gestor.Oficina ? c.id === this.gestor.Oficina.id : null);
-        this.relatorioForm.get('oficina').setValue(toSelect);
-      },
-      error: erro => {
-        console.log(erro);
-        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
-      }
-    });
+   
 
   }
 

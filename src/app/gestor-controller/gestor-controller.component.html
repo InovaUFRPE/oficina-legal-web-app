@@ -27,18 +27,22 @@
             <tr>
               <th scope="col" class="table-primary">Cliente</th>
               <th scope="col" class="table-primary">Descrição do Serviço</th>
+              <th scope="col" class="table-primary">Obversavação do Serviço</th>
+              <th scope="col" class="table-primary">Situação</th>
               <th scope="col" class="table-primary">Modelo</th>
+              <th scope="col" class="table-primary">Ano do veículo</th>
               <th scope="col" class="table-primary">Placa</th>
-              <th scope="col" class="table-primary">Valor</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let relatorio of relatorios" >
               <th scope="row">{{relatorio.Veiculo.Cliente.nome}}</th>
-              <td>{{relatorio.descricaoServico}}</td>
-              <td>{{relatorio.veiculo.modelo}}</td>
-              <td>{{relatorio.veiculo.placa}}</td>
-              <td><strong>R$</strong> {{relatorio.valor}}</td>
+              <td>{{relatorio.Laudo.descricao}}</td>
+              <td>{{relatorio.observacao}}</td>
+              <td>{{relatorio.situacao}}</td>
+              <td>{{relatorio.Veiculo.modelo}}</td>
+              <td>{{relatorio.Veiculo.ano}}</td>
+              <td>{{relatorio.Veiculo.placa}}</td>
             </tr>
           </tbody>
         </table>
