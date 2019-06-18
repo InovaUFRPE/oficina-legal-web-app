@@ -1,10 +1,35 @@
+<mat-grid-list cols=12 rowHeight=75 *ngIf="listaFuncionarios">
+  <mat-grid-tile colspan=3 rowspan=1>
+    <h4 class="nome-oficina">{{oficina.razaoSocial}}</h4>
+    <button mat-icon-button matTooltip="Relatórios" class="botao-relatorios">
+      <mat-icon mat-list-icon>insert_chart_outlined</mat-icon>
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=6 rowspan=1></mat-grid-tile>
+  <mat-grid-tile colspan=3 rowspan=1>
+    <mat-grid-list cols=6 rowHeight=25 style="width: 100%">
+      <mat-grid-tile colspan=6 rowspan=1>
+        <p class="endereco" style="margin: 0;">
+          Bairro: {{oficina.bairro}}
+        </p>
+      </mat-grid-tile>
+      <mat-grid-tile colspan=6 rowspan=1>
+        <p class='endereco' style="margin: 0;">
+          Endereço: {{oficina.endereco}}
+        </p>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-divider></mat-divider>
+
 <mat-grid-list cols=12 rowHeight=100>
   <mat-grid-tile colspan=12 rowspan=1>
-    <h3 class='titulo-lista-oficina'>Funcionários cadastrados</h3>
+    <h3 class='titulo-lista-oficina'>Funcionários</h3>
   </mat-grid-tile>
-  <mat-grid-tile colspan=8 rowspan=1>
+  <!-- <mat-grid-tile colspan=8 rowspan=1>
   </mat-grid-tile>
-  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile> -->
 </mat-grid-list>
 
 <mat-action-list mat-subheader role="list" *ngIf="listaFuncionarios" style="margin-left:20%; padding-bottom: 8px;">
