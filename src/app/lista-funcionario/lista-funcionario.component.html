@@ -35,7 +35,7 @@
 <mat-action-list mat-subheader role="list" *ngIf="listaFuncionarios" style="margin-left:20%; padding-bottom: 8px;">
   <mat-list-item *ngFor="let funcionario of listaFuncionarios; let lastItem = last;" role="listitem" class="item-lista"
     style="height: 100%; width: 70%; padding: 2%" (click)="verFuncionario(funcionario)">
-    <mat-icon mat-list-icon style="margin-left: -4%">location_city</mat-icon>
+    <mat-icon mat-list-icon style="margin: -4% 4% 0 -4%; font-size: 300%">account_circle</mat-icon>
     <p mat-line class="listagem">Nome: <span class="listagem-resposta">{{funcionario.nome}}</span></p>
     <p mat-line class="listagem">CPF: <span class="listagem-resposta">{{funcionario.cpf}}</span></p>
   </mat-list-item>
