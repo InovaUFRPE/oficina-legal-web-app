@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule, MatListModule, MatCardModule, MatButtonModule, MatInputModule,
-  MatTooltipModule, MatSelectModule } from '@angular/material';
+  MatTooltipModule, MatSelectModule, MatGridListModule } from '@angular/material';
 import { RelatorioComponent } from './relatorio.component';
 import { AppComponent } from 'src/app/app.component';
 import { GestorService } from 'src/app/shared/gestor.service';
@@ -24,7 +24,8 @@ import { RelatorioGuard } from '../guards/relatorio.guard';
     MatTooltipModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule,
   ],
   declarations: [
     RelatorioComponent,

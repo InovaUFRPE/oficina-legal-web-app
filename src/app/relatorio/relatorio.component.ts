@@ -89,5 +89,9 @@ export class RelatorioComponent implements OnInit {
     this.relatorioForm.get('gestorCpf').reset();
     this.relatorioForm.get('oficina').reset();
   }
+  
+  voltar() {
+    this.router.navigate([`oficina/${this.oficina.id}/`]);
+  }
 
 }

@@ -1,8 +1,10 @@
 <mat-grid-list cols=12 rowHeight=75 *ngIf="oficina">
   <mat-grid-tile colspan=3 rowspan=1>
     <h4 class="nome-oficina">{{oficina.razaoSocial}}</h4>
-    <button mat-icon-button matTooltip="Relatórios" class="botao-relatorios">
+    <button mat-icon-button matTooltip="Relatórios" class="botao-relatorios" routerLink="../relatorios">
       <mat-icon mat-list-icon>insert_chart_outlined</mat-icon>
+    </button>
+    <button mat-icon-button class="botao-relatorios" routerLink="./funcionarios" disabled>
     </button>
   </mat-grid-tile>
   <mat-grid-tile colspan=6 rowspan=1></mat-grid-tile>
