@@ -40,7 +40,7 @@ export class LoginService {
                 },
                     error => this.handleError(error))
         );
-        //Para testes sem back:
+        // Para testes sem back:
         // return of({
         //     token: 'string',
         //     user: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'})
