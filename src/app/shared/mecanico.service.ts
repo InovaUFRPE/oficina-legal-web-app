@@ -101,7 +101,13 @@ export class MecanicoService {
         //         },
         //             error => this.handleError(error))
         //     );
-        return of(new Mecanico({cpf: '151.456.448-70', id: '02', nome: 'Jonathan',
+        return of(new Mecanico({cpf: '151.456.448-70', id: '02', nome: 'Jonathan', oficina: new Oficina({
+          id: '2',
+          razaoSocial: 'jsahd',
+          endereco: 'askdjhgsa',
+          bairro: 'lksjhd',
+          complemento: 'kjshdf'
+        }),
         usuario: new Usuario({id: 2, tipo: '03', login: 'jonathan', email: 'jonathan@gmail.com'}), }));
     }
 

@@ -25,21 +25,16 @@ export class MecanicoAccountComponent implements OnInit {
   ngOnInit() {
     console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
+    this.mecanicoService.getMecanicoById(this.id).subscribe({
+      next: resp => {
+      this.mecanico = resp;
+      },
+      error: erro => {
+        console.log(erro);
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
+      }
+    });
 
-    if (this.localSaveService.getUsuarioLogado().id === this.id) {
-      this.mecanico = this.localSaveService.getUsuarioLogado() as Mecanico;
-      this.myProfile = true;
-    } else {
-      this.mecanicoService.getMecanicoById(this.id).subscribe({
-        next: resp => {
-        this.mecanico = resp;
-        },
-        error: erro => {
-          console.log(erro);
-          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
-        }
-      });
-    }
   }
   editarConta() {
     this.router.navigate([`/mecanico/${this.id}/controlador`]);
