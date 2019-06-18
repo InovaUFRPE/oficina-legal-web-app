@@ -1,4 +1,4 @@
-<mat-grid-list cols=12 rowHeight=75 *ngIf="listaFuncionarios">
+<mat-grid-list cols=12 rowHeight=75 *ngIf="oficina">
   <mat-grid-tile colspan=3 rowspan=1>
     <h4 class="nome-oficina">{{oficina.razaoSocial}}</h4>
     <button mat-icon-button matTooltip="Relatórios" class="botao-relatorios">
@@ -41,7 +41,9 @@
   </mat-list-item>
 
 </mat-action-list>
-
+<div *ngIf="listaFuncionarios && listaFuncionarios.length == 0" class="div-empty-list-message">
+    <span class="empty-list-message" >Não existem funcionários para essa oficina.</span>
+</div>
 <mat-grid-list cols=12 rowHeight=66 *ngIf="listaFuncionarios">
   <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
   <mat-grid-tile colspan=4 rowspan=1>

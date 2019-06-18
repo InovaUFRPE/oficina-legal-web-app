@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Oficina } from 'src/app/shared/models/oficina.model';
 import { LocalSaveService } from 'src/app/shared/local-save.service';
 import { MecanicoService } from 'src/app/shared/mecanico.service';
-import { AppComponent, GenericQueryParams } from 'src/app/app.component';
+import { AppComponent } from 'src/app/app.component';
 import { Gestor } from '../shared/models/gestor.model';
 import { Administrador } from '../shared/models/administrador.model';
 import { Agendamento } from '../shared/models/agendamento.model';

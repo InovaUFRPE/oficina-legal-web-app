@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListaFuncionarioComponent } from './lista-funcionario.component';
 import { ListaFuncionarioGuard } from '../guards/lista-funcionario.guard';
+import { ListaFuncionarioComponent } from './lista-funcionario.component';
 
 
 const routes: Routes = [

@@ -29,6 +29,16 @@ html, body, app-root, _ngcontent-c1{
   height: calc(100% - 79px)
 }
 
+.empty-list-message{
+  color: #808080d9;
+  margin-left: 0 !important;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.div-empty-list-message{
+  text-align: center;
+  margin-bottom: 20px;
+}
 .center {
   width: 75%;
   margin: 10px auto;

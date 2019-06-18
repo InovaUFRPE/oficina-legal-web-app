@@ -44,7 +44,9 @@
   </mat-list-item>
 
 </mat-action-list>
-
+<div *ngIf="listaOficina && listaOficina.length == 0" class="div-empty-list-message">
+    <span class="empty-list-message" >Não existem oficinas cadastradas no sistema.</span>
+</div>
 <mat-grid-list
   cols=12
   rowHeight=66
