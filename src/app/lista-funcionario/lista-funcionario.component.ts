@@ -35,7 +35,7 @@ export class ListaFuncionarioComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    if (this.localSaveService.getUsuarioLogado().tipo === '03') {
+    if (this.localSaveService.getUsuarioLogado().usuario.tipo === '03') {
       this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
       this.oficina = this.gestor.Oficina;
     } else {

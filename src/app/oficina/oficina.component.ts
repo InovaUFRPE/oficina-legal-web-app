@@ -40,7 +40,7 @@ export class OficinaComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.tiposList.push({valor: 'data', nome: 'Data'}, {valor: 'cliente', nome: 'Cliente'}, {valor: 'modelo', nome: 'Modelo'});
 
-    if (this.localSaveService.getUsuarioLogado().tipo === '03') {
+    if (this.localSaveService.getUsuarioLogado().usuario.tipo === '03') {
       this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
       this.oficina = this.gestor.Oficina;
     } else {
