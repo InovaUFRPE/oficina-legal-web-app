@@ -62,13 +62,6 @@ export class MecanicoService {
         email: 'hugosteixeira@hotmail.com ',
         tipo: '04',
       }),
-      oficina: new Oficina({
-        id: '1',
-        razaoSocial: 'jsahd',
-        endereco: 'askdjhgsa',
-        bairro: 'lksjhd',
-        complemento: 'kjshdf'
-      })
     }),
     new Mecanico({
       id: '2',
@@ -82,13 +75,6 @@ export class MecanicoService {
         email: 'hugosteixeira@hotmail.com ',
         tipo: '04',
       }),
-      oficina: new Oficina({
-        id: '2',
-        razaoSocial: 'jsahd',
-        endereco: 'askdjhgsa',
-        bairro: 'lksjhd',
-        complemento: 'kjshdf'
-      })
     })]);
   }
 
@@ -101,13 +87,7 @@ export class MecanicoService {
         //         },
         //             error => this.handleError(error))
         //     );
-        return of(new Mecanico({cpf: '151.456.448-70', id: '02', nome: 'Jonathan', oficina: new Oficina({
-          id: '2',
-          razaoSocial: 'jsahd',
-          endereco: 'askdjhgsa',
-          bairro: 'lksjhd',
-          complemento: 'kjshdf'
-        }),
+        return of(new Mecanico({cpf: '151.456.448-70', id: '02', nome: 'Jonathan',
         usuario: new Usuario({id: 2, tipo: '03', login: 'jonathan', email: 'jonathan@gmail.com'}), }));
     }
 
