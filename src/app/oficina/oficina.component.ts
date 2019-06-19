@@ -38,7 +38,6 @@ export class OficinaComponent implements OnInit {
     private readonly route: ActivatedRoute, private _location: Location) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
     this.tiposList.push({valor: 'data', nome: 'Data'}, {valor: 'cliente', nome: 'Cliente'}, {valor: 'modelo', nome: 'Modelo'});
 

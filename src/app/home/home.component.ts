@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.app.hideLoading();
     this.user = this.app.user;
-    console.log(this.user);
   }
 
 }

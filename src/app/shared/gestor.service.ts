@@ -47,7 +47,6 @@ export class GestorService {
             headers: this.headers
         }).pipe(
                 map(response => {
-                    console.log(response);
                     return response as Gestor;
                 },
                     error => this.handleError(error))
