@@ -1,39 +1,24 @@
-<mat-grid-list cols=12
-  rowHeight=75
-  *ngIf="oficina"
->
-  <mat-grid-tile
-    colspan=3
-    rowspan=1
-  >
+<mat-grid-list cols=12 rowHeight=75 *ngIf="oficina">
+  <mat-grid-tile colspan=3 rowspan=1>
     <h4 class="nome-oficina">{{oficina.razaoSocial}}</h4>
-    <button mat-icon-button matTooltip="Relatórios" class="botao-relatorios">
+    <button mat-icon-button matTooltip="Relatórios" class="botao-relatorios" routerLink="./relatorios">
       <mat-icon mat-list-icon>insert_chart_outlined</mat-icon>
     </button>
+    <button mat-icon-button matTooltip="Funcionarios" class="botao-relatorios" routerLink="./funcionarios">
+      <mat-icon mat-list-icon>face</mat-icon>
+    </button>
   </mat-grid-tile>
-  <mat-grid-tile
-    colspan=6
-    rowspan=1
-  ></mat-grid-tile>
-  <mat-grid-tile
-    colspan=3
-    rowspan=1
-  >
+  <mat-grid-tile colspan=6 rowspan=1></mat-grid-tile>
+  <mat-grid-tile colspan=3 rowspan=1>
     <mat-grid-list cols=6 rowHeight=25 style="width: 100%">
-      <mat-grid-tile
-        colspan=6
-        rowspan=1
-      >
+      <mat-grid-tile colspan=6 rowspan=1>
         <p class="endereco" style="margin: 0;">
           Bairro: {{oficina.bairro}}
         </p>
       </mat-grid-tile>
-      <mat-grid-tile
-        colspan=6
-        rowspan=1
-      >
+      <mat-grid-tile colspan=6 rowspan=1>
         <p class='endereco' style="margin: 0;">
-            Endereço: {{oficina.endereco}}
+          Endereço: {{oficina.endereco}}
         </p>
       </mat-grid-tile>
     </mat-grid-list>
@@ -41,48 +26,28 @@
 </mat-grid-list>
 <mat-divider></mat-divider>
 
-<mat-grid-list 
-  cols=12
-  rowHeight=100
->
-  <mat-grid-tile
-    colspan=12
-    rowspan=1
-  >
+<mat-grid-list cols=12 rowHeight=100>
+  <mat-grid-tile colspan=12 rowspan=1>
     <h3 class="titulo-agendamento">Agendamentos</h3>
   </mat-grid-tile>
-  <mat-grid-tile
-    colspan=8
-    rowspan=1
-  >
+  <mat-grid-tile colspan=8 rowspan=1>
     <h4 class="titulo-filtro">Ordernar por:</h4>
     <mat-form-field class="filtro-agenda">
       <mat-select placeholder="Tipo de ordenação" [formControl]="control">
-        <mat-option >--</mat-option>
+        <mat-option>--</mat-option>
         <mat-option *ngFor="let tipo of tiposList" [value]="tipo">
           {{tipo.nome}}
         </mat-option>
       </mat-select>
     </mat-form-field>
   </mat-grid-tile>
-  <mat-grid-tile
-    colspan=4
-    rowspan=1
-  >
+  <mat-grid-tile colspan=4 rowspan=1>
   </mat-grid-tile>
 </mat-grid-list>
 
-<mat-list
-  role="list"
-  *ngIf="oficina"
-  style="margin-left:20%"
->
-  <mat-list-item
-    *ngFor="let agendamento of agendamentos; let lastItem = last;"
-    class="item-agendamento"
-    role="listitem"
-    style="height:100%; width: 70%;"
-  >
+<mat-list role="list" *ngIf="oficina" style="margin-left:20%">
+  <mat-list-item *ngFor="let agendamento of agendamentos; let lastItem = last;" class="item-agendamento" role="listitem"
+    style="height:100%; width: 70%;">
     <mat-icon mat-list-icon style="margin-right: 2%">drive_eta</mat-icon>
     <div class='col-md-4' style="padding-right: 0.5%; padding-top: 2%; padding-bottom: 2%;">
       <p class="agendamento">
@@ -100,32 +65,23 @@
         Modelo: <span class="agendamento-resposta">{{agendamento.Veiculo.modelo}}</span>
       </p>
     </div>
-    <!-- <button  
-      mat-flat-button 
+    <!-- <button
+      mat-flat-button
       color=primary
       class='botao-visualizar-agendamento'
     >
       Visualizar dados
     </button> -->
   </mat-list-item>
-</mat-list>
 
-<mat-grid-list
-  cols=12
-  rowHeight=75
-  *ngIf="oficina"
->
+</mat-list>
+<div *ngIf="agendamentos && agendamentos.length == 0" class="div-empty-list-message">
+    <span class="empty-list-message" >Não existem agendamentos para esta oficina.</span>
+</div>
+<mat-grid-list cols=12 rowHeight=75 *ngIf="oficina">
   <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
-  <mat-grid-tile
-    colspan=4
-    rowspan=1
-  >
-    <button
-      mat-flat-button
-      color=primary
-      class='botao-voltar'
-      routerLink=""
-    >
+  <mat-grid-tile colspan=4 rowspan=1>
+    <button mat-flat-button color=primary class='botao-voltar' (click)="voltar()">
       Voltar
     </button>
   </mat-grid-tile>
@@ -151,14 +107,14 @@
         <p mat-line>Cliente: {{agendamento.Veiculo.Cliente.nome }} </p>
         <p mat-list-item mat-line>Horário: {{agendamento.data_hora | date:'hh:mm a, MM/dd/yyyy'}}</p> -->
 
-        <!-- <button mat-icon-button matTooltip="Detalhes">
+<!-- <button mat-icon-button matTooltip="Detalhes">
           <mat-icon  mat-list-icon>info</mat-icon>
         </button> -->
-        <!-- <button mat-raised-button matTooltip="Dica" (click)="metodo(agendamento)">
+<!-- <button mat-raised-button matTooltip="Dica" (click)="metodo(agendamento)">
           Algo
         </button> -->
 
-        <!-- <mat-divider *ngIf="!lastItem"></mat-divider>
+<!-- <mat-divider *ngIf="!lastItem"></mat-divider>
       </mat-list-item>
     </mat-list>
   </mat-card-content>

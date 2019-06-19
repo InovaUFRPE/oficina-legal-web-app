@@ -70,7 +70,6 @@ export class ClienteService {
         //         error => this.handleError(error))
         // );
         // Para testes sem back:
-        console.log(cliente);
         return of(cliente);
     }
 

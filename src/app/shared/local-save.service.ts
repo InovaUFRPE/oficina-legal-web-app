@@ -26,21 +26,9 @@ export class LocalSaveService {
        return (JSON.parse(window.localStorage.getItem('oficinaToEdit')) as Oficina);
     }
     setToken(token: string): void {
-        window.localStorage.setItem('oficinaToEdit', token);
+        window.localStorage.setItem('token', token);
     }
     getToken(): string {
-       return (window.localStorage.getItem('oficinaToEdit'));
+       return (window.localStorage.getItem('token'));
     }
-    // setClienteToEdit(cliente: Cliente): void {
-    //     window.localStorage.setItem('clienteToEdit', JSON.stringify(cliente));
-    // }
-    // getClienteToEdit(): Cliente {
-    //    return (JSON.parse(window.localStorage.getItem('clienteToEdit')) as Cliente);
-    // }
-    // setGestorToEdit(gestor: Gestor): void {
-    //     window.localStorage.setItem('gestorToEdit', JSON.stringify(gestor));
-    // }
-    // getGestorToEdit(): Gestor {
-    //    return (JSON.parse(window.localStorage.getItem('gestorToEdit')) as Gestor);
-    // }
 }

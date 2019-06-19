@@ -2,19 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule, MatListModule, MatCardModule, MatButtonModule, MatInputModule,
-  MatTooltipModule, MatSelectModule } from '@angular/material';
-import { MecanicoControllerComponent } from './mecanico-controller.component';
+  MatTooltipModule, MatSelectModule, MatGridListModule } from '@angular/material';
+import { RelatorioComponent } from './relatorio.component';
 import { AppComponent } from 'src/app/app.component';
-import { MecanicoService } from 'src/app/shared/mecanico.service';
-import { MecanicoControllerRoutingModule } from './mecanico-controller.routing';
+import { GestorService } from 'src/app/shared/gestor.service';
+import { RelatorioRoutingModule } from './relatorio.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OficinaService } from 'src/app/shared/oficina.service';
 import { LocalSaveService } from '../shared/local-save.service';
+import { RelatorioService } from '../shared/relatorio.service';
+import { RelatorioGuard } from '../guards/relatorio.guard';
 
 @NgModule({
   imports: [
     CommonModule,
-    MecanicoControllerRoutingModule,
+    RelatorioRoutingModule,
     MatCardModule,
     MatListModule,
     MatIconModule,
@@ -22,16 +24,18 @@ import { LocalSaveService } from '../shared/local-save.service';
     MatTooltipModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule,
   ],
   declarations: [
-    MecanicoControllerComponent,
+    RelatorioComponent,
   ],
   providers: [
-    MecanicoService,
+    RelatorioService,
     AppComponent,
     OficinaService,
-    LocalSaveService
+    LocalSaveService,
+    RelatorioGuard
   ]
 })
-export class MecanicoControllerModule { }
+export class RelatorioModule { }

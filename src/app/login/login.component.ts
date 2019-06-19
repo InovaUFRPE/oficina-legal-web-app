@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
             }
             those.authenticationService.setUsuarioLogado(respo);
             this.app.user = respo;
-            console.log(respo);
             those.snotifyService.success('Login efetuado com sucesso', 'Sucesso!', this.app.getConfig());
             those.router.navigate([`/home`]);
           },

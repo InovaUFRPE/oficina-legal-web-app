@@ -1,25 +1,25 @@
 <mat-grid-list
   cols=12
-  rowHeight=100
+  rowHeight=25
   style="height: 100%"
   *ngIf="gestor"
 >
   <mat-grid-tile
     colspan=12
-    rowspan=2
+    rowspan=8
     class='gestor-header'
   >
-  <img class='user-img' src="../../assets/images/user-default" >
+    <img class='user-img' src="../../assets/images/user-default" >
   </mat-grid-tile>
   <mat-grid-tile
     colspan=12
-    rowspan=2
+    rowspan=5
   >
-    <h3 class='titulos'>{{gestor.nome}}</h3>
+    <h3 class='titulos' style="align-self: flex-end">{{gestor.nome}}</h3>
   </mat-grid-tile>
   <mat-grid-tile
     colspan=12
-    rowspan=1
+    rowspan=5
   >
     <h3 class='titulos'>
       Dados Cadastrais
@@ -28,21 +28,21 @@
   <mat-grid-tile colspan=3 rowspan=1></mat-grid-tile>
   <mat-grid-tile
     colspan=2
-    rowspan=1
+    rowspan=3
     style="text-align: center"
   >
     <p class="account">CPF: <span class="account-resposta">{{gestor.cpf}}</span></p>
   </mat-grid-tile>
   <mat-grid-tile
     colspan=2
-    rowspan=1
+    rowspan=3
     style="text-align: center"
   >
     <p class="account">E-mail: <span class="account-resposta">{{gestor.usuario.email}}</span></p>
   </mat-grid-tile>
   <mat-grid-tile
     colspan=2
-    rowspan=1
+    rowspan=3
     style="text-align: center"
   >
     <p class="account">Oficina: <span class="account-resposta">{{gestor.Oficina?.razaoSocial}}</span></p>
@@ -53,3 +53,4 @@
   <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
   <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deletarConta()">Deletar Conta</button> -->
 </mat-grid-list>
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from '@angular/common';
 import { SnotifyService } from 'ng-snotify';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Mecanico } from 'src/app/shared/models/mecanico.model';
@@ -20,33 +21,21 @@ export class MecanicoAccountComponent implements OnInit {
     private readonly mecanicoService: MecanicoService,
     private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
     private app: AppComponent, private router: Router,
-    private readonly route: ActivatedRoute) { }
+    private readonly route: ActivatedRoute, private _location: Location) { }
 
   ngOnInit() {
     console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
+    this.mecanicoService.getMecanicoById(this.id).subscribe({
+      next: resp => {
+      this.mecanico = resp;
+      },
+      error: erro => {
+        console.log(erro);
+        this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
+      }
+    });
 
-    if (this.localSaveService.getUsuarioLogado().id === this.id) {
-      this.mecanico = this.localSaveService.getUsuarioLogado() as Mecanico;
-      this.myProfile = true;
-    } else {
-      this.mecanicoService.getMecanicoById(this.id).subscribe({
-        next: resp => {
-        this.mecanico = resp;
-        },
-        error: erro => {
-          console.log(erro);
-          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
-        }
-      });
-      // Para testes
-      // this.mecanico = new Mecanico ({
-      //   nome: 'Nícolas',
-      //   id: '02',
-      //   cpf: '11515515',
-      //   usuario: this.localSaveService.getUsuarioLogado().usuario
-      // });
-    }
   }
   editarConta() {
     this.router.navigate([`/mecanico/${this.id}/controlador`]);
@@ -68,5 +57,8 @@ export class MecanicoAccountComponent implements OnInit {
         this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
+  }
+  voltar() {
+    this._location.back();
   }
 }

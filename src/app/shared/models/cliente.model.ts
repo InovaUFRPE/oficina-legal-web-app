@@ -8,7 +8,7 @@ export class Cliente {
   cep: number;
   endereco: string;
   complemento: string;
-  usuario: Usuario;
+  usuario?: Usuario;
   constructor(client: Partial<Cliente>) {
     Object.assign(this, client);
   }
