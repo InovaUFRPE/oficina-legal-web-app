@@ -11,7 +11,6 @@ const routes: Routes = [
   { path: 'gestor/:id', loadChildren: './gestor-account/gestor-account.module#GestorAccountModule' },
   // { path: 'gestor/:id/controlador', loadChildren: './gestor-controller/gestor-controller.module#GestorControllerModule' },
   { path: 'mecanico/:id', loadChildren: './mecanico-account/mecanico-account.module#MecanicoAccountModule' },
-  { path: 'mecanico/:id/controlador', loadChildren: './mecanico-controller/mecanico-controller.module#MecanicoControllerModule' },
   { path: 'oficina/:id', loadChildren: './oficina/oficina.module#OficinaModule' },
   { path: 'lista-oficina', loadChildren: './lista-oficina/lista-oficina.module#ListaOficinaModule' },
   { path: 'oficina/:id/funcionarios', loadChildren: './lista-funcionario/lista-funcionario.module#ListaFuncionarioModule' },

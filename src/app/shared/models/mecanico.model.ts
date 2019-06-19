@@ -8,7 +8,7 @@ export class Mecanico {
   cpf: string;
   nome: string;
   usuario: Usuario;
-  oficina: Oficina;
+  // oficina: Oficina;
   constructor(client: Partial<Mecanico>) {
     Object.assign(this, client);
   }
