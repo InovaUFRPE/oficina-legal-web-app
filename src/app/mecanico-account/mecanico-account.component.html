@@ -21,7 +21,7 @@
     colspan=12
     rowspan=5
   >
-  <h3 class='titulos' style="align-self: end">{{mecanico.nome}}<span style="font-size: 40%; margin-left: 2%;">(Mecânico)</span></h3>
+  <h3 class='titulos' style="align-self: flex-end">{{mecanico.nome}}<span style="font-size: 40%; margin-left: 2%;">(Mecânico)</span></h3>
   </mat-grid-tile>
   <mat-grid-tile
     colspan=12
@@ -31,16 +31,16 @@
       Dados Cadastrais
     </h3>
   </mat-grid-tile>
-  <mat-grid-tile colspan=3 rowspan=1></mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
   <mat-grid-tile
-    colspan=3
+    colspan=2
     rowspan=3
     style="text-align: center"
   >
     <p class="account">CPF: <span class="account-resposta">{{mecanico.cpf}}</span></p>
   </mat-grid-tile>
   <mat-grid-tile
-    colspan=3
+    colspan=2
     rowspan=3
     style="text-align: center"
   >
@@ -56,5 +56,5 @@
   <mat-grid-tile colspan=3 rowspan=1></mat-grid-tile>
   <!-- <button type="button" (click)="onUpload">escolha a foto</button>  -->
   <!-- <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
-  <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deletarConta()">Deletar Conta</button> --> -->
+  <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deletarConta()">Deletar Conta</button> -->
 </mat-grid-list>
