@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from '@angular/common';
 import { SnotifyService } from 'ng-snotify';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Mecanico } from 'src/app/shared/models/mecanico.model';
@@ -20,7 +21,7 @@ export class MecanicoAccountComponent implements OnInit {
     private readonly mecanicoService: MecanicoService,
     private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
     private app: AppComponent, private router: Router,
-    private readonly route: ActivatedRoute) { }
+    private readonly route: ActivatedRoute, private _location: Location) { }
 
   ngOnInit() {
     console.log(this.route.snapshot.params.id);
@@ -58,6 +59,6 @@ export class MecanicoAccountComponent implements OnInit {
     });
   }
   voltar() {
-    this.router.navigate([`oficina/${this.mecanico.oficina.id}/funcionarios/`]);
+    this._location.back();
   }
 }

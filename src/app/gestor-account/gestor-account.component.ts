@@ -35,6 +35,7 @@ export class GestorAccountComponent implements OnInit {
     } else {
       this.gestorService.getGestorById(this.id).subscribe({
         next: resp => {
+          console.log(resp);
         this.gestor = resp;
         },
         error: erro => {

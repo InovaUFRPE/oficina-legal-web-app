@@ -81,7 +81,7 @@
 <mat-grid-list cols=12 rowHeight=75 *ngIf="oficina">
   <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
   <mat-grid-tile colspan=4 rowspan=1>
-    <button mat-flat-button color=primary class='botao-voltar' routerLink="/">
+    <button mat-flat-button color=primary class='botao-voltar' (click)="voltar()">
       Voltar
     </button>
   </mat-grid-tile>

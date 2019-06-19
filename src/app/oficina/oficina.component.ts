@@ -9,6 +9,8 @@ import { Gestor } from '../shared/models/gestor.model';
 import { Administrador } from '../shared/models/administrador.model';
 import { Agendamento } from '../shared/models/agendamento.model';
 import { FormControl } from '@angular/forms';
+import {Location} from '@angular/common';
+
 
 export interface Tipos {
   valor: string;
@@ -33,10 +35,9 @@ export class OficinaComponent implements OnInit {
     private readonly oficinaService: OficinaService,
     private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
     private app: AppComponent, private router: Router,
-    private readonly route: ActivatedRoute) { }
+    private readonly route: ActivatedRoute, private _location: Location) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
     this.tiposList.push({valor: 'data', nome: 'Data'}, {valor: 'cliente', nome: 'Cliente'}, {valor: 'modelo', nome: 'Modelo'});
 
@@ -94,5 +95,13 @@ export class OficinaComponent implements OnInit {
         this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
       }
     });
+  }
+  voltar() {
+    // if (this.gestor) {
+    //     this.router.navigate(['/']);
+    //  } else if (this.admin) {
+    //     this.router.navigate(['/lista-oficina']);
+    //  }
+    this._location.back();
   }
 }

@@ -9,7 +9,6 @@ export class OficinaGuard implements CanActivate {
 
    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
       const user = this.authService.getUsuarioLogado();
-      console.log(user);
       if (user.usuario.tipo === '03' && Number(user.Oficina.id) === Number(route.params.id)) {
          return true;
       } else if (user.usuario.tipo === '03') {

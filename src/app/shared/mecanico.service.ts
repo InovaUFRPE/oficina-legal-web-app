@@ -31,7 +31,7 @@ export class MecanicoService {
   }
 
   getMecanicos(): Observable<Mecanico[]> {
-    return this.http.get<Mecanico[]>(this.urlApi + 'mecanicos', {
+    return this.http.get<Mecanico[]>(this.urlApi + 'mecanico', {
       headers: this.headers
     }).pipe(
       map(response => {
@@ -41,58 +41,71 @@ export class MecanicoService {
     );
   }
 
-  getMecanicosByOficina(id: string): Observable<Mecanico[]> {
-    // return this.http.get<Mecanico[]>(this.urlApi + 'mecanicos', {
-    //   headers: this.headers
-    // }).pipe(
-    //   map(response => {
-    //     return response as Mecanico[];
-    //   },
-    //     error => this.handleError(error))
-    // );
-    return of([new Mecanico({
-      id: '1',
-      curriculo: 'string',
-      cpf: '99999999',
-      nome: 'Hugo',
-      usuario: new Usuario({
-        id: 1,
-        login: 'hugo',
-        senha: '123456',
-        email: 'hugosteixeira@hotmail.com ',
-        tipo: '04',
-      }),
-    }),
-    new Mecanico({
-      id: '2',
-      curriculo: 'string',
-      cpf: '99999999',
-      nome: 'Hugo',
-      usuario: new Usuario({
-        id: 2,
-        login: 'hugo',
-        senha: '123456',
-        email: 'hugosteixeira@hotmail.com ',
-        tipo: '04',
-      }),
-    })]);
+  getMecanicosByOficina(idOficina: number): Observable<Mecanico[]> {
+    return this.http.get<any[]>(`${this.urlApi}mecanicooficina/findByOficina/${idOficina}` , {
+      headers: this.headers
+    }).pipe(
+      map(response => {
+        console.log(response);
+        const retorno = [];
+        response.forEach(objeto => {
+          retorno.push(new Mecanico({
+            id: objeto.Mecanico.id,
+            curriculo: objeto.Mecanico.curriculo,
+            nome: objeto.Mecanico.nome,
+            cpf: objeto.Mecanico.cpf,
+            usuario: objeto.Mecanico.usuario,
+            idOficina: objeto.idOficina
+          }));
+        });
+        return retorno as Mecanico[];
+      },
+        error => this.handleError(error))
+    );
+    // return of([new Mecanico({
+    //   id: '10',
+    //   curriculo: 'string',
+    //   cpf: '99999999',
+    //   nome: 'Hugo',
+    //   usuario: new Usuario({
+    //     id: 1,
+    //     login: 'hugo',
+    //     senha: '123456',
+    //     email: 'hugosteixeira@hotmail.com ',
+    //     tipo: '04',
+    //   }),
+    // }),
+    // new Mecanico({
+    //   id: '11',
+    //   curriculo: 'string',
+    //   cpf: '99999999',
+    //   nome: 'Hugo',
+    //   usuario: new Usuario({
+    //     id: 2,
+    //     login: 'hugo',
+    //     senha: '123456',
+    //     email: 'hugosteixeira@hotmail.com ',
+    //     tipo: '04',
+    //   })
+    // })
+    // ]);
   }
 
     getMecanicoById(id: string): Observable<Mecanico> {
-        // return this.http.get<any>(this.urlApi + 'mecanicos/' + id, {
-        //     headers: this.headers
-        // }).pipe(
-        //         map(response => {
-        //             return response.data as Mecanico;
-        //         },
-        //             error => this.handleError(error))
-        //     );
-        return of(new Mecanico({cpf: '151.456.448-70', id: '02', nome: 'Jonathan',
-        usuario: new Usuario({id: 2, tipo: '03', login: 'jonathan', email: 'jonathan@gmail.com'}), }));
+        return this.http.get<any>(this.urlApi + 'mecanico/' + id, {
+            headers: this.headers
+        }).pipe(
+                map(response => {
+                    return response as Mecanico;
+                },
+                    error => this.handleError(error))
+            );
+        // return of(new Mecanico({cpf: '151.456.448-70', id: '02', nome: 'Jonathan',
+        // usuario: new Usuario({id: 2, tipo: '03', login: 'jonathan', email: 'jonathan@gmail.com'}), }));
     }
 
   createMecanico(mecanico: Mecanico): Observable<any> {
-    return this.http.post<Mecanico>(this.urlApi + 'mecanicos', mecanico, {
+    return this.http.post<Mecanico>(this.urlApi + 'mecanico', mecanico, {
       headers: this.headers
     }).pipe(
       map(response => {
@@ -102,7 +115,7 @@ export class MecanicoService {
     );
   }
   updateMecanico(mecanico: Mecanico): Observable<any> {
-    // return this.http.put<Mecanico>(encodeURI(this.urlApi + 'mecanicos/' + mecanico.cpf), mecanico, {
+    // return this.http.put<Mecanico>(encodeURI(this.urlApi + 'mecanico/' + mecanico.cpf), mecanico, {
     //     headers: this.headers
     // }).pipe(
     //     map(response => {
@@ -115,7 +128,7 @@ export class MecanicoService {
   }
 
   deleteMecanico(cpf: string) {
-    return this.http.delete<any>(encodeURI(this.urlApi + `mecanicos/${cpf}`), {
+    return this.http.delete<any>(encodeURI(this.urlApi + `mecanico/${cpf}`), {
       headers: this.headers
     }).pipe(
       map(response => {
