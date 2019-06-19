@@ -7,12 +7,9 @@ import { MecanicoService } from 'src/app/shared/mecanico.service';
 import { AppComponent } from 'src/app/app.component';
 import { Gestor } from '../shared/models/gestor.model';
 import { Administrador } from '../shared/models/administrador.model';
-import { Agendamento } from '../shared/models/agendamento.model';
-import { Tipos } from '../login/login.component';
-import { FormControl } from '@angular/forms';
 import { Mecanico } from '../shared/models/mecanico.model';
-import { Usuario } from '../shared/models/usuario.model';
 import { OficinaService } from '../shared/oficina.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-lista-funcionario',
@@ -30,7 +27,7 @@ export class ListaFuncionarioComponent implements OnInit {
   constructor(
     private readonly mecanicoService: MecanicoService,
     private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
-    private app: AppComponent, private router: Router,
+    private app: AppComponent, private router: Router, private _location: Location,
     private readonly route: ActivatedRoute, private readonly oficinaService: OficinaService) { }
 
   ngOnInit() {
@@ -64,7 +61,7 @@ export class ListaFuncionarioComponent implements OnInit {
   verFuncionario(funcionario: Mecanico) {
     this.router.navigate([`/mecanico/${funcionario.id}`]);
   }
-  voltar(funcionario: Mecanico) {
-    this.router.navigate([`/oficina/${this.oficina.id}`]);
+  voltar() {
+    this._location.back();
   }
 }

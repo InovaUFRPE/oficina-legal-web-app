@@ -12,6 +12,8 @@ import { OficinaService } from 'src/app/shared/oficina.service';
 import { Usuario } from '../shared/models/usuario.model';
 import { Administrador } from '../shared/models/administrador.model';
 import { RelatorioService } from '../shared/relatorio.service';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-relatorio',
@@ -34,7 +36,7 @@ export class RelatorioComponent implements OnInit {
   constructor(private readonly oficinaService: OficinaService,
     private readonly relatorioService: RelatorioService, private formBuilder: FormBuilder,
     private snotifyService: SnotifyService, private localSaveService: LocalSaveService,
-    private app: AppComponent, private router: Router,
+    private app: AppComponent, private router: Router, private _location: Location,
     private readonly route: ActivatedRoute) { }
 
 
@@ -45,6 +47,17 @@ export class RelatorioComponent implements OnInit {
     if (this.localSaveService.getUsuarioLogado().usuario.tipo === '03') {
       this.gestor = this.localSaveService.getUsuarioLogado() as Gestor;
       this.oficina = this.gestor.Oficina; // oficina é do próprio gestor
+      this.relatorioService.getRelatorioFinanceiro(this.oficina.id).subscribe({
+        // busco os relatorios dessa oficina, precisa ser dentro do next pois é um metodo assinc e tem que ser executado em ordem
+        next: retorno => {
+          console.log(retorno);
+          this.relatorios = retorno;
+        },
+        error: erro => {
+          console.log(erro);
+          this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
+        }
+      });
     } else {
       this.admin = this.localSaveService.getUsuarioLogado() as Administrador;
       this.oficinaService.getOficinaById(this.id).subscribe({
@@ -89,9 +102,11 @@ export class RelatorioComponent implements OnInit {
     this.relatorioForm.get('gestorCpf').reset();
     this.relatorioForm.get('oficina').reset();
   }
-  
+
   voltar() {
-    this.router.navigate([`oficina/${this.oficina.id}/`]);
+    // this.router.navigate([`oficina/${this.oficina.id}/`]);
+    this._location.back();
+
   }
 
 }
