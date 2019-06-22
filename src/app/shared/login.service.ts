@@ -12,7 +12,7 @@ import { Gestor } from './models/gestor.model';
 import { Administrador } from './models/administrador.model';
 import { Oficina } from './models/oficina.model';
 
-const urlApi = 'http://localhost:4000/api/';
+const urlApi = 'http://104.236.120.141:4000/api/';
 
 export interface RetornoLogin {
   token: string;
