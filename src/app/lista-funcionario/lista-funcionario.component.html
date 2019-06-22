@@ -1,0 +1,57 @@
+<mat-grid-list cols=12 rowHeight=75 *ngIf="oficina">
+  <mat-grid-tile colspan=3 rowspan=1>
+    <h4 class="nome-oficina">{{oficina.razaoSocial}}</h4>
+    <button mat-icon-button matTooltip="Relatórios" class="botao-relatorios" routerLink="../relatorios">
+      <mat-icon mat-list-icon>insert_chart_outlined</mat-icon>
+    </button>
+    <button mat-icon-button class="botao-relatorios" routerLink="./funcionarios" disabled>
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=6 rowspan=1></mat-grid-tile>
+  <mat-grid-tile colspan=3 rowspan=1>
+    <mat-grid-list cols=6 rowHeight=25 style="width: 100%">
+      <mat-grid-tile colspan=6 rowspan=1>
+        <p class="endereco" style="margin: 0;">
+          Bairro: {{oficina.bairro}}
+        </p>
+      </mat-grid-tile>
+      <mat-grid-tile colspan=6 rowspan=1>
+        <p class='endereco' style="margin: 0;">
+          Endereço: {{oficina.endereco}}
+        </p>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-divider></mat-divider>
+
+<mat-grid-list cols=12 rowHeight=100>
+  <mat-grid-tile colspan=12 rowspan=1>
+    <h3 class='titulo-lista-oficina'>Funcionários</h3>
+  </mat-grid-tile>
+  <!-- <mat-grid-tile colspan=8 rowspan=1>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile> -->
+</mat-grid-list>
+
+<mat-action-list mat-subheader role="list" *ngIf="listaFuncionarios" style="margin-left:20%; padding-bottom: 8px;">
+  <mat-list-item *ngFor="let funcionario of listaFuncionarios; let lastItem = last;" role="listitem" class="item-lista"
+    style="height: 100%; width: 70%; padding: 2%" (click)="verFuncionario(funcionario)">
+    <mat-icon mat-list-icon style="margin: -4% 4% 0 -4%; font-size: 300%">account_circle</mat-icon>
+    <p mat-line class="listagem">Nome: <span class="listagem-resposta">{{funcionario.nome}}</span></p>
+    <p mat-line class="listagem">CPF: <span class="listagem-resposta">{{funcionario.cpf}}</span></p>
+  </mat-list-item>
+
+</mat-action-list>
+<div *ngIf="listaFuncionarios && listaFuncionarios.length == 0" class="div-empty-list-message">
+    <span class="empty-list-message" >Não existem funcionários para essa oficina.</span>
+</div>
+<mat-grid-list cols=12 rowHeight=66 *ngIf="listaFuncionarios">
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1>
+    <button mat-flat-button color=primary class='botao-voltar' (click)="voltar()">
+      Voltar
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile colspan=4 rowspan=1></mat-grid-tile>
+</mat-grid-list>

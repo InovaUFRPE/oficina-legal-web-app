@@ -1,0 +1,66 @@
+.mat-card {
+    margin: 20px 20px 0px 20px;
+}
+.form-full-width {
+    width: 100%;
+  }
+
+.btn-voltar {
+    background-color: #3f51b5;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    left: 3%;
+    top: 15%;
+    width: 10%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.nome-oficina{
+    font-family: Lato;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 39px;
+    text-align: left;
+    color: #47525E;
+}
+.botao-relatorios{
+    left: 3%;
+    bottom: 3%;
+}
+.botao-relatorios .mat-icon{
+    color: #47525E;
+}
+
+.endereco {
+    color: #47525E;
+    font-family: Lato;
+}
+
+.titulo-relatorio {
+    color: #003EA5;
+    font-family: Lato;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    width: 799px;
+    text-align: center;
+}
+
+.btn-buscar {
+    background-color: #3f51b5;
+    font-weight: bold;
+    color: white;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.titulo-filtro {
+    color: #47525E;
+    font-family: Lato;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 33px;
+    text-align: left;
+}

@@ -1,0 +1,14 @@
+<mat-card>
+  <br><h4>Minha conta</h4><br>
+  <mat-card-content *ngIf="cliente" class="center">
+    <h4>{{cliente.nome}}</h4>
+    <p>{{cliente.cpf}}</p>
+    <p>{{cliente.bairro}}</p>
+    <p>{{cliente.cep}}</p>
+    <p>{{cliente.endereco}}</p>
+    <p>{{cliente.complemento}}</p>
+    <p>{{cliente.usuario.email}}</p>
+    <button *ngIf="myProfile" mat-raised-button color="primary" style="margin-right:10px" (click)="editarConta()">Editar Conta</button>
+    <button *ngIf="myProfile" mat-raised-button color="warn"  (click)="deleteCliente()">Deletar Conta</button>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,32 @@
+<mat-card>
+  <br><h4>{{oficina?.nome}}</h4><br>
+  <mat-card-content class="center">
+    <h4 *ngIf="!edit">Cadastre uma oficina:</h4>
+    <form [formGroup]="oficinaForm">
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Razão social" maxlength="100" formControlName="razaoSocial">
+        <mat-error *ngIf="oficinaForm.get('razaoSocial').hasError('required')">
+          A razão social é <strong>obrigatória.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Endereço" maxlength="200" formControlName="endereco">
+        <mat-error *ngIf="oficinaForm.get('endereco').hasError('required')">
+          O endereço é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Bairro" maxlength="30" formControlName="bairro">
+        <mat-error *ngIf="oficinaForm.get('bairro').hasError('required')">
+         O bairro é <strong>obrigatório.</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Complemento" maxlength="100" formControlName="complemento">
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" style="margin-right:10px" routerLink="/">Cancelar</button>
+    <button mat-raised-button color="primary" *ngIf="edit" (click)="updateOficina()">Salvar alterações</button>
+    <button mat-raised-button color="primary" [disabled]="!oficinaForm.valid" *ngIf="!edit" (click)="createOficina()">Salvar</button>
+  </mat-card-content>
+</mat-card>

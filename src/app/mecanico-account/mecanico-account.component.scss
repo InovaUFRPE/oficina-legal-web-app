@@ -1,0 +1,49 @@
+.mat-card {
+    margin: 20px 20px 0px 20px;
+}
+.form-full-width {
+    width: 100%;
+  }
+
+  .gestor-header{
+    background-color: #08468B;
+    // width: 1440px;
+    // height: 262px;
+    overflow: visible;
+  }
+  .user-img{
+    position: relative;
+    height: 80%;
+    top: 35%;
+  }
+  .titulos {
+    color: #003EA5;
+    font-family: Lato;
+    font-size: 250%;
+    font-weight: 700;
+    text-align: center;
+  }
+  .account{
+    color: #767676;
+    font-family: Lato;
+    font-weight: 700;
+    margin-bottom: 1%;
+    width: 100%;
+  }
+  .account-resposta{
+    color: #003EA5;
+    font-family: Lato;
+    font-weight: 700;
+    margin-left: 1%;
+    width: 100%;
+  }
+
+  .back-button{
+    color: #003EA5;
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    width: 10%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
