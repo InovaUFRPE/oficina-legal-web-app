@@ -46,7 +46,6 @@ export class MecanicoService {
       headers: this.headers
     }).pipe(
       map(response => {
-        console.log(response);
         const retorno = [];
         response.forEach(objeto => {
           retorno.push(new Mecanico({
@@ -62,33 +61,6 @@ export class MecanicoService {
       },
         error => this.handleError(error))
     );
-    // return of([new Mecanico({
-    //   id: '10',
-    //   curriculo: 'string',
-    //   cpf: '99999999',
-    //   nome: 'Hugo',
-    //   usuario: new Usuario({
-    //     id: 1,
-    //     login: 'hugo',
-    //     senha: '123456',
-    //     email: 'hugosteixeira@hotmail.com ',
-    //     tipo: '04',
-    //   }),
-    // }),
-    // new Mecanico({
-    //   id: '11',
-    //   curriculo: 'string',
-    //   cpf: '99999999',
-    //   nome: 'Hugo',
-    //   usuario: new Usuario({
-    //     id: 2,
-    //     login: 'hugo',
-    //     senha: '123456',
-    //     email: 'hugosteixeira@hotmail.com ',
-    //     tipo: '04',
-    //   })
-    // })
-    // ]);
   }
 
     getMecanicoById(id: string): Observable<Mecanico> {
@@ -100,8 +72,6 @@ export class MecanicoService {
                 },
                     error => this.handleError(error))
             );
-        // return of(new Mecanico({cpf: '151.456.448-70', id: '02', nome: 'Jonathan',
-        // usuario: new Usuario({id: 2, tipo: '03', login: 'jonathan', email: 'jonathan@gmail.com'}), }));
     }
 
   createMecanico(mecanico: Mecanico): Observable<any> {

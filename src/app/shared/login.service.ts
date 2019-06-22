@@ -12,7 +12,7 @@ import { Gestor } from './models/gestor.model';
 import { Administrador } from './models/administrador.model';
 import { Oficina } from './models/oficina.model';
 
-const urlApi = 'http://localhost:4000/api/';
+const urlApi = 'http://104.236.120.141:4000/api/';
 
 export interface RetornoLogin {
   token: string;
@@ -40,11 +40,6 @@ export class LoginService {
             },
                 error => this.handleError(error))
     );
-    // Para testes sem back:
-    // return of({
-    //   token: 'string',
-    //   user: new Usuario({ id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com' })
-    // } as RetornoLogin);
   }
 
   getUsuarioCompleto(idUser: number): Observable<any> {
@@ -55,21 +50,5 @@ export class LoginService {
             },
                 error => this.handleError(error))
         );
-
-    // Para simular gestor:
-    return of(new Gestor ({
-        nome: 'Nícolas',
-        id: '02',
-        cpf: '5454',
-        usuario: new Usuario({id: 2, tipo: '03', login: 'nicolas', email: 'nicolas@gmail.com'}),
-        Oficina: new Oficina({id: '03', razaoSocial: 'Oficina do bairro', endereco: 'Rua x', bairro: 'madalena'})
-    }));
-
-    // Para simular adm:
-    // return of(new Administrador({
-    //   nome: 'Nícolas',
-    //   cpf: '45544',
-    //   usuario: new Usuario({ id: 2, tipo: '04', login: 'nicolas', email: 'nicolas@gmail.com' })
-    // }));
   }
 }

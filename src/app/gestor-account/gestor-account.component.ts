@@ -26,7 +26,6 @@ export class GestorAccountComponent implements OnInit {
     private readonly route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params.id);
     this.id = this.route.snapshot.params.id;
 
     if (this.localSaveService.getUsuarioLogado().id === this.id) {
@@ -35,7 +34,6 @@ export class GestorAccountComponent implements OnInit {
     } else {
       this.gestorService.getGestorById(this.id).subscribe({
         next: resp => {
-          console.log(resp);
         this.gestor = resp;
         },
         error: erro => {
@@ -43,27 +41,11 @@ export class GestorAccountComponent implements OnInit {
           this.snotifyService.error(erro.error.alert, 'Atenção!', this.app.getConfig());
         }
       });
-      // Para testes
-      // this.gestor = new Gestor ({
-      //   nome: 'Nícolas',
-      //   id: '02',
-      //   cpf: '11515515',
-      //   usuario: this.localSaveService.getUsuarioLogado().usuario
-      // });
     }
   }
   editarConta() {
     this.router.navigate([`/gestor/${this.id}/controlador`]);
   }
-  // onFileSelected(event){
-    // this.selectedFile = <File>event.target.files[0];
-    // console.log(event);
-  // }
-  // onUpload(){
-    // const fd =new FormData();
-    // fd.append('image', this.selectedFile, this.selectedFile.name);
-    // this.http.post('',fd).subscribe(res => console.log(res));
-  // }
 
   deletarConta() {
     this.app.showLoading();
