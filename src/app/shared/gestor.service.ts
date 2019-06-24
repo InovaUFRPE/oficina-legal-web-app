@@ -47,6 +47,7 @@ export class GestorService {
             headers: this.headers
         }).pipe(
                 map(response => {
+                    response.cpf = response.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g,"\$1.\$2.\$3\-\$4");
                     return response as Gestor;
                 },
                     error => this.handleError(error))
