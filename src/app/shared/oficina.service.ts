@@ -61,6 +61,11 @@ export class OficinaService {
             params: _parms && _parms.q ? new HttpParams().set('orderBy', _parms.q) : null
         }).pipe(
                 map(response => {
+                    console.log(response)
+                    response = response.map(el => {
+                        el.Veiculo.placa = el.Veiculo.placa.replace(/([A-Z]{3})([0-9]{4})/g, "\$1-\$2");
+                        return el
+                    });
                     return response as Agendamento[];
                 },
                     error => this.handleError(error))
