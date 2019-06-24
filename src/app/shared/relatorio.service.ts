@@ -32,6 +32,10 @@ export class RelatorioService {
             headers: this.headers
         }).pipe(
             map(response => {
+                response = response.map(el => {
+                    el.Veiculo.placa = el.Veiculo.placa.replace(/([A-Z]{3})([0-9]{4})/g, "\$1-\$2");
+                    return el
+                });
                 return response as Relatorio[];
             },
                 error => this.handleError(error))

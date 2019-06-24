@@ -48,6 +48,7 @@ export class MecanicoService {
       map(response => {
         const retorno = [];
         response.forEach(objeto => {
+          objeto.Mecanico.cpf = objeto.Mecanico.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g,"\$1.\$2.\$3\-\$4");
           retorno.push(new Mecanico({
             id: objeto.Mecanico.id,
             curriculo: objeto.Mecanico.curriculo,
@@ -68,6 +69,7 @@ export class MecanicoService {
             headers: this.headers
         }).pipe(
                 map(response => {
+                    response.cpf = response.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g,"\$1.\$2.\$3\-\$4");
                     return response as Mecanico;
                 },
                     error => this.handleError(error))
