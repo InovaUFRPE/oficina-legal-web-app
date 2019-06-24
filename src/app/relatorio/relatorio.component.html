@@ -47,14 +47,38 @@
           </thead>
           <tbody>
             <tr *ngFor="let relatorio of relatorios" >
-              <th scope="row"><mat-icon style="color:#3f51b5;"> person_pin</mat-icon> {{relatorio.Veiculo.Cliente.nome}}</th>
-              <td>{{relatorio.Laudo.descricao}}</td>
-              <td>{{relatorio.Servico.nomeServico}}</td>
-              <td>{{relatorio.situacao}}</td>
-              <td>{{relatorio.Veiculo.modelo}} {{relatorio.Veiculo.ano}}</td>
-              <td>{{relatorio.Veiculo.placa}}</td>
-              <td>{{relatorio.Servico.tempoRealizacao}}</td>
-              <td><b>R$ </b>{{relatorio.Servico.preco}}</td>
+              <td scope="row">
+                <p *ngIf="relatorio === null || relatorio.Veiculo === null || relatorio.Veiculo.Cliente === null || relatorio.Veiculo.Cliente.nome === null" class="empty-list-message" >Não há cliente para este serviço.</p>
+                <p *ngIf="relatorio && relatorio.Veiculo && relatorio.Veiculo.Cliente && relatorio.Veiculo.Cliente.nome"><mat-icon style="color:#3f51b5;"> person_pin</mat-icon> {{relatorio.Veiculo.Cliente.nome}}</p>
+              </td>
+              <td>
+                <p *ngIf="relatorio === null || relatorio.Laudo === null || relatorio.Laudo.descricao === null" class="empty-list-message" >Não há descrição para este serviço.</p>
+                <p *ngIf="relatorio && relatorio.Laudo && relatorio.Laudo.descricao">{{relatorio.Laudo.descricao}}</p>
+              </td>
+              <td>
+                <p *ngIf="relatorio === null || relatorio.Servico === null || relatorio.Servico.nomeServico === null" class="empty-list-message" >Não há nome para este serviço.</p>
+                <p *ngIf="relatorio && relatorio.Servico && relatorio.Servico.nomeServico">{{relatorio.Servico.nomeServico}}</p>
+              </td>
+              <td>
+                  <p *ngIf="relatorio === null || relatorio.situacao === null" class="empty-list-message" >Não há situação para este serviço.</p>
+                  <p *ngIf="relatorio && relatorio.situacao">{{relatorio.situacao}}</p>
+              </td>
+              <td>
+                  <p *ngIf="relatorio === null || relatorio.Veiculo === null || (relatorio.Veiculo.modelo === null || relatorio.Veiculo.ano === null)" class="empty-list-message" >Não há modelo para este veículo.</p>
+                  <p *ngIf="relatorio && relatorio.Veiculo && (relatorio.Veiculo.modelo || relatorio.Veiculo.ano === null)">{{relatorio.Veiculo.modelo}} {{relatorio.Veiculo.ano}}</p>
+              </td>
+              <td>
+                  <p *ngIf="relatorio === null || relatorio.Veiculo === null || relatorio.Veiculo.placa === null" class="empty-list-message" >Não há placa para este veículo.</p>
+                  <p *ngIf="relatorio && relatorio.Veiculo && relatorio.Veiculo.placa">{{relatorio.Veiculo.placa}}</p>
+              </td>
+              <td>
+                  <p *ngIf="relatorio === null || relatorio.Servico === null || relatorio.Servico.tempoRealizacao === null" class="empty-list-message" >Não há tempo gasto para este serviço.</p>
+                  <p *ngIf="relatorio && relatorio.Servico && relatorio.Servico.tempoRealizacao">{{relatorio.Servico.tempoRealizacao}}</p>
+              </td>
+              <td>
+                  <p *ngIf="relatorio === null || relatorio.Servico === null || relatorio.Servico.preco === null" class="empty-list-message" >Não há valor para este serviço.</p>
+                  <p *ngIf="relatorio && relatorio.Servico && relatorio.Servico.preco"><b>R$ </b>{{relatorio.Servico.preco}}</p>
+              </td>
             </tr>
           </tbody>
         </table>
