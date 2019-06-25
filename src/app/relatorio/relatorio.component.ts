@@ -72,7 +72,7 @@ export class RelatorioComponent implements OnInit {
     }
   }
   voltar() {
-    // this.router.navigate([`oficina/${this.oficina.id}/`]);
-    this._location.back();
+    this.router.navigate([`oficina/${this.oficina.id}/`]);
+    // this._location.back();
   }
 }
