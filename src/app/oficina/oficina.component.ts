@@ -96,11 +96,11 @@ export class OficinaComponent implements OnInit {
     });
   }
   voltar() {
-    // if (this.gestor) {
-    //     this.router.navigate(['/']);
-    //  } else if (this.admin) {
-    //     this.router.navigate(['/lista-oficina']);
-    //  }
-    this._location.back();
+    if (this.gestor) {
+        this.router.navigate(['/']);
+     } else if (this.admin) {
+        this.router.navigate(['/lista-oficina']);
+     }
+    // this._location.back();
   }
 }
